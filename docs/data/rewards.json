@@ -1,7 +1,92 @@
 {
-  "schemaVersion": 1,
-  "status": "draft",
-  "rewardCategories": [],
-  "generationRules": [],
-  "examples": []
+  "schemaVersion": 2,
+  "status": "master_configurable",
+  "description": "Базовая схема генератора наград Наблюдателя. Пулы вариантов должны наполняться подтверждёнными данными энциклопедии или вручную мастером. Неустановленные вероятности, повторы и распределения качества не зашиты в алгоритм.",
+  "flow": [
+    "Задание выполнено; мастер фиксирует выданные Славу и Звёздные Монеты.",
+    "Игрок выбирает одну из девяти категорий награды.",
+    "Наблюдатель предлагает три случайных варианта из пула выбранной категории.",
+    "Игрок выбирает один из трёх вариантов."
+  ],
+  "generator": {
+    "offersPerSelection": 3,
+    "categorySelection": "player_choice",
+    "duplicatePolicy": null,
+    "qualityDistribution": null,
+    "qualityHandling": "use_quality_defined_on_entry; no automatic quality roll",
+    "masterCanEditPools": true,
+    "notes": [
+      "Вероятности появления категорий не установлены.",
+      "Правило повторов при выборе трёх вариантов не установлено; мастер должен выбрать режим.",
+      "Распределение качества наград не установлено; автоматическое назначение качества отключено.",
+      "Получение награды не гарантирует, что персонаж сможет её использовать.",
+      "Слава и Звёздные Монеты фиксируются в инструменте как результаты задания; формулы их расчёта не выводятся из генератора."
+    ]
+  },
+  "rewardCategories": [
+    {
+      "id": "PROPERTY",
+      "label": "Свойство",
+      "entries": []
+    },
+    {
+      "id": "ITEM",
+      "label": "Предмет",
+      "entries": []
+    },
+    {
+      "id": "SKILL",
+      "label": "Навык",
+      "entries": []
+    },
+    {
+      "id": "ABILITY",
+      "label": "Умение",
+      "entries": []
+    },
+    {
+      "id": "CREATURE",
+      "label": "Существо",
+      "entries": []
+    },
+    {
+      "id": "SPELL",
+      "label": "Заклинание",
+      "entries": []
+    },
+    {
+      "id": "PORTAL",
+      "label": "Портал",
+      "entries": []
+    },
+    {
+      "id": "DOMAIN",
+      "label": "Домен",
+      "entries": []
+    },
+    {
+      "id": "SAGA",
+      "label": "Сага",
+      "entries": []
+    }
+  ],
+  "entrySchema": {
+    "required": [
+      "name"
+    ],
+    "optional": [
+      "quality",
+      "description",
+      "sourcePages",
+      "confidence",
+      "gmNote"
+    ],
+    "confidenceValues": [
+      "confirmed",
+      "example",
+      "inference",
+      "gm_defined",
+      "unresolved"
+    ]
+  }
 }
