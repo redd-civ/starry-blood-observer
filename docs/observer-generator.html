@@ -36,8 +36,9 @@ button{border:1px solid #55718a;border-radius:9px;background:#1b3347;color:var(-
 <div class="grid">
 <div class="field"><label for="category">Категория награды</label><select id="category"></select></div>
 <div class="field"><label for="duplicates">Повторы в трёх предложениях</label><select id="duplicates"><option value="">Не задано мастером</option><option value="no">Не допускать</option><option value="yes">Допускать</option></select></div>
+<div class="field"><label for="qualityFilter">Фильтр качества (необязательно)</label><input id="qualityFilter" placeholder="Например: бронза — точное совпадение"></div>
 </div>
-<p class="small">Выбор категории — ручной, как предусмотрено текущей согласованной схемой. Вероятности случайного выбора категорий не применяются.</p>
+<p class="small" id="categoryDescription">Выбор категории — ручной, как предусмотрено текущей согласованной схемой. Вероятности случайного выбора категорий не применяются.</p>
 <div class="row"><button class="primary" id="generate">Сгенерировать три варианта</button><span class="status" id="poolStatus" aria-live="polite"></span></div>
 <div id="options" class="options" style="margin-top:14px"></div>
 <div class="row" style="margin-top:14px"><button id="confirm" disabled>Подтвердить выбранную награду</button><span class="status" id="selectionStatus" aria-live="polite"></span></div>
@@ -75,7 +76,7 @@ const current=()=>cats().find(c=>c.id===category());
 const escapeHtml=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function persist(){localStorage.setItem(STORE,JSON.stringify({data,history}));}
 function restore(){try{const x=JSON.parse(localStorage.getItem(STORE));if(x&&x.data&&Array.isArray(x.data.rewardCategories)){data=x.data;history=Array.isArray(x.history)?x.history:[];return true;}}catch(e){}return false;}
-function renderCategories(){const old=category();$("category").innerHTML=cats().map(c=>'<option value="'+escapeHtml(c.id)+'">'+escapeHtml(c.label)+'</option>').join("");if(cats().some(c=>c.id===old))$("category").value=old;}
+function renderCategories(){const old=category();$("category").innerHTML=cats().map(c=>'<option value="'+escapeHtml(c.id)+'">'+escapeHtml(c.label)+'</option>').join("");if(cats().some(c=>c.id===old))$("category").value=old;const c=current();$("categoryDescription").textContent=c?(c.description||"Категория награды."):"";}
 function renderEntries(){
  const c=current();if(!c)return;
  $("count").textContent=c.entries.length+" записей";
@@ -95,10 +96,12 @@ function renderAll(){renderCategories();renderEntries();renderOptions();renderHi
 function draw(){
  const c=current();if(!c)return;
  const policy=$("duplicates").value;
+ const quality=$("qualityFilter").value.trim().toLowerCase();
+ const available=quality?c.entries.filter(e=>(e.quality||"").toLowerCase()===quality):c.entries;
  if(!policy){$("poolStatus").textContent="Сначала мастер должен выбрать режим повторов: это правило не установлено источником.";return;}
- if(!c.entries.length){$("poolStatus").textContent="Пул категории пуст. Добавь варианты в разделе ниже.";return;}
- if(policy==="no"&&c.entries.length<3){$("poolStatus").textContent="Для трёх неповторяющихся вариантов нужно не менее трёх записей.";return;}
- const pool=c.entries.slice(),result=[];
+ if(!available.length){$("poolStatus").textContent=quality?"Нет вариантов с качеством «"+quality+"».":"Пул категории пуст. Добавь варианты в разделе ниже.";return;}
+ if(policy==="no"&&available.length<3){$("poolStatus").textContent="Для трёх неповторяющихся вариантов с выбранным фильтром нужно не менее трёх записей.";return;}
+ const pool=available.slice(),result=[];
  for(let i=0;i<3;i++){const n=Math.floor(Math.random()*pool.length);result.push(pool[n]);if(policy==="no")pool.splice(n,1);}
  drawn=result;selected=-1;$("selectionStatus").textContent="Выбери один из трёх вариантов.";renderOptions();
 }
