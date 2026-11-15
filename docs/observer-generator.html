@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101722"><title>Генератор наград Наблюдателя — Звёздная Кровь</title>
+<style>
+:root{color-scheme:dark;--bg:#0b111a;--panel:#121d2a;--panel2:#172535;--line:#29394a;--text:#e8eef5;--muted:#9aabbd;--gold:#d8b66c;--blue:#79b8d8;--green:#55b7a2;--red:#d47e7e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#1a3042 0,transparent 42%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1050px;margin:auto;padding:25px 20px 70px}a{color:var(--blue)}h1{font-size:clamp(2rem,5vw,2.8rem);line-height:1.12;margin:18px 0 8px}h2{font-size:1.25rem;color:var(--gold);margin:0 0 12px}.lead{color:var(--muted);max-width:780px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field label,.muted{font-size:.9rem;color:var(--muted)}
+input,select,textarea{width:100%;border:1px solid #40536a;border-radius:9px;background:#0c1520;color:var(--text);padding:10px 12px;font:inherit}textarea{min-height:105px;resize:vertical}
+button{border:1px solid #55718a;border-radius:9px;background:#1b3347;color:var(--text);padding:10px 15px;font:inherit;cursor:pointer}button.primary{background:#5a4926;border-color:#8a713c;color:#fff1c8}button.secondary{background:#172535}button.danger{border-color:#754b4b;background:#2a191d}button:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.between{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.notice{border-left:3px solid var(--gold);background:#211d15;padding:12px 15px;border-radius:8px;color:#e8d6ae}.status{color:var(--muted);font-size:.9rem}.items{display:grid;gap:8px}.item{border:1px solid var(--line);background:var(--panel2);border-radius:10px;padding:12px}.item small{color:var(--muted)}.options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.option{border:1px solid var(--line);border-radius:12px;background:var(--panel2);padding:15px;cursor:pointer}.option.selected{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}.option input{width:auto}.pill{display:inline-block;border:1px solid #40536a;border-radius:20px;padding:2px 8px;color:#b8c8d8;font-size:.78rem;margin:3px 4px 3px 0}
+.log{border-top:1px solid var(--line);padding:10px 0}.hidden{display:none!important}.small{font-size:.84rem;color:var(--muted)}
+@media(max-width:600px){main{padding:18px 14px 50px}.panel{padding:14px}}
+</style></head>
+<body><main>
+<a href="../index.html">← На главную</a>
+<h1>Генератор наград Наблюдателя</h1>
+<p class="lead">Рабочая версия инструмента мастера: после выполнения задания выбирается категория, Наблюдатель предлагает три варианта, игрок выбирает один.</p>
+<div class="notice"><b>Важно о правилах.</b> Подтверждено: выбор одной из девяти категорий, три случайных предложения и выбор одного варианта. Вероятности категорий, распределение качества и правило повторов в источниках не установлены. Поэтому генератор не придумывает эти параметры: режим повторов задаёт мастер, качество берётся из записи награды.</div>
+
+<section class="panel">
+<h2>1. Результат задания</h2>
+<div class="grid">
+<div class="field"><label for="task">Задание / запись журнала</label><input id="task" placeholder="Название задания (необязательно)"></div>
+<div class="field"><label for="fame">Полученная Слава</label><input id="fame" type="number" min="0" step="1" placeholder="Не рассчитывается автоматически"></div>
+<div class="field"><label for="coins">Звёздные Монеты</label><input id="coins" type="number" min="0" step="1" placeholder="Не рассчитывается автоматически"></div>
+</div>
+<p class="small">Поля Славы и Монет только фиксируют уже определённую награду за задание. Генератор не вычисляет их по неподтверждённой формуле.</p>
+</section>
+
+<section class="panel">
+<h2>2. Выбор категории и параметры генерации</h2>
+<div class="grid">
+<div class="field"><label for="category">Категория награды</label><select id="category"></select></div>
+<div class="field"><label for="duplicates">Повторы в трёх предложениях</label><select id="duplicates"><option value="">Не задано мастером</option><option value="no">Не допускать</option><option value="yes">Допускать</option></select></div>
+</div>
+<p class="small">Выбор категории — ручной, как предусмотрено текущей согласованной схемой. Вероятности случайного выбора категорий не применяются.</p>
+<div class="row"><button class="primary" id="generate">Сгенерировать три варианта</button><span class="status" id="poolStatus" aria-live="polite"></span></div>
+<div id="options" class="options" style="margin-top:14px"></div>
+<div class="row" style="margin-top:14px"><button id="confirm" disabled>Подтвердить выбранную награду</button><span class="status" id="selectionStatus" aria-live="polite"></span></div>
+</section>
+
+<section class="panel">
+<div class="between"><h2>3. Пул вариантов выбранной категории</h2><span class="pill" id="count">0 записей</span></div>
+<p class="small">Добавляй только награды, которые подтверждены источником или отдельно утверждены мастером. Формат каждой записи: название, качество, описание, страницы PDF, статус достоверности.</p>
+<div class="grid">
+<div class="field"><label for="entryName">Название награды *</label><input id="entryName" placeholder="Например: название Руны или Предмета"></div>
+<div class="field"><label for="entryQuality">Качество (если известно)</label><input id="entryQuality" placeholder="Дерево, бронза, серебро…"></div>
+<div class="field"><label for="entryPages">Страницы PDF</label><input id="entryPages" placeholder="Например: 2058–2060"></div>
+<div class="field"><label for="entryConfidence">Статус сведений</label><select id="entryConfidence"><option value="confirmed">Подтверждено текстом</option><option value="example">Частный пример</option><option value="inference">Аналитический вывод</option><option value="gm_defined">Задано мастером</option><option value="unresolved">Требует проверки</option></select></div>
+</div>
+<div class="field" style="margin-top:10px"><label for="entryDescription">Описание / условия / заметка мастера</label><textarea id="entryDescription" placeholder="Что представляет собой награда, ограничения, требования к использованию…"></textarea></div>
+<div class="row" style="margin-top:12px"><button class="secondary" id="addEntry">Добавить в категорию</button><button class="secondary" id="export">Экспортировать настройки и журнал</button><button class="secondary" id="resetLocal">Сбросить локальные изменения</button></div>
+<div id="entries" class="items" style="margin-top:14px"></div>
+</section>
+
+<section class="panel">
+<h2>4. Журнал выборов</h2>
+<p class="small">История хранится в локальном хранилище этого браузера на этом устройстве. Это не серверная база и не синхронизируется между игроками.</p>
+<div id="history" class="items"><span class="status">Пока нет подтверждённых выборов.</span></div>
+</section>
+</main>
+<script>
+(function(){
+const DATA_URL="../data/rewards.json";
+const STORE="observerRewardGenerator.v1";
+let data=null,history=[],drawn=[],selected=-1;
+const $=id=>document.getElementById(id);
+const category=()=>$("category").value;
+const cats=()=>data.rewardCategories||[];
+const current=()=>cats().find(c=>c.id===category());
+const escapeHtml=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function persist(){localStorage.setItem(STORE,JSON.stringify({data,history}));}
+function restore(){try{const x=JSON.parse(localStorage.getItem(STORE));if(x&&x.data&&Array.isArray(x.data.rewardCategories)){data=x.data;history=Array.isArray(x.history)?x.history:[];return true;}}catch(e){}return false;}
+function renderCategories(){const old=category();$("category").innerHTML=cats().map(c=>'<option value="'+escapeHtml(c.id)+'">'+escapeHtml(c.label)+'</option>').join("");if(cats().some(c=>c.id===old))$("category").value=old;}
+function renderEntries(){
+ const c=current();if(!c)return;
+ $("count").textContent=c.entries.length+" записей";
+ $("entries").innerHTML=c.entries.length?c.entries.map((e,i)=>'<div class="item"><div class="between"><b>'+escapeHtml(e.name)+'</b><button class="danger" data-remove="'+i+'" type="button">Удалить</button></div><div>'+ (e.quality?'<span class="pill">'+escapeHtml(e.quality)+'</span>':'')+'<span class="pill">'+escapeHtml(e.confidence||"не указан")+'</span></div><div>'+escapeHtml(e.description||"")+'</div><small>PDF: '+escapeHtml(e.sourcePages||"не указаны")+'</small></div>').join(""):'<p class="status">В этой категории пока нет вариантов. Добавь подтверждённые записи или утверждённые мастером награды.</p>';
+ $("entries").querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>{c.entries.splice(Number(b.dataset.remove),1);drawn=[];selected=-1;renderAll();persist();}));
+ $("poolStatus").textContent=c.entries.length+" доступных вариантов в категории «"+c.label+"».";
+}
+function renderOptions(){
+ $("options").innerHTML=drawn.map((e,i)=>'<label class="option '+(selected===i?'selected':'')+'"><div class="row"><input type="radio" name="rewardChoice" value="'+i+'" '+(selected===i?'checked':'')+'><b>Вариант '+(i+1)+'</b></div><h3>'+escapeHtml(e.name)+'</h3>'+(e.quality?'<span class="pill">'+escapeHtml(e.quality)+'</span>':'')+'<span class="pill">'+escapeHtml(e.confidence||"не указан")+'</span><p>'+escapeHtml(e.description||"Описание не добавлено.")+'</p><small>PDF: '+escapeHtml(e.sourcePages||"не указаны")+'</small></label>').join("");
+ $("options").querySelectorAll('input[name="rewardChoice"]').forEach(r=>r.addEventListener("change",()=>{selected=Number(r.value);renderOptions();$("confirm").disabled=false;}));
+ $("confirm").disabled=selected<0||selected>=drawn.length;
+}
+function renderHistory(){
+ $("history").innerHTML=history.length?history.slice().reverse().map(h=>'<div class="log"><b>'+escapeHtml(h.reward.name)+'</b> — '+escapeHtml(h.categoryLabel)+'<div class="small">'+escapeHtml(h.task||"Без названия задания")+' · Слава: '+escapeHtml(h.fame||"—")+' · Монеты: '+escapeHtml(h.coins||"—")+' · '+escapeHtml(h.date)+'</div></div>').join(""):'<span class="status">Пока нет подтверждённых выборов.</span>';
+}
+function renderAll(){renderCategories();renderEntries();renderOptions();renderHistory();}
+function draw(){
+ const c=current();if(!c)return;
+ const policy=$("duplicates").value;
+ if(!policy){$("poolStatus").textContent="Сначала мастер должен выбрать режим повторов: это правило не установлено источником.";return;}
+ if(!c.entries.length){$("poolStatus").textContent="Пул категории пуст. Добавь варианты в разделе ниже.";return;}
+ if(policy==="no"&&c.entries.length<3){$("poolStatus").textContent="Для трёх неповторяющихся вариантов нужно не менее трёх записей.";return;}
+ const pool=c.entries.slice(),result=[];
+ for(let i=0;i<3;i++){const n=Math.floor(Math.random()*pool.length);result.push(pool[n]);if(policy==="no")pool.splice(n,1);}
+ drawn=result;selected=-1;$("selectionStatus").textContent="Выбери один из трёх вариантов.";renderOptions();
+}
+$("category").addEventListener("change",()=>{drawn=[];selected=-1;renderAll();});
+$("generate").addEventListener("click",draw);
+$("addEntry").addEventListener("click",()=>{
+ const name=$("entryName").value.trim();if(!name){$("entryName").focus();return;}
+ const c=current();c.entries.push({name,quality:$("entryQuality").value.trim(),description:$("entryDescription").value.trim(),sourcePages:$("entryPages").value.trim(),confidence:$("entryConfidence").value});
+ $("entryName").value="";$("entryQuality").value="";$("entryDescription").value="";$("entryPages").value="";
+ drawn=[];selected=-1;renderAll();persist();
+});
+$("confirm").addEventListener("click",()=>{
+ if(selected<0||!drawn[selected])return;
+ const c=current(),reward=drawn[selected];
+ history.push({task:$("task").value.trim(),fame:$("fame").value,coins:$("coins").value,category:c.id,categoryLabel:c.label,reward:JSON.parse(JSON.stringify(reward)),date:new Date().toLocaleString("ru-RU")});
+ $("selectionStatus").textContent="Выбор записан в локальный журнал.";
+ drawn=[];selected=-1;renderAll();persist();
+});
+$("export").addEventListener("click",()=>{
+ const blob=new Blob([JSON.stringify({data,history},null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="observer-rewards-export.json";a.click();URL.revokeObjectURL(url);
+});
+$("resetLocal").addEventListener("click",()=>{
+ if(!confirm("Удалить локальные пулы, настройки и журнал этого браузера и загрузить исходный rewards.json?"))return;
+ localStorage.removeItem(STORE);location.reload();
+});
+async function init(){
+ const local=restore();
+ if(!local){const response=await fetch(DATA_URL);if(!response.ok)throw new Error("Не удалось загрузить rewards.json");data=await response.json();history=[];}
+ renderAll();if(local)$("poolStatus").textContent="Загружены локальные настройки этого браузера.";
+}
+init().catch(e=>{$("poolStatus").textContent="Ошибка загрузки данных: "+e.message;});
+})();
+</script></body></html>
