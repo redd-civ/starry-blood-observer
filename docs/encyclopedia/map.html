@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101722">
+<title>Карта энциклопедии — Звёздная Кровь</title>
+<style>
+:root{color-scheme:dark;--bg:#0b111a;--panel:#121d2a;--line:#26384b;--text:#e8eef5;--muted:#9aabbd;--gold:#d8b66c;--blue:#79b8d8}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#1a3042 0,transparent 42%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1120px;margin:auto;padding:28px 22px 70px}a{color:var(--blue)}.top{display:flex;gap:18px;align-items:center;flex-wrap:wrap}h1{font-size:clamp(2rem,5vw,3rem);margin:.6rem 0}.lead{color:var(--muted);max-width:760px}.search{width:100%;padding:14px 16px;border-radius:10px;border:1px solid var(--line);background:#101a26;color:var(--text);font:inherit;margin:20px 0 8px}.hint{color:var(--muted);font-size:.88rem}.section{margin-top:34px}.section h2{color:var(--gold);font-size:1.2rem;border-bottom:1px solid var(--line);padding-bottom:9px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:13px}.card{display:block;text-decoration:none;color:inherit;background:linear-gradient(145deg,#172535,#101923);border:1px solid var(--line);border-radius:12px;padding:16px;min-height:112px}.card:hover{border-color:var(--blue)}.card h3{font-size:1rem;margin:0 0 6px}.card p{color:var(--muted);font-size:.9rem;margin:0}.count{color:var(--muted);font-size:.85rem}#empty{display:none;color:var(--muted);padding:18px 0}.alphabet{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.alphabet a{border:1px solid var(--line);border-radius:6px;padding:3px 8px;text-decoration:none;font-size:.85rem}footer{border-top:1px solid var(--line);padding:20px;text-align:center;color:var(--muted);font-size:.82rem}
+</style>
+</head>
+<body><main>
+<a href="../index.html">← На главную</a>
+<h1>Карта энциклопедии</h1>
+<p class="lead">Тематическая навигация по механикам и системам «Звёздной Крови». Каждая тема имеет основную статью; связанные понятия постепенно связываются внутренними ссылками, чтобы одно правило не приходилось искать в нескольких местах.</p>
+<input id="search" class="search" type="search" placeholder="Найти статью или термин…" aria-label="Поиск по энциклопедии">
+<p class="hint">Поиск фильтрует названия, категории и краткие описания. Всего в каталоге: <span id="total">27</span> статей.</p>
+<div id="catalog">
+<section class="section"><h2>Мироустройство и космология</h2><div class="grid">
+<a class="card" href="origin.html" data-search="исток вечность единые сферы хранители хронос космология"><h3>Исток и Вечность</h3><p>Первичные силы, Единые, сферы и космологические основы.</p></a>
+<a class="card" href="unity.html" data-search="единство мироустройство институты"><h3>Единство</h3><p>Базовое устройство Единства и связанные понятия.</p></a>
+<a class="card" href="eternity.html" data-search="вечность биржа торговля руны"><h3>Биржа Вечности</h3><p>Обращение Рун и торговые механики Вечности.</p></a>
+<a class="card" href="eternity-realms.html" data-search="миры локации вечность золотой город архив медовый волос"><h3>Миры и локации Вечности</h3><p>Известные пространства и их особенности.</p></a>
+</div></section>
+<section class="section"><h2>Восхождение и устройство Восходящего</h2><div class="grid">
+<a class="card" href="ascent.html" data-search="восхождение ранги звезды слава титулы"><h3>Восхождение</h3><p>Ранги, звёзды, Слава, Титулы и развитие.</p></a>
+<a class="card" href="stigmat.html" data-search="стигмат инициация отражение душа"><h3>Стигмат Восходящего</h3><p>Назначение, привязки и функции стигмата.</p></a>
+<a class="card" href="tablet.html" data-search="скрижаль слоты обломки руны вместимость"><h3>Скрижаль Восходящего</h3><p>Слоты, Обломки, извлечение Рун и вместимость.</p></a>
+<a class="card" href="sarcophagi.html" data-search="саркофаги бесконечного сна нейроконвертация отражения нити перенос души"><h3>Саркофаги Бесконечного Сна</h3><p>Отражения, путевые нити и перемещение анимы.</p></a>
+<a class="card" href="soul-basins.html" data-search="бассейны душ алтари душ возвращение привязка перенос"><h3>Бассейны Душ и Алтари Душ</h3><p>Точки возвращения и работа с душами.</p></a>
+</div></section>
+<section class="section"><h2>Руны и рунные системы</h2><div class="grid">
+<a class="card" href="runes.html" data-search="руны свойства ранги развитие изменения усиления повышение"><h3>Руны</h3><p>Свойства, ранги, разновидности и применение.</p></a>
+<a class="card" href="rune-mastery.html" data-search="рунное мастерство создание разборка изменение ремонт"><h3>Рунное Мастерство</h3><p>Навыки и операции работы с Рунами.</p></a>
+<a class="card" href="rune-artifactry.html" data-search="рунное искусство артефакция символы конструктор предметы"><h3>Рунное Искусство и Артефакция</h3><p>Создание Символов, Рун и артефактов.</p></a>
+<a class="card" href="rune-interactions.html" data-search="взаимодействие рунных систем модификация связь слияние сопряжение"><h3>Взаимодействие рунных систем</h3><p>Модификация, Связь, Слияние и сопряжение.</p></a>
+</div></section>
+<section class="section"><h2>Энергия и ресурсы</h2><div class="grid">
+<a class="card" href="energy-systems.html" data-search="энергия исток источники накопители преобразователи башни"><h3>Источники и преобразование энергии</h3><p>Источники, энергетические узлы, накопители и преобразователи.</p></a>
+<a class="card" href="star-blood-cycle.html" data-search="звездная кровь цикл получение хранение регенерация расход возврат"><h3>Цикл Звёздной Крови</h3><p>Получение, хранение, регенерация и расход ресурса.</p></a>
+<a class="card" href="star-coins.html" data-search="звездные монеты экономика цены расчеты"><h3>Звёздные Монеты</h3><p>Валюта, получение, траты и расчёты.</p></a>
+</div></section>
+<section class="section"><h2>Технологии Кел и инфраструктура</h2><div class="grid">
+<a class="card" href="kel-technologies.html" data-search="технологии кел устройства рип сканер экзо механизмы"><h3>Дополнительные технологии</h3><p>Устройства, сканеры, экзо-механизмы и автономные функции.</p></a>
+<a class="card" href="kel-towers.html" data-search="башни кел глубинные жилы оси инфраструктура"><h3>Башни Кел</h3><p>Узлы, Оси Башен и инфраструктура Единства.</p></a>
+<a class="card" href="kel-travel.html" data-search="путевые камни знаки пути адресация печати перенос"><h3>Путевые камни и Знаки Пути</h3><p>Адресация, Печати и круги Переноса.</p></a>
+<a class="card" href="cosmo-colonization.html" data-search="космо колонизация купола энергия репликаторы медицина"><h3>Оборудование колонизации</h3><p>Жизнеобеспечение и оборудование проекта «Космо».</p></a>
+</div></section>
+<section class="section"><h2>Пространства, биология и общество</h2><div class="grid">
+<a class="card" href="domains.html" data-search="домены хранилища архитектор пространство"><h3>Домены и Хранилища</h3><p>Пространственные структуры и управление ими.</p></a>
+<a class="card" href="ecology.html" data-search="флора фауна биология растения симбионты животные"><h3>Флора и фауна</h3><p>Организмы, симбионты и формы жизни Единства.</p></a>
+<a class="card" href="political-structures.html" data-search="политические структуры фригольды риксы советы колония"><h3>Политические структуры Единства</h3><p>Фригольды, риксы, советы и колонии.</p></a>
+</div></section>
+<section class="section"><h2>Игровые процессы и инструменты</h2><div class="grid">
+<a class="card" href="quests.html" data-search="задания поручения условия слава награды"><h3>Задания</h3><p>Типы поручений, условия и вознаграждения.</p></a>
+<a class="card" href="trading.html" data-search="торговля бродячий торговец заказы покупка продажа"><h3>Торговля и Бродячий Торговец</h3><p>Посредники, заказы, покупка и продажа Рун.</p></a>
+<a class="card" href="observer.html" data-search="наблюдатель мастер журнал действий задания награды"><h3>Наблюдатель</h3><p>Выдача заданий, выбор наград и журнал действий.</p></a>
+<a class="card" href="observer-reward-catalog.html" data-search="конкретные награды каталог руны"><h3>Каталог конкретных наград</h3><p>Именованные варианты из наградных панелей.</p></a>
+</div></section>
+</div><p id="empty">По этому запросу ничего не найдено.</p>
+</main><footer>Звёздная Кровь · Карта энциклопедии</footer>
+<script>
+const input=document.getElementById('search'),cards=[...document.querySelectorAll('.card')],empty=document.getElementById('empty'),total=document.getElementById('total');
+total.textContent=cards.length;
+input.addEventListener('input',()=>{const q=input.value.trim().toLocaleLowerCase('ru');let shown=0;for(const card of cards){const hay=(card.innerText+' '+(card.dataset.search||'')).toLocaleLowerCase('ru');const ok=hay.includes(q);card.hidden=!ok;if(ok)shown++;}for(const section of document.querySelectorAll('.section'))section.hidden=!section.querySelector('.card:not([hidden])');empty.style.display=shown?'none':'block';});
+</script></body></html>
