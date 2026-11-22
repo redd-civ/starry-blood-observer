@@ -112,7 +112,7 @@ $("category").addEventListener("change",()=>{drawn=[];selected=-1;renderAll();})
 $("generate").addEventListener("click",draw);
 $("addEntry").addEventListener("click",()=>{
  const name=$("entryName").value.trim();if(!name){$("entryName").focus();return;}
- const c=current();c.entries.push({name,quality:$("entryQuality").value.trim(),description:$("entryDescription").value.trim(),sourcePages:$("entryPages").value.trim(),confidence:$("entryConfidence").value});
+ const c=current();c.entries.push({name,quality:$("entryQuality").value.trim(),description:$("entryDescription").value.trim(),sourcePages:$("entryPages").value.trim(),confidence:$("entryConfidence").value,tags:$("entryTags").value?[$("entryTags").value]:[]});
  $("entryName").value="";$("entryQuality").value="";$("entryDescription").value="";$("entryPages").value="";$("entryTags").value="";
  drawn=[];selected=-1;renderAll();persist();
 });
