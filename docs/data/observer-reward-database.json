@@ -768,7 +768,8 @@
   "evidence": {
     "questDataFile": "quests.json",
     "existingCatalogFile": "observer-reward-catalog.json",
-    "note": "В базу перенесены существующие именованные примеры наград. Их отнесение к видам ATTACK/DEFENSE/OTHER предварительное по описанию функций, а не прямая классификация источника. Все записи выключены до проверки/утверждения. Выбор: вид Руны, затем три случайные Руны этого вида."
+    "note": "В базу перенесены существующие именованные примеры наград. Их отнесение к видам ATTACK/DEFENSE/OTHER предварительное по описанию функций, а не прямая классификация источника. Все записи выключены до проверки/утверждения. Выбор: вид Руны, затем три случайные Руны этого вида.",
+    "taskExamplesNote": "Это зафиксированные примеры заданий и упомянутых наград. Источник не позволяет автоматически вывести для них доступные виды Рун Нападение/Защита/Другое; поле availableRuneKinds оставлено null до отдельного подтверждения."
   },
   "runeKinds": [
     {
@@ -785,6 +786,80 @@
       "id": "OTHER",
       "label": "Другое",
       "description": "Разведка, перемещение, поддержка, ремесло, развитие и прочие функции."
+    }
+  ],
+  "taskExamples": [
+    {
+      "id": "task_example_bronze_chladotsvety",
+      "rank": "бронза",
+      "task": "Лечение повреждённых Хладноцветов и защита при необходимости",
+      "rewardMentioned": [
+        "Слава",
+        "Звёздная Монета",
+        "Руна бронзового качества"
+      ],
+      "assignmentScope": "unknown",
+      "availableRuneKinds": null,
+      "kindAvailabilityStatus": "not_established",
+      "sourcePages": [
+        1233
+      ],
+      "evidence": "example"
+    },
+    {
+      "id": "task_example_silver_worm_nest",
+      "rank": "серебро",
+      "task": "Уничтожение гнезда Червей и материнской особи",
+      "rewardMentioned": [
+        "Слава",
+        "10 Звёздных Монет",
+        "Руна серебряного качества"
+      ],
+      "assignmentScope": "unknown",
+      "availableRuneKinds": null,
+      "kindAvailabilityStatus": "not_established",
+      "sourcePages": [
+        132,
+        133
+      ],
+      "evidence": "example"
+    },
+    {
+      "id": "task_example_silver_el_celestus",
+      "rank": "серебро",
+      "task": "Доставка и установка эль-целестуса в Колонну Сияния",
+      "rewardMentioned": [
+        "Слава",
+        "10 Звёздных Монет",
+        "10 капель Звёздной Крови",
+        "Руна серебряного качества"
+      ],
+      "assignmentScope": "unknown",
+      "availableRuneKinds": null,
+      "kindAvailabilityStatus": "not_established",
+      "sourcePages": [
+        1463,
+        1464
+      ],
+      "evidence": "example"
+    },
+    {
+      "id": "task_example_gold_great_hive",
+      "rank": "золото",
+      "task": "Уничтожение Великого Улья и источников возрождения Червей",
+      "rewardMentioned": [
+        "Слава",
+        "50 000 капель Звёздной Крови",
+        "500 Звёздных Монет",
+        "несколько Рун качества золото, серебро и бронза"
+      ],
+      "assignmentScope": "unknown",
+      "availableRuneKinds": null,
+      "kindAvailabilityStatus": "not_established",
+      "sourcePages": [
+        2710
+      ],
+      "evidence": "example"
     }
   ]
 }
