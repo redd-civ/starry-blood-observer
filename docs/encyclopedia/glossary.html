@@ -68,13 +68,15 @@
 <a class="term" href="tablet.html"><b>Скрижаль Восходящего</b><span class="desc">Система слотов, Обломков и размещения Рун.</span></a>
 <a class="term" href="stigmat.html"><b>Стигмат</b><span class="desc">Система привязки и функций Восходящего.</span></a>
 </div>
+<h2 class="letter">Ф</h2><div class="terms">
+<a class="term" href="domains.html"><b>Фрагменты</b><span class="desc">Пространственные единицы, упоминаемые в материалах о пространствах и энергетике.</span></a>
+</div>
+
 <h2 class="letter">Х</h2><div class="terms">
 <a class="term" href="eternity-time.html"><b>Хронос</b><span class="desc">Руна, с которой связывают вмешательство в ход событий и временные перемещения.</span></a>
 </div>
 
-<h2 class="letter">Ф</h2><div class="terms">
-<a class="term" href="domains.html"><b>Фрагменты</b><span class="desc">Пространственные единицы, упоминаемые в материалах о пространствах и энергетике.</span></a>
-</div>
+
 </div><p id="empty">По этому запросу ничего не найдено.</p>
 </main><script>
 const input=document.getElementById('search'),terms=[...document.querySelectorAll('.term')],empty=document.getElementById('empty');input.addEventListener('input',()=>{const q=input.value.trim().toLocaleLowerCase('ru');let n=0;for(const t of terms){const ok=t.innerText.toLocaleLowerCase('ru').includes(q);t.hidden=!ok;if(ok)n++;}for(const h of document.querySelectorAll('.letter'))h.hidden=!h.nextElementSibling.querySelector('.term:not([hidden])');empty.style.display=n?'none':'block';});
