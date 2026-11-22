@@ -4422,7 +4422,7 @@
       "part1": "Часть Рун погибшего Восходящего выпадает и может быть подобрана.",
       "part2": "Часть Рун остаётся в Обломке Скрижали.",
       "part3": "Остальные Руны уходят Наблюдателю.",
-      "note": "Доли/пропорции и алгоритм распределения в текущей модели не заданы; не придумывать их."
+      "note": "Доли и алгоритм распределения не заданы. В книге обнаружены несколько описаний: часть Рун пропадает, часть выпадает, часть остаётся в Обломках; в другом месте большая часть остаётся в Обломках, а стигмат забирает их с исключениями для победителя и сокровищницы Наблюдателя (стр. 2794). Сопоставить с рабочей интерпретацией пользователя до автоматизации."
     },
     "provenanceIsNotType": true,
     "provenancePaths": [
@@ -8547,5 +8547,57 @@
       "Нельзя автоматически распределять награду между участниками по числу участников."
     ],
     "implementationRule": "До завершения исследования хранить численные выплаты как null либо помечать расчёт как provisional. После установления модели генератор рассчитывает Славу и Монеты автоматически; мастер может изменить итог с фиксацией причины и источника."
+  },
+  "dropGenerationPolicy": {
+    "status": "partially_confirmed",
+    "purpose": "Separate the essence-condensation rule for Star-Blood creatures from random sampling of recorded loot examples.",
+    "essenceCondensation": {
+      "appliesTo": [
+        "star_creature_containing_star_blood",
+        "wild_ascendant"
+      ],
+      "rule": "When a creature containing Star Blood dies, its essence, habits and nature condense into a Rune. Usually one Rune, rarely two or three.",
+      "selectionRule": "The Observer does not choose randomly: the Rune embodies the star property that burned most strongly in the defeated creature.",
+      "speciesPattern": "Creatures of the same species tend to produce similar Runes when killed repeatedly.",
+      "sourcePages": [
+        498
+      ],
+      "confidence": "direct_book_rule",
+      "probabilityOfTwoOrThree": "unknown",
+      "generatorBehavior": "Default mode records the dominant trait for GM adjudication; it must not randomly select a Rune name as if that were the book rule."
+    },
+    "documentedCreatureExample": {
+      "sourceEntity": "Звёздный Ледяной Дикобраз",
+      "sourcePages": [
+        1244
+      ],
+      "result": [
+        "Ледяные Иглы (дерево)",
+        "Развитие (2 экземпляра; качество не указано)"
+      ],
+      "totalRunes": 3,
+      "note": "A single special porcupine containing Star Blood yielded three Runes. This is a concrete example, not a universal drop count. Participants divided Runes and Star Blood by mutual agreement, according to who needed what."
+    },
+    "ordinaryAscendantDeath": {
+      "status": "needs_reconciliation",
+      "userWorkingInterpretation": "Часть Рун выпадает, часть остаётся в Обломке Скрижали, остальные уходят Наблюдателю.",
+      "bookEvidence": [
+        {
+          "rule": "При смерти Скрижаль ломается; часть Рун пропадает навсегда, часть выпадает наружу, часть остаётся в Обломках.",
+          "sourcePages": [],
+          "pageLocator": "printed page not yet identified",
+          "confidence": "direct_book_text"
+        },
+        {
+          "rule": "В другом описании сказано, что большая часть Рун остаётся в Обломках Скрижали; если погибший носит гвоздь, стигмат забирает Обломки, кроме тех, что достаются победителю и пополняют сокровищницу Наблюдателя.",
+          "sourcePages": [
+            2794
+          ],
+          "confidence": "direct_book_text",
+          "scope": "Указан контекст Восходящего с гвоздём; не переносить автоматически на все случаи смерти."
+        }
+      ],
+      "note": "Не сводить эти описания к процентной таблице. До сверки полного контекста не рассчитывать автоматическое распределение и не утверждать, что все оставшиеся Руны обязательно уходят Наблюдателю."
+    }
   }
 }
