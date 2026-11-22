@@ -8583,7 +8583,48 @@
       "confidence": "direct_book_rule",
       "probabilityOfTwoOrThree": "unknown",
       "generatorBehavior": "Default mode records the dominant trait for GM adjudication; it must not randomly select a Rune name as if that were the book rule.",
-      "caveat": "Do not infer that every entity containing Star Blood necessarily yields a Rune. Artificial servants of Eternity provide a documented no-Rune example (page 2028)."
+      "caveat": "Do not infer that every entity containing Star Blood necessarily yields a Rune. Artificial servants of Eternity provide a documented no-Rune example (page 2028).",
+      "traitExamples": [
+        {
+          "trait": "скорость",
+          "descriptors": [
+            "стремительный",
+            "быстрый"
+          ],
+          "runeExample": "Быстрый Бег",
+          "sourcePages": [
+            498
+          ],
+          "note": "Иллюстративный пример из текста, не универсальная таблица соответствий."
+        },
+        {
+          "trait": "внимательность / развитое восприятие",
+          "descriptors": [
+            "внимательный",
+            "зоркий",
+            "чуткий",
+            "чутьё"
+          ],
+          "runeExample": "Чуткое Ухо",
+          "sourcePages": [
+            498
+          ],
+          "note": "Иллюстративный пример из текста, не универсальная таблица соответствий."
+        },
+        {
+          "trait": "неуязвимость / прочность",
+          "descriptors": [
+            "неуязвимый",
+            "прочный",
+            "крепкая защита"
+          ],
+          "runeExample": "Каменная Шкура",
+          "sourcePages": [
+            498
+          ],
+          "note": "Иллюстративный пример из текста, не универсальная таблица соответствий."
+        }
+      ]
     },
     "documentedCreatureExample": {
       "sourceEntity": "Звёздный Ледяной Дикобраз",
