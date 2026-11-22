@@ -1,0 +1,757 @@
+{
+  "schemaVersion": 1,
+  "databaseId": "observer_reward_database",
+  "status": "initial_structured_draft",
+  "purpose": "Единая редактируемая база условий заданий и вариантов Рун для будущего подключения к генератору наград Наблюдателя.",
+  "corePrinciple": "Сначала фиксируются обстоятельства и результат задания; затем выбираются три варианта Рун — по одному в каждом направлении: Нападение, Защита, Другое. Игрок выбирает одну из трёх.",
+  "choiceLanes": [
+    {
+      "id": "ATTACK",
+      "label": "Нападение",
+      "description": "Наступательные, поражающие и боевые возможности."
+    },
+    {
+      "id": "DEFENSE",
+      "label": "Защита",
+      "description": "Защита, выживание, сопротивление, лечение и прикрытие союзников."
+    },
+    {
+      "id": "OTHER",
+      "label": "Другое",
+      "description": "Разведка, перемещение, поддержка, ремесло, развитие и прочие функции."
+    }
+  ],
+  "workflow": [
+    "Зафиксировать параметры задания и его фактическое выполнение.",
+    "Определить, кому принадлежит право выбора: отдельному исполнителю или группе — по условиям конкретного задания.",
+    "Применить только подтверждённые правила влияния условий на награду; неподтверждённые факторы сохранить как контекст без числового бонуса.",
+    "Сформировать по одному допустимому варианту из направлений ATTACK, DEFENSE и OTHER.",
+    "Предложить игроку три Руны и записать выбранную награду и контекст выдачи."
+  ],
+  "taskContextSchema": {
+    "taskId": "string",
+    "taskName": "string",
+    "taskRank": "unknown | дерево | бронза | серебро | золото | ...",
+    "assignmentScope": "solo | group | people | multiple_peoples | open | unknown",
+    "assignedTo": "array of participant or group identifiers",
+    "participants": [
+      {
+        "participantId": "string",
+        "role": "leader | member | specialist | support | unknown",
+        "contribution": "text or structured assessment"
+      }
+    ],
+    "completion": {
+      "status": "success | partial | failed | abandoned | unknown",
+      "quality": "poor | adequate | good | exceptional | unknown",
+      "objectiveAchieved": "boolean | null",
+      "optionalObjectives": "array",
+      "complications": "array"
+    },
+    "execution": {
+      "locationType": "settlement | wilderness | dungeon | ruin | underwater | aerial | space | domain | other | unknown",
+      "locationName": "string",
+      "environment": [
+        "array of tags: climate, terrain, hazards, dimension, etc."
+      ],
+      "method": [
+        "array: combat, stealth, negotiation, research, crafting, rescue, delivery, exploration, etc."
+      ],
+      "danger": "none | low | moderate | high | extreme | unknown",
+      "timePressure": "none | low | high | unknown",
+      "resourcesUsed": [
+        "array"
+      ],
+      "assistance": [
+        "array: allies, tools, artifacts, local factions, etc."
+      ]
+    },
+    "consequences": {
+      "casualties": "number or null",
+      "damage": "none | minor | major | catastrophic | unknown",
+      "rescuedOrProtected": "number or null",
+      "threatsRemoved": "number or null",
+      "discoveries": [
+        "array"
+      ],
+      "socialOrPoliticalImpact": "text"
+    },
+    "adjudication": {
+      "fameAwarded": "number or null",
+      "coinsAwarded": "number or null",
+      "shameOrPenalty": "text or null",
+      "gmNotes": "text"
+    }
+  },
+  "factorRules": [
+    {
+      "id": "scope_assignment",
+      "factor": "assignmentScope",
+      "statement": "Задание может быть назначено одному Восходящему, Народу, нескольким Народам или более широкому кругу.",
+      "effect": "Определяет круг назначенных исполнителей; само по себе не задаёт формулу деления награды.",
+      "evidence": "confirmed",
+      "sourcePages": [
+        1233
+      ],
+      "mechanicalModifier": null
+    },
+    {
+      "id": "personal_assignment",
+      "factor": "assignmentScope",
+      "statement": "Для личного задания в одном примере награду должен получить его исполнитель.",
+      "effect": "Подтверждает индивидуальное получение для этого случая; универсальное правило распределения групповой награды не установлено.",
+      "evidence": "example",
+      "sourcePages": [
+        1233
+      ],
+      "mechanicalModifier": null
+    },
+    {
+      "id": "task_rank_examples",
+      "factor": "taskRank",
+      "statement": "Приведены примеры заданий бронзового, серебряного и золотого рангов с разным масштабом задач и наград.",
+      "effect": "Ранг задания связан с масштабом задачи и уровнем награды в примерах; полной таблицы соответствия и формулы нет.",
+      "evidence": "example",
+      "sourcePages": [
+        1233,
+        132,
+        133,
+        1463,
+        1464,
+        2710
+      ],
+      "mechanicalModifier": null
+    },
+    {
+      "id": "execution_area_approximate",
+      "factor": "execution.locationName",
+      "statement": "Области поиска задания могут обозначаться в Атласе приблизительно, без точных координат.",
+      "effect": "География задания может быть задана областью, а не точкой; влияние типа местности на состав награды не установлено.",
+      "evidence": "example",
+      "sourcePages": [
+        132,
+        133
+      ],
+      "mechanicalModifier": null
+    },
+    {
+      "id": "failure_and_abandonment",
+      "factor": "completion.status",
+      "statement": "Слава может снижаться и превращаться в Позор при нарушении законов Единства, прекращении выполнения заданий или возникновении угрозы.",
+      "effect": "Невыполнение и нарушения могут влиять на Славу/Позор; точная универсальная шкала санкций не установлена.",
+      "evidence": "character_explanation",
+      "sourcePages": [
+        1463,
+        1464
+      ],
+      "mechanicalModifier": null
+    },
+    {
+      "id": "failure_example",
+      "factor": "completion.status",
+      "statement": "В одном задании отказ или невыполнение связывались с потерей 10 единиц Славы и первого Титула.",
+      "effect": "Частный пример санкции; не применять как универсальную формулу.",
+      "evidence": "example",
+      "sourcePages": [
+        1463,
+        1464
+      ],
+      "mechanicalModifier": null
+    }
+  ],
+  "unresolvedFactors": [
+    {
+      "id": "group_reward_split",
+      "question": "Как делится награда между участниками группы и когда каждый получает отдельный выбор Рун?",
+      "status": "not_established"
+    },
+    {
+      "id": "contribution_weight",
+      "question": "Как вклад, лидерство, специализация и поддержка влияют на личную долю награды?",
+      "status": "not_established"
+    },
+    {
+      "id": "location_reward_effect",
+      "question": "Меняет ли место/среда выполнения типы или качество доступных Рун?",
+      "status": "not_established"
+    },
+    {
+      "id": "method_reward_effect",
+      "question": "Влияет ли способ выполнения (бой, скрытность, переговоры, исследование и т.п.) на направления или состав Рун?",
+      "status": "not_established"
+    },
+    {
+      "id": "quality_of_execution",
+      "question": "Как качество исполнения, побочные цели, потери и осложнения влияют на награду?",
+      "status": "not_established"
+    },
+    {
+      "id": "risk_reward_relation",
+      "question": "Как опасность и фактический риск соотносятся с рангом и качеством награды?",
+      "status": "not_established"
+    },
+    {
+      "id": "three_lane_selection",
+      "question": "Как именно Наблюдатель формирует одну Руны Нападения, одну Защиты и одну Другую: случайно, по контексту или смешанным способом?",
+      "status": "design_decision_required"
+    }
+  ],
+  "rewardEntrySchema": {
+    "required": [
+      "id",
+      "name",
+      "lane",
+      "description",
+      "eligibility",
+      "enabled"
+    ],
+    "laneValues": [
+      "ATTACK",
+      "DEFENSE",
+      "OTHER"
+    ],
+    "eligibilityValues": [
+      "confirmed_reward",
+      "provisional",
+      "gm_approved",
+      "excluded"
+    ],
+    "confidenceValues": [
+      "confirmed",
+      "example",
+      "inference",
+      "gm_defined",
+      "unresolved"
+    ],
+    "optional": [
+      "legacyCategory",
+      "quality",
+      "runeType",
+      "tags",
+      "sourcePages",
+      "sourceNote",
+      "requirements",
+      "activationCost",
+      "duration",
+      "cooldown",
+      "limitations",
+      "conditionIds",
+      "gmNotes"
+    ]
+  },
+  "rewardEntries": [
+    {
+      "id": "rwd_001",
+      "name": "Нагрудник Светоносных (Доспех Светоносного, ¼)",
+      "lane": "DEFENSE",
+      "legacyCategory": "ITEM",
+      "quality": "золото",
+      "description": "Руна-Предмет. Нагрудник из изменённого иллиума, излучающий благословенный игг-свет; неуничтожим для физического оружия, полностью блокирует энергетические и рунные удары. Часть Доспеха Светоносных.",
+      "tags": [
+        "armor",
+        "physical_protection",
+        "energy_protection"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2583–2584",
+      "sourceNote": "Один из трёх вариантов, показанных после выбора категории Руна-Предмет для золотой награды.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_002",
+      "name": "Игг-Молот (½)",
+      "lane": "ATTACK",
+      "legacyCategory": "ITEM",
+      "quality": "золото",
+      "description": "Руна-Предмет. Артефакт-оружие со способностями «Сияние» и «Сотрясение Тверди»; удар способен проломить любую броню. Применение требует дополнительных затрат Звёздной Крови; в паре с Игг-Поясом мощь удваивается.",
+      "tags": [
+        "weapon",
+        "melee",
+        "armor_breaking"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2584–2585",
+      "sourceNote": "Один из трёх вариантов, показанных после выбора категории Руна-Предмет для золотой награды.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_003",
+      "name": "Копьё Игг-Света",
+      "lane": "ATTACK",
+      "legacyCategory": "ITEM",
+      "quality": "золото",
+      "description": "Руна-Предмет. Светоносное копьё, излучающее пронзающий луч игг-сияния, способный уничтожать противника на большом расстоянии.",
+      "tags": [
+        "weapon",
+        "ranged",
+        "energy_damage"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2584–2585",
+      "sourceNote": "Один из трёх вариантов, показанных после выбора категории Руна-Предмет для золотой награды.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_004",
+      "name": "Алая Ночница",
+      "lane": "OTHER",
+      "legacyCategory": "ITEM",
+      "quality": "бронза",
+      "description": "Руна-Предмет. Название показано среди трёх выпавших вариантов; подробное описание в данном фрагменте не приводится.",
+      "tags": [
+        "unknown_function"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "1388–1389",
+      "sourceNote": "Один из трёх вариантов после выбора категории Руна-Предмет.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_005",
+      "name": "Призматическое Перо",
+      "lane": "OTHER",
+      "legacyCategory": "ITEM",
+      "quality": "бронза",
+      "description": "Руна-Предмет. Название показано среди трёх выпавших вариантов; подробное описание в данном фрагменте не приводится.",
+      "tags": [
+        "unknown_function"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "1388–1389",
+      "sourceNote": "Один из трёх вариантов после выбора категории Руна-Предмет.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_006",
+      "name": "Плащ Призрака",
+      "lane": "DEFENSE",
+      "legacyCategory": "ITEM",
+      "quality": "бронза",
+      "description": "Руна-Предмет. Камуфлирует владельца на один час; перезарядка — сутки.",
+      "tags": [
+        "concealment"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "1388–1389",
+      "sourceNote": "Один из трёх вариантов после выбора категории Руна-Предмет.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_007",
+      "name": "Руна Экзо-кодек",
+      "lane": "OTHER",
+      "legacyCategory": "CREATURE",
+      "quality": "серебро",
+      "description": "Руна-Существо. Малый проводник Наблюдателя: указывает путь, ищет скрытое, изучает и опознаёт предметы, взаимодействует с интеллектуальными системами. Активация 24 капли; действие 4 часа; перезарядка 1 цикл.",
+      "tags": [
+        "scouting",
+        "analysis",
+        "navigation"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "1541–1542",
+      "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_008",
+      "name": "Руна Экзо-траон",
+      "lane": "OTHER",
+      "legacyCategory": "CREATURE",
+      "quality": "серебро",
+      "description": "Руна-Существо. Малый транспорт Наблюдателя: переносит груз и нескольких всадников, может служить бронированным убежищем. Активация 24 капли; действие 6 циклов; перезарядка 1 цикл.",
+      "tags": [
+        "transport",
+        "cargo",
+        "shelter"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "1541–1542",
+      "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_009",
+      "name": "Руна Экзо-шейд",
+      "lane": "ATTACK",
+      "legacyCategory": "CREATURE",
+      "quality": "серебро",
+      "description": "Руна-Существо. Малый воин Наблюдателя: способен становиться невидимым, проходить сквозь препятствия и уничтожать врагов. Активация 48 капель; действие 2 часа; перезарядка 1 цикл.",
+      "tags": [
+        "combat",
+        "stealth",
+        "mobility"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "1542–1543",
+      "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_010",
+      "name": "Экзо-Арсенал",
+      "lane": "OTHER",
+      "legacyCategory": "CREATURE",
+      "quality": "серебро",
+      "description": "Руна-Существо. Малый боевой склад Наблюдателя: хранит и транспортирует Руны, боевые артефакты и другие предметы во внутренней Скрижали; может развернуться в укрытие бункерного типа. Активация 48 капель; действие 4 часа; перезарядка 1 древодень.",
+      "tags": [
+        "storage",
+        "logistics",
+        "shelter"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2718–2719",
+      "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_011",
+      "name": "Серебряный Огнезуб",
+      "lane": "ATTACK",
+      "legacyCategory": "CREATURE",
+      "quality": "серебро",
+      "description": "Руна-Существо. Охотник на Червей с серебряной чешуёй, зубами, когтями и огненным дыханием, эффективными против большинства видов Червей. Активация 24 капли; действие 2 часа; перезарядка 1 древодень.",
+      "tags": [
+        "combat",
+        "anti_worm"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2718–2719",
+      "sourceNote": "Один из трёх вариантов серебряной награды категории Руна-Существо.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_012",
+      "name": "Светожук-Целитель",
+      "lane": "DEFENSE",
+      "legacyCategory": "CREATURE",
+      "quality": "серебро",
+      "description": "Руна-Существо. Небольшое летающее существо, излучающее целебный и отпугивающий Червей свет; исцеляет раны, нейтрализует токсины и яды, ускоряет регенерацию и создаёт защитный световой купол. Активация 24 капли; действие 2 часа; перезарядка 1 древодень.",
+      "tags": [
+        "healing",
+        "protection",
+        "anti_toxin"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2718–2719",
+      "sourceNote": "Один из трёх вариантов серебряной награды категории Руна-Существо.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_013",
+      "name": "Щитник",
+      "lane": "DEFENSE",
+      "legacyCategory": "CREATURE",
+      "quality": "бронза",
+      "description": "Руна-Существо. Огромная бронированная сколопендра; может атаковать в ближнем бою или обвивать хозяина, создавая колючий доспех.",
+      "tags": [
+        "armor",
+        "bodyguard"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2166–2167",
+      "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_014",
+      "name": "Тенекрут",
+      "lane": "OTHER",
+      "legacyCategory": "CREATURE",
+      "quality": "бронза",
+      "description": "Руна-Существо. Многоногое создание, способное нести Восходящего на спине и перемещаться по вертикальным поверхностям в пещерах и каньонах.",
+      "tags": [
+        "transport",
+        "climbing"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2166–2167",
+      "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_015",
+      "name": "Ночница",
+      "lane": "OTHER",
+      "legacyCategory": "CREATURE",
+      "quality": "бронза",
+      "description": "Руна-Существо. Небольшое, малозаметное создание, способное пролезать в узкие щели, вести разведку и собирать для владельца Руны и Звёздную Кровь.",
+      "tags": [
+        "scouting",
+        "search"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2166–2167",
+      "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_016",
+      "name": "Пещеры Древнего Света",
+      "lane": "OTHER",
+      "legacyCategory": "DOMAIN",
+      "quality": "серебро",
+      "description": "Руна-Храм. Пещеры, где мерцают отблески Звёздной Крови и ждут священные знания для паломников лестницы Восхождения. Активация 24 капли; одноразовая, при активации исчезает.",
+      "tags": [
+        "sanctuary",
+        "knowledge"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "132–133",
+      "sourceNote": "Один из трёх вариантов категории Руна-Домен; внутренний тип этой Руны отличается от названия выбранной категории.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_017",
+      "name": "Колесо-в-Глубинах",
+      "lane": "OTHER",
+      "legacyCategory": "DOMAIN",
+      "quality": "серебро",
+      "description": "Руна-Башня. Испытание с чередой смертельных заданий: каждая остановка Колеса — уникальное задание, которое может принести Руну или смерть. Активация 24 капли; одноразовая, при активации исчезает.",
+      "tags": [
+        "trial",
+        "unknown_reward_mechanics"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "132–133",
+      "sourceNote": "Один из трёх вариантов категории Руна-Домен; внутренний тип этой Руны отличается от названия выбранной категории.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_018",
+      "name": "Семя Домена",
+      "lane": "OTHER",
+      "legacyCategory": "DOMAIN",
+      "quality": "серебро",
+      "description": "Руна-Зерно. Зародыш Домена, дающий кристалл-сферу серебряного ранга и внутреннее пространство, которым владелец может управлять и развивать. При прорастании превращается в Руну-Домен. Активация требует 120 капель Звёздной Крови безвозвратно.",
+      "tags": [
+        "domain_creation",
+        "personal_space"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "133–134",
+      "sourceNote": "Один из трёх вариантов категории Руна-Домен; внутренний тип этой Руны отличается от названия выбранной категории.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_019",
+      "name": "Ночное Зрение",
+      "lane": "OTHER",
+      "legacyCategory": "ABILITY",
+      "quality": "дерево",
+      "description": "Руна-Умение. При активации позволяет видеть в естественной темноте. Активация 3 капли Звёздной Крови; действие 144 минуты; перезарядка 1 полный цикл.",
+      "tags": [
+        "perception",
+        "vision"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "1446–1447",
+      "sourceNote": "Один из трёх вариантов после выбора категории Умение в деревянной награде.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_020",
+      "name": "Токсичная Иммунность",
+      "lane": "DEFENSE",
+      "legacyCategory": "ABILITY",
+      "quality": "дерево",
+      "description": "Руна-Умение. Защищает от токсинов, выделяемых отродьями Червей. Активация 3 капли Звёздной Крови; длительность более двух часов.",
+      "tags": [
+        "immunity",
+        "anti_toxin"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "1446–1447",
+      "sourceNote": "Один из трёх вариантов деревянной награды категории Умение; точная длительность в приведённом фрагменте не указана.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_021",
+      "name": "Укрепление Кожи",
+      "lane": "DEFENSE",
+      "legacyCategory": "ABILITY",
+      "quality": "дерево",
+      "description": "Руна-Умение. Делает кожу более устойчивой к внешним воздействиям. Активация 3 капли Звёздной Крови; длительность более двух часов.",
+      "tags": [
+        "physical_resistance"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "1446–1447",
+      "sourceNote": "Один из трёх вариантов деревянной награды категории Умение; точная длительность в приведённом фрагменте не указана.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_022",
+      "name": "Глубинная Стойкость",
+      "lane": "DEFENSE",
+      "legacyCategory": "SKILL",
+      "quality": "бронза",
+      "description": "Руна-Навык. Позволяет выдерживать давление водяной толщи при нахождении на глубине.",
+      "tags": [
+        "environmental_resistance",
+        "pressure"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "315",
+      "sourceNote": "Один из трёх вариантов награды после выбора категории Навык.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_023",
+      "name": "Рыбий Взор",
+      "lane": "OTHER",
+      "legacyCategory": "SKILL",
+      "quality": "бронза",
+      "description": "Руна-Навык. Позволяет видеть в мутной, заиленной или тёмной воде.",
+      "tags": [
+        "perception",
+        "underwater"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "315",
+      "sourceNote": "Один из трёх вариантов награды после выбора категории Навык.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_024",
+      "name": "Подводное Дыхание",
+      "lane": "OTHER",
+      "legacyCategory": "SKILL",
+      "quality": "бронза",
+      "description": "Руна-Навык. Позволяет дышать под водой; в тексте сравнивается с аналогичным Заклинанием.",
+      "tags": [
+        "environmental_adaptation",
+        "underwater"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "315",
+      "sourceNote": "Один из трёх вариантов награды после выбора категории Навык.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_025",
+      "name": "Титаническая Мощь",
+      "lane": "ATTACK",
+      "legacyCategory": "SPELL",
+      "quality": "золото",
+      "description": "Руна-Заклинание. Рунное преображение, наделяющее невероятной физической мощью. Действие во время преображения может повредить собственное тело Восходящего. Активация 240 капель; действие 1 минута; перезарядка 1 час.",
+      "tags": [
+        "transformation",
+        "physical_power"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "3590–3591",
+      "sourceNote": "Один из трёх вариантов, показанных после выбора категории Заклинание в золотой награде.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_026",
+      "name": "Второй Рубеж",
+      "lane": "DEFENSE",
+      "legacyCategory": "SPELL",
+      "quality": "золото",
+      "description": "Руна-Заклинание. Один из трёх боевых протезов; создаёт для владельца и союзников защитную оболочку, предотвращающую смертельный урон. Активация 240 капель; действие 1 час или до получения урона; перезарядка 1 древодень.",
+      "tags": [
+        "barrier",
+        "ally_protection"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "3590–3591",
+      "sourceNote": "Один из трёх вариантов золотой награды категории Заклинание. Возможности требуют дополнительного уточнения активацией.",
+      "conditionIds": []
+    },
+    {
+      "id": "rwd_027",
+      "name": "Перерождение Альфы",
+      "lane": "ATTACK",
+      "legacyCategory": "SPELL",
+      "quality": "золото",
+      "description": "Руна-Заклинание. Превращает владельца в гигантопитека золотого ранга с сохранением разума и доступа к Скрижали. Активация 480 капель; действие 1 час; перезарядка 1 древодень.",
+      "tags": [
+        "transformation",
+        "combat_form"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "3590–3591",
+      "sourceNote": "Один из трёх вариантов золотой награды категории Заклинание; относится к подвиду Превращение.",
+      "conditionIds": []
+    }
+  ],
+  "generationPolicy": {
+    "offersPerTask": 3,
+    "offerComposition": {
+      "ATTACK": 1,
+      "DEFENSE": 1,
+      "OTHER": 1
+    },
+    "playerSelects": 1,
+    "doNotInventMechanics": true,
+    "onlyEnabledEntries": true,
+    "onlyEligibleStatuses": [
+      "confirmed_reward",
+      "gm_approved"
+    ],
+    "qualityPolicy": "Не назначать качество автоматически без подтверждённого правила; использовать качество конкретной записи.",
+    "groupPolicy": "Не делить и не дублировать награды автоматически, пока не установлены правила распределения групповой награды.",
+    "contextPolicy": "Сохранять контекст выполнения в журнале. Не превращать фактор в бонус/штраф без подтверждённого правила или явного решения мастера."
+  },
+  "evidence": {
+    "questDataFile": "quests.json",
+    "existingCatalogFile": "observer-reward-catalog.json",
+    "note": "В базу перенесены существующие именованные примеры наград. Их отнесение к трём направлениям предварительное по описанной функции, не является классификацией, прямо подтверждённой источником. Все записи выключены до проверки/утверждения."
+  }
+}
