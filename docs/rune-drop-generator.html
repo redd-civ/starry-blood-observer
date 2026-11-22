@@ -24,6 +24,7 @@ button{border:1px solid #55718a;border-radius:9px;background:#1b3347;color:var(-
 <div class="grid">
 <div class="field"><label for="sourceType">Тип источника</label><select id="sourceType">
 <option value="star_creature">Звёздные твари и существа</option>
+<option value="battle_loot">Боевая добыча</option>
 <option value="plant">Звёздные растения</option>
 <option value="ascendant">Погибший обычный Восходящий</option>
 <option value="wild_ascendant">Дикий Восходящий</option>
@@ -31,7 +32,8 @@ button{border:1px solid #55718a;border-radius:9px;background:#1b3347;color:var(-
 <option value="other">Прочие находки</option>
 <option value="any">Любой источник</option>
 </select></div>
-<div class="field"><label for="sourceEntity">Конкретный источник (необязательно)</label><select id="sourceEntity"><option value="">Все источники выбранного типа</option></select></div>
+<div class="field"><label for="sourceEntity">Источник из каталога (необязательно)</label><select id="sourceEntity"><option value="">Все источники выбранного типа</option></select></div>
+<div class="field"><label for="customSource">Название существа / объекта (если нет в списке)</label><input id="customSource" type="text" placeholder="Например: новый вид Звёздной твари"></div>
 <div class="field"><label for="quality">Качество Рун (необязательно)</label><select id="quality"><option value="">Любое / неизвестное</option><option>дерево</option><option>бронза</option><option>серебро</option><option>золото</option><option>небо</option><option>unknown</option></select></div>
 <div class="field"><label for="category">Категория (необязательно)</label><select id="category"><option value="">Любая / неизвестная</option><option value="PROPERTY">Свойство</option><option value="ITEM">Предмет</option><option value="ABILITY">Умение</option><option value="SKILL">Навык</option><option value="CREATURE">Существо</option><option value="SPELL">Заклинание</option><option value="PORTAL">Портал</option><option value="DOMAIN">Домен</option><option value="SAGA">Сага</option></select></div>
 <div class="field"><label for="count">Количество Рун / позиций</label><input id="count" type="number" min="1" max="20" value="1"></div>
@@ -68,7 +70,8 @@ const $=id=>document.getElementById(id);
 let data=null,lastResult=[];
 const labels={shard_fragment:"Обломок Скрижали",combat_loot:"Боевая добыча",star_plant_drop:"Звёздное растение",wild_plant_hunt:"Охота на дикое растение",creature_drop:"Добыча с существа",wild_ascendant_loot:"Добыча с дикого Восходящего",ascendant_loot:"Добыча с погибшего Восходящего",star_creature_drop:"Добыча со Звёздного существа",other_world_find:"Прочая находка"};
 const groups={
- star_creature:["star_creature_drop","creature_drop","combat_loot"],
+ star_creature:["star_creature_drop","creature_drop"],
+ battle_loot:["combat_loot"],
  plant:["star_plant_drop","wild_plant_hunt"],
  ascendant:["ascendant_loot"],
  wild_ascendant:["wild_ascendant_loot"],
@@ -90,6 +93,7 @@ function sourceLabel(type){
  $("count").value="1";$("count").max=essence?"3":"20";
  const notes={
  star_creature:"Для существ со Звёздной Кровью обычно формируется одна Руна, редко две или три. Наблюдатель выбирает самое выраженное свойство, а не случайную запись. Введите доминирующее свойство; вероятность редкого исхода неизвестна.",
+ battle_loot:"Боевая добыча, для которой книга не задаёт единого количества или вероятностей выпадения. Случайный выбор из записей — условное правило мастера.",
  plant:"Пул включает находки со Звёздных растений. Универсальное количество выпадений не установлено.",
  ascendant:"Пул включает трофеи с погибших обычных Восходящих. Распределение между выпадением, Обломками и сокровищницей Наблюдателя не автоматизировано.",
  wild_ascendant:"У диких Восходящих нет Скрижалей и Рун; после смерти их суть сплавляется в сущностную Руну. Обычно одну, редко две или три. Наблюдатель выбирает самое выраженное свойство (стр. 498).",
@@ -124,15 +128,15 @@ function renderResults(){
 function draw(){
  const type=$("sourceType").value,essence=["star_creature","wild_ascendant"].includes(type),mode=$("selectionMode").value;
  const pool=filtered(),n=Math.max(1,Math.min(essence?3:20,Number($("count").value)||1)),repeat=$("duplicates").value==="yes";
- if(!pool.length){$("poolStatus").textContent="Нет записей, соответствующих фильтрам.";lastResult=[];renderResults();return;}
  if(essence&&mode==="canon"){
-  const trait=$("dominantTrait").value.trim(),entity=$("sourceEntity").value||null;
+  const trait=$("dominantTrait").value.trim(),entity=$("customSource").value.trim()||$("sourceEntity").value||null;
   const tokens=trait.toLocaleLowerCase("ru").split(/[^а-яёa-z0-9]+/).filter(t=>t.length>2);
   const examples=pool.filter(x=>tokens.length&&tokens.some(t=>(x.name+" "+(x.description||"")).toLocaleLowerCase("ru").includes(t))).slice(0,6);
   lastResult=Array.from({length:n},()=>({isEssence:true,trait,sourceEntity:entity,examples}));
   $("poolStatus").textContent="Сформировано "+n+" сущностных позиций. Название и свойство не выбираются случайно.";
   renderResults();return;
  }
+ if(!pool.length){$("poolStatus").textContent="Нет записей, соответствующих фильтрам.";lastResult=[];renderResults();return;}
  if(!repeat&&n>pool.length){$("poolStatus").textContent="В пуле меньше записей, чем запрошено. Уменьшите количество или разрешите повторы.";return;}
  const bag=pool.slice(),out=[];
  for(let i=0;i<n;i++){
@@ -152,7 +156,7 @@ async function init(){
  $("selectionMode").addEventListener("change",()=>{$("poolStatus").textContent=$("selectionMode").value==="random"?"Случайная выборка — условное правило мастера.":"Книжный режим: мастер определяет доминирующее свойство.";});
   $("generate").addEventListener("click",draw);
   $("copy").addEventListener("click",async()=>{const text=lastResult.map((x,i)=>x.isEssence?(i+1)+". Сущностная Руна; доминирующее свойство: "+(x.trait||"определить мастеру")+"; источник: "+(x.sourceEntity||"не указан"):""+(i+1)+". "+x.name+" — "+(x.runeCategory||"категория неизвестна")+", "+(x.quality||"качество неизвестно")+"; источник: "+x.sourceEntity+"; стр. "+x.sourcePages).join("\n");try{await navigator.clipboard.writeText(text);$("poolStatus").textContent="Результат скопирован.";}catch(e){$("poolStatus").textContent="Не удалось скопировать; используйте JSON-экспорт."; }});
-  $("export").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({generatedAt:new Date().toISOString(),sourceType:$("sourceType").value,sourceEntity:$("sourceEntity").value||null,quality:$("quality").value||null,category:$("category").value||null,selectionMode:$("selectionMode").value,dominantTrait:$("dominantTrait").value||null,results:lastResult},null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="rune-drop-result.json";a.click();URL.revokeObjectURL(url);});
+  $("export").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({generatedAt:new Date().toISOString(),sourceType:$("sourceType").value,sourceEntity:$("sourceEntity").value||null,customSource:$("customSource").value||null,quality:$("quality").value||null,category:$("category").value||null,selectionMode:$("selectionMode").value,dominantTrait:$("dominantTrait").value||null,results:lastResult},null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="rune-drop-result.json";a.click();URL.revokeObjectURL(url);});
   renderSources();
  }catch(e){$("poolStatus").textContent="Не удалось загрузить базу Рун: "+e.message;}
 }
