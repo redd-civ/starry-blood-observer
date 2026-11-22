@@ -2282,7 +2282,7 @@
     {
       "id": "loot_killed_ascendants_1",
       "name": "Руна Развития",
-      "runeCategory": "PROPERTY",
+      "runeCategory": null,
       "quality": "unknown",
       "acquisitionMethod": "combat_loot",
       "sourceEntity": "Погибшие Восходящие",
@@ -2297,7 +2297,7 @@
     {
       "id": "loot_killed_ascendants_2",
       "name": "Руна Развития",
-      "runeCategory": "PROPERTY",
+      "runeCategory": null,
       "quality": "unknown",
       "acquisitionMethod": "combat_loot",
       "sourceEntity": "Погибшие Восходящие",
@@ -2327,7 +2327,7 @@
     {
       "id": "loot_killed_ascendants_4",
       "name": "Руна Мастера Пловца",
-      "runeCategory": "SKILL",
+      "runeCategory": null,
       "quality": "unknown",
       "acquisitionMethod": "combat_loot",
       "sourceEntity": "Погибшие Восходящие",
@@ -2342,7 +2342,7 @@
     {
       "id": "loot_killed_ascendants_5",
       "name": "Руна Диалекта Народа Реки",
-      "runeCategory": "SKILL",
+      "runeCategory": null,
       "quality": "unknown",
       "acquisitionMethod": "combat_loot",
       "sourceEntity": "Погибшие Восходящие",
@@ -2402,7 +2402,7 @@
     {
       "id": "loot_plants_and_creatures_4",
       "name": "Стихия Яда",
-      "runeCategory": "PROPERTY",
+      "runeCategory": null,
       "quality": "бронза",
       "acquisitionMethod": "wild_plant_hunt",
       "sourceEntity": "Пассифлора",
@@ -2417,7 +2417,7 @@
     {
       "id": "loot_plants_and_creatures_5",
       "name": "Малая Руна Развития",
-      "runeCategory": "PROPERTY",
+      "runeCategory": null,
       "quality": "дерево",
       "acquisitionMethod": "creature_drop",
       "sourceEntity": "Отродья Червей",
@@ -2433,7 +2433,7 @@
     {
       "id": "loot_plants_and_creatures_6",
       "name": "Малая Руна Уменьшения",
-      "runeCategory": "PROPERTY",
+      "runeCategory": null,
       "quality": "дерево",
       "acquisitionMethod": "creature_drop",
       "sourceEntity": "Отродья Червей",
@@ -2449,7 +2449,7 @@
     {
       "id": "loot_plants_and_creatures_7",
       "name": "Малая Руна Превращения",
-      "runeCategory": "PROPERTY",
+      "runeCategory": null,
       "quality": "дерево",
       "acquisitionMethod": "creature_drop",
       "sourceEntity": "Отродья Червей",
@@ -2465,7 +2465,7 @@
     {
       "id": "loot_orin_11",
       "name": "Огненный Вихрь",
-      "runeCategory": "SPELL",
+      "runeCategory": null,
       "quality": "золото",
       "acquisitionMethod": "shard_fragment",
       "sourceEntity": "Орин",
@@ -2481,7 +2481,7 @@
     {
       "id": "loot_orin_12",
       "name": "Река Энергии",
-      "runeCategory": "SPELL",
+      "runeCategory": null,
       "quality": "золото",
       "acquisitionMethod": "shard_fragment",
       "sourceEntity": "Орин",
@@ -2496,7 +2496,7 @@
     {
       "id": "loot_orin_13",
       "name": "Живые Цепи",
-      "runeCategory": "SPELL",
+      "runeCategory": null,
       "quality": "золото",
       "acquisitionMethod": "shard_fragment",
       "sourceEntity": "Орин",
@@ -2511,7 +2511,7 @@
     {
       "id": "loot_orin_14",
       "name": "Стабилизатор Времени и Пространства",
-      "runeCategory": "ITEM",
+      "runeCategory": null,
       "quality": "gold_damaged",
       "acquisitionMethod": "shard_fragment",
       "sourceEntity": "Орин",
@@ -2526,7 +2526,7 @@
     {
       "id": "loot_orin_15",
       "name": "Развитие",
-      "runeCategory": "PROPERTY",
+      "runeCategory": null,
       "quality": "золото",
       "acquisitionMethod": "shard_fragment",
       "sourceEntity": "Орин",
@@ -2541,7 +2541,7 @@
     {
       "id": "loot_orin_16",
       "name": "Связь",
-      "runeCategory": "PROPERTY",
+      "runeCategory": null,
       "quality": "unknown",
       "acquisitionMethod": "shard_fragment",
       "sourceEntity": "Орин",
@@ -2556,7 +2556,7 @@
     {
       "id": "loot_orin_17",
       "name": "Слияние",
-      "runeCategory": "PROPERTY",
+      "runeCategory": null,
       "quality": "unknown",
       "acquisitionMethod": "shard_fragment",
       "sourceEntity": "Орин",
@@ -2571,7 +2571,7 @@
     {
       "id": "loot_nskyserpent_eye",
       "name": "Глаз Небесного Змея",
-      "runeCategory": "ABILITY",
+      "runeCategory": null,
       "quality": "бронза",
       "acquisitionMethod": "combat_loot",
       "sourceEntity": "Небесный Змей",
@@ -2587,7 +2587,7 @@
     {
       "id": "loot_devourer_unity_seal",
       "name": "Печать Единства",
-      "runeCategory": "PROPERTY",
+      "runeCategory": null,
       "quality": "золото",
       "acquisitionMethod": "combat_loot",
       "sourceEntity": "Пожиратель",
@@ -2602,7 +2602,7 @@
     {
       "id": "loot_devourer_change",
       "name": "Изменение",
-      "runeCategory": "PROPERTY",
+      "runeCategory": null,
       "quality": "золото",
       "acquisitionMethod": "combat_loot",
       "sourceEntity": "Пожиратель",
@@ -2618,7 +2618,7 @@
     {
       "id": "loot_devourer_strengthening",
       "name": "Усиление",
-      "runeCategory": "PROPERTY",
+      "runeCategory": null,
       "quality": "золото",
       "acquisitionMethod": "combat_loot",
       "sourceEntity": "Пожиратель",
