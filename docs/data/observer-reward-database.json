@@ -1336,6 +1336,174 @@
       ],
       "sourceNote": "Конкретная выбранная бронзовая награда Наблюдателя; тройка альтернатив в тексте не перечислена.",
       "conditionIds": []
+    },
+    {
+      "id": "rwd_028",
+      "name": "Легионная Фляга",
+      "legacyCategory": "ITEM",
+      "quality": "дерево",
+      "description": "Руна-Предмет; многоразовая фляга с водой.",
+      "tags": [
+        "utility",
+        "contextual_hunt_pool"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2726–2727",
+      "sourceNote": "Один из трёх вариантов награды за первые десять Червей; подробные параметры не приведены.",
+      "conditionIds": [],
+      "runeCategory": "ITEM"
+    },
+    {
+      "id": "rwd_029",
+      "name": "Зазубренный Нож",
+      "legacyCategory": "ITEM",
+      "quality": "дерево",
+      "description": "Руна-Предмет; нож, эффективный против брони инсектоидов.",
+      "tags": [
+        "weapon",
+        "anti_armor",
+        "contextual_hunt_pool"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2726–2727",
+      "sourceNote": "Один из трёх вариантов награды за первые десять Червей; в тексте отмечена эффективность против брони инсектоидов.",
+      "conditionIds": [],
+      "runeCategory": "ITEM"
+    },
+    {
+      "id": "rwd_030",
+      "name": "Сумка Охотника",
+      "legacyCategory": "ITEM",
+      "quality": "дерево",
+      "description": "Руна-Хранилище; деревянная версия Сумки Искателя.",
+      "tags": [
+        "storage",
+        "contextual_hunt_pool"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2726–2727",
+      "sourceNote": "Один из трёх вариантов награды за первые десять Червей; подробная вместимость в этом фрагменте не раскрыта.",
+      "conditionIds": [],
+      "runeCategory": "ITEM"
+    },
+    {
+      "id": "rwd_031",
+      "name": "Заживление",
+      "legacyCategory": "ABILITY",
+      "quality": "unknown",
+      "description": "Руна-Умение; подробное описание эффекта в этом фрагменте не приведено.",
+      "tags": [
+        "healing",
+        "contextual_hunt_pool"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2726–2727",
+      "sourceNote": "Один из трёх вариантов после выбора категории Умение в ходе Великой Охоты.",
+      "conditionIds": [],
+      "runeCategory": "ABILITY"
+    },
+    {
+      "id": "rwd_032",
+      "name": "Тепловое Зрение",
+      "legacyCategory": "ABILITY",
+      "quality": "unknown",
+      "description": "Руна-Умение; позволяет видеть тепловые сигнатуры.",
+      "tags": [
+        "perception",
+        "thermal_vision",
+        "contextual_hunt_pool"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2726–2727",
+      "sourceNote": "Один из трёх вариантов после выбора категории Умение; выбран Инем.",
+      "conditionIds": [],
+      "runeCategory": "ABILITY"
+    },
+    {
+      "id": "rwd_033",
+      "name": "Храбрость Охотника",
+      "legacyCategory": "ABILITY",
+      "quality": "unknown",
+      "description": "Руна-Умение; подробное описание эффекта в этом фрагменте не приведено.",
+      "tags": [
+        "combat",
+        "contextual_hunt_pool"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2726–2727",
+      "sourceNote": "Один из трёх вариантов после выбора категории Умение в ходе Великой Охоты.",
+      "conditionIds": [],
+      "runeCategory": "ABILITY"
+    },
+    {
+      "id": "rwd_034",
+      "name": "Ядовитая Устойчивость",
+      "legacyCategory": "SKILL",
+      "quality": "бронза",
+      "description": "Руна-Навык; по названию и контексту связана с устойчивостью к ядам. Подробное описание в найденном фрагменте не приведено.",
+      "tags": [
+        "anti_toxin",
+        "anti_worm",
+        "contextual_hunt_pool"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2726–2727",
+      "sourceNote": "Один из трёх бронзовых Навыков из пула Великой Охоты за сто Червей.",
+      "conditionIds": [],
+      "runeCategory": "SKILL"
+    },
+    {
+      "id": "rwd_035",
+      "name": "Вибросенсорика",
+      "legacyCategory": "SKILL",
+      "quality": "бронза",
+      "description": "Руна-Навык; позволяет определять приближение противника по вибрациям.",
+      "tags": [
+        "perception",
+        "detection",
+        "contextual_hunt_pool"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2726–2727",
+      "sourceNote": "Один из трёх бронзовых Навыков из пула Великой Охоты за сто Червей; эффект не является специфически античервивым.",
+      "conditionIds": [],
+      "runeCategory": "SKILL"
+    },
+    {
+      "id": "rwd_036",
+      "name": "Знание Червей",
+      "legacyCategory": "SKILL",
+      "quality": "бронза",
+      "description": "Руна-Навык; обширные знания о поведении, слабостях и сильных сторонах различных стазов Червей, их анатомии, стадиях развития, эволюции, способностях и уязвимых местах. Помогает отслеживать, избегать и уничтожать Червей.",
+      "tags": [
+        "anti_worm",
+        "knowledge",
+        "tracking",
+        "contextual_hunt_pool"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": "2726–2727",
+      "sourceNote": "Один из трёх бронзовых Навыков из пула Великой Охоты за сто Червей; выбран Фьюри по просьбе Сигурда и затем передан ему.",
+      "conditionIds": [],
+      "runeCategory": "SKILL"
     }
   ],
   "generationPolicy": {
@@ -2037,6 +2205,55 @@
       ],
       "selected": "Игг-Метка",
       "note": "Три варианта категории Заклинание; выбрана Игг-Метка. Качество в фрагменте не указано."
+    },
+    {
+      "id": "offered_item_wood_great_hunt_2726",
+      "category": "ITEM",
+      "quality": "дерево",
+      "entries": [
+        "Легионная Фляга",
+        "Зазубренный Нож",
+        "Сумка Охотника"
+      ],
+      "selected": null,
+      "note": "Тройка предложена Грохоту за первые десять Червей после выбора категории Предмет. Текст называет все три варианта, но не подтверждает однозначно, какой из них был окончательно выбран.",
+      "taskTheme": "worm_related",
+      "tags": [
+        "great_hunt_pool"
+      ]
+    },
+    {
+      "id": "offered_ability_great_hunt_2726",
+      "category": "ABILITY",
+      "quality": "unknown",
+      "entries": [
+        "Заживление",
+        "Тепловое Зрение",
+        "Храбрость Охотника"
+      ],
+      "selected": "Тепловое Зрение",
+      "note": "Тройка предложена Иню после выбора категории Умение в контексте Великой Охоты; выбран Тепловое Зрение. Точный порог/качество этой выдачи в отрывке не указан.",
+      "taskTheme": "worm_related",
+      "tags": [
+        "great_hunt_pool"
+      ]
+    },
+    {
+      "id": "offered_skill_bronze_great_hunt_2727",
+      "category": "SKILL",
+      "quality": "бронза",
+      "entries": [
+        "Ядовитая Устойчивость",
+        "Вибросенсорика",
+        "Знание Червей"
+      ],
+      "selected": "Знание Червей",
+      "note": "Тройка бронзовых Навыков из пула Великой Охоты за сто Червей. Сигурд прямо объясняет, что за сто Червей Навыки будут соответствующими. Знание Червей выбрано по просьбе Сигурда и затем передано ему; Ядовитая Устойчивость тематически связана с противодействием токсинам, Вибросенсорика — общая способность обнаружения.",
+      "taskTheme": "worm_related",
+      "tags": [
+        "great_hunt_pool",
+        "anti_worm"
+      ]
     }
   ],
   "rewardSelectionPolicy": {
@@ -2103,6 +2320,32 @@
             "Укрепление Кожи"
           ],
           "note": "Тройка деревянных Умений за задание против Червей. Только Токсичная Иммунность прямо противодействует токсинам Червей; она помечена anti_worm, но не igg_effect. Это показывает тематическую полезность отдельных вариантов без основания считать все варианты Игг-эффектными."
+        },
+        {
+          "id": "great_hunt_triplets_2726_2727",
+          "taskTheme": "worm_related",
+          "sourcePages": [
+            2726,
+            2727
+          ],
+          "offeredTriplets": [
+            [
+              "Легионная Фляга",
+              "Зазубренный Нож",
+              "Сумка Охотника"
+            ],
+            [
+              "Заживление",
+              "Тепловое Зрение",
+              "Храбрость Охотника"
+            ],
+            [
+              "Ядовитая Устойчивость",
+              "Вибросенсорика",
+              "Знание Червей"
+            ]
+          ],
+          "note": "Три раскрытые тройки из пула Великой Охоты. Наблюдатель подбирает тематически полезные варианты: нож против брони инсектоидов, Навык Знания Червей и Ядовитая Устойчивость. Это подтверждает контекстный пул, но не делает эти варианты Игг-эффектами."
         }
       ]
     }
