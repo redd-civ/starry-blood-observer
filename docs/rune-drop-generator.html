@@ -26,7 +26,8 @@ button{border:1px solid #55718a;border-radius:9px;background:#1b3347;color:var(-
 <option value="star_creature">Звёздные твари и существа</option>
 <option value="artificial_servant">Искусственные слуги Вечности (пример без Рун)</option>
 <option value="battle_loot">Боевая добыча</option>
-<option value="plant">Звёздные растения</option>
+<option value="plant">Прочие Звёздные растения / охота на Травы</option>
+<option value="life_flower">Жизнецветы (подтверждённая базовая добыча)</option>
 <option value="ascendant">Погибший обычный Восходящий</option>
 <option value="wild_ascendant">Дикий Восходящий</option>
 <option value="shard_fragment">Обломок Скрижали</option>
@@ -74,6 +75,7 @@ const labels={shard_fragment:"Обломок Скрижали",combat_loot:"Бо
 const groups={
  star_creature:["star_creature_drop","creature_drop"],
  artificial_servant:[],
+ life_flower:["star_plant_drop"],
  battle_loot:["combat_loot"],
  plant:["star_plant_drop","wild_plant_hunt"],
  ascendant:["ascendant_loot"],
@@ -89,16 +91,17 @@ function filtered(){
  return all().filter(x=>(type==="any"||methods?.includes(x.acquisitionMethod))&&(!q||x.quality===q)&&(!cat||x.runeCategory===cat)&&(!entity||x.sourceEntity===entity));
 }
 function sourceLabel(type){
- const essence=["star_creature","wild_ascendant"].includes(type);
+ const essence=["star_creature","wild_ascendant"].includes(type),lifeFlower=type==="life_flower";
  $("essenceControls").classList.toggle("hidden",!essence);
- $("selectionMode").value=essence?"canon":"random";
+ $("selectionMode").value=(essence||lifeFlower)?"canon":"random";
  $("selectionMode").disabled=false;
  $("count").value="1";$("count").max=essence?"3":"20";
  const notes={
  star_creature:"Для Звёздных зверей и существ, к которым применим закон сущностной добычи, обычно формируется одна Руна, редко две или три. Наблюдатель выбирает самое выраженное свойство. Не распространяйте правило на любые существа только по наличию Звёздной Крови.",
  artificial_servant:"Особый пример со стр. 2028: искусственные Дикие Рудокопы и Строители содержат Звёздную Кровь, но с убитого Рудокопа выпала одна капля Крови и ноль Рун. Многие были пусты; примерно с каждого второго падала одна-две капли Крови. Это не универсальная таблица для всех искусственных существ.",
  battle_loot:"Боевая добыча, для которой книга не задаёт единого количества или вероятностей выпадения. Случайный выбор из записей — условное правило мастера.",
- plant:"Пул включает находки со Звёздных растений. Универсальное количество выпадений не установлено.",
+ plant:"Пул включает находки и результаты охоты на разные Травы. Универсальное количество выпадений не установлено; для Пассифлоры подтверждена лишь Руна, добытая к исходу пятидневной охоты, но не прямое выпадение с одного растения.",
+ life_flower:"Книжная базовая добыча с каждого Жизнецвета: 2–3 капли Звёздной Крови и одна пустая Руна. С некоторых Жизнецветов дополнительно падают Руны вроде Зелёного Листа, Заживления и Живых Трав; частота не установлена (стр. 385). Введите число собранных Жизнецветов.",
  ascendant:"Пул включает трофеи с погибших обычных Восходящих. Распределение между выпадением, Обломками и сокровищницей Наблюдателя не автоматизировано.",
  wild_ascendant:"У диких Восходящих нет Скрижалей и Рун; после смерти их суть сплавляется в сущностную Руну. Обычно одну, редко две или три. Наблюдатель выбирает самое выраженное свойство (стр. 498).",
  shard_fragment:"Пул включает содержимое Обломков Скрижалей.",
@@ -121,6 +124,7 @@ function renderResults(){
  $("resultCount").textContent=lastResult.length+" Рун / позиций";
  if(!lastResult.length){$("results").innerHTML='<span class="status">Результат ещё не создан.</span>';return;}
  $("results").innerHTML=lastResult.map((x,i)=>{
+  if(x.isLifeFlower){return '<article class="item result"><h3>Жизнецвет №'+x.number+'</h3><span class="pill">Базовая добыча подтверждена</span><p><b>Гарантированно:</b> одна пустая (нулевая) Руна и 2–3 капли Звёздной Крови.</p><p><b>Дополнительная добыча с некоторых Жизнецветов:</b> '+(x.extras.length?x.extras.map(esc).join(", "):"не указана в доступных записях")+'. Частота не установлена, поэтому генератор не бросает её автоматически.</p><div class="small">Источник: '+esc(x.sourceEntity)+' · стр. 385</div></article>';}
   if(x.isNoRune){return '<article class="item result"><h3>Руны не выпали</h3><span class="pill">Подтверждённый частный пример</span><p>Источник: '+esc(x.sourceEntity||"искусственные Дикие Рудокопы и Строители")+'. С одного убитого Дикого Рудокопа упала одна капля Звёздной Крови и ноль Рун. Многие существа были пусты; примерно с каждого второго выпадала одна-две капли Крови.</p><div class="small">Стр. 2028. Это отдельный пример искусственных слуг Вечности, не универсальное правило для всех существ со Звёздной Кровью.</div></article>';}
   if(x.isEssence){
    const examples=x.examples||[];
@@ -133,6 +137,14 @@ function renderResults(){
 function draw(){
  const type=$("sourceType").value,essence=["star_creature","wild_ascendant"].includes(type),mode=$("selectionMode").value;
  const pool=filtered(),n=Math.max(1,Math.min(essence?3:20,Number($("count").value)||1)),repeat=$("duplicates").value==="yes";
+ if(type==="life_flower"&&mode==="canon"){
+  const nFlowers=Math.max(1,Math.min(100,Number($("count").value)||1));
+  const entity=$("customSource").value.trim()||"Жизнецветы";
+  const extras=pool.filter(x=>x.name!=="Пустая (нулевая) Руна").map(x=>x.name);
+  lastResult=Array.from({length:nFlowers},(_,i)=>({isLifeFlower:true,sourceEntity:entity,number:i+1,extras}));
+  $("poolStatus").textContent="Учтена базовая добыча с "+nFlowers+" Жизнецветов; дополнительные Руны не бросаются из-за неизвестной частоты.";
+  renderResults();return;
+ }
  if(type==="artificial_servant"){
   lastResult=[{isNoRune:true,sourceEntity:$("customSource").value.trim()||$("sourceEntity").value||"Дикие Рудокопы / Дикие Строители"}];
   $("poolStatus").textContent="Показан подтверждённый пример без выпадения Рун; это не общая вероятность.";
