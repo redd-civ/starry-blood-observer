@@ -2524,9 +2524,9 @@
       "sourcePages": [
         274
       ],
-      "description": "Бронзовая Руна, добытая при охоте на Пассифлору.",
+      "description": "Бронзовая Руна, полученная к исходу пятого дня охоты на Травы; Пассифлора была одной из целей охоты. Текст не подтверждает, что Руна выпала непосредственно из одного растения.",
       "evidence": "confirmed_example",
-      "gmNote": "Добыча из живого источника; не предложение Наблюдателя. Происхождение не исключает эту Руну из потенциального пула наград Наблюдателя; прямое предложение этой Руны Наблюдателем пока не подтверждено.",
+      "gmNote": "Подтверждена добыча в ходе многодневной охоты на Травы, но не прямое выпадение с Пассифлоры. Не использовать как норму выпадения с одного растения.",
       "potentialObserverRewardCandidate": true,
       "observerOfferConfirmed": false,
       "eligibility": "candidate_not_yet_verified"
@@ -4399,6 +4399,24 @@
       "observerOfferConfirmed": false,
       "eligibility": "candidate_not_yet_verified",
       "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_lifeflower_empty_rune",
+      "name": "Пустая (нулевая) Руна",
+      "runeCategory": null,
+      "quality": "unknown",
+      "quantity": 1,
+      "acquisitionMethod": "star_plant_drop",
+      "sourceEntity": "Жизнецветы",
+      "sourcePages": [
+        385
+      ],
+      "description": "Каждый Жизнецвет даёт одну мусорную пустышку (пустую Руну); категория и качество в тексте не уточняются.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Гарантированная базовая добыча с Жизнецвета в описанном примере. Не смешивать с дополнительными Рунами, которые иногда падают с некоторых Жизнецветов."
     }
   ],
   "acquisitionPolicy": {
@@ -8608,6 +8626,25 @@
       "rule": "These beings contained Star Blood, but one killed Wild Miner yielded one drop of Star Blood and zero Runes. Many were empty; approximately every second yielded one or two drops of Star Blood.",
       "scope": "Specific artificial servants of Eternity; not a universal rule for all Star-Blood creatures.",
       "confidence": "direct_book_example"
+    },
+    "documentedPlantExample": {
+      "sourceEntity": "Жизнецветы",
+      "sourcePages": [
+        385
+      ],
+      "guaranteedPerPlant": {
+        "starBloodDrops": "2–3",
+        "runes": [
+          "Пустая (нулевая) Руна"
+        ]
+      },
+      "additionalRuneExamples": [
+        "Зелёный Лист",
+        "Заживление",
+        "Живые Травы"
+      ],
+      "additionalRuneFrequency": "unknown",
+      "note": "Каждый Жизнецвет даёт базовую добычу; с некоторых дополнительно выпадают названные Руны. Частота дополнительных выпадений не указана."
     }
   }
 }
