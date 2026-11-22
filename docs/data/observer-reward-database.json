@@ -886,6 +886,70 @@
       "sourceNote": "Один из трёх вариантов золотой награды категории Заклинание; относится к подвиду Превращение.",
       "conditionIds": [],
       "runeCategory": "SPELL"
+    },
+    {
+      "id": "observer_item_plash_iskatelya",
+      "name": "Плащ Искателя",
+      "legacyCategory": "Предмет",
+      "runeCategory": "ITEM",
+      "quality": "серебро",
+      "description": "Руна-Предмет. Предмет из набора Великой Охоты; маскирует владельца, обеспечивает бесшумность и позволяет планировать с любой высоты, не разбиваясь при падении.",
+      "tags": [
+        "маскировка",
+        "бесшумность",
+        "планирование"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": [
+        3602,
+        3603
+      ],
+      "sourceNote": "Один из трёх вариантов, предложенных Наблюдателем после выбора категории Руна-Предмет. В эпизоде Фьюри в итоге попросила Навык вместо выбора одного из этих Предметов.",
+      "conditionIds": []
+    },
+    {
+      "id": "observer_item_amulet_molchaniya",
+      "name": "Амулет Молчания",
+      "legacyCategory": "Предмет",
+      "runeCategory": "ITEM",
+      "quality": "серебро",
+      "description": "Руна-Предмет. Обеспечивает иммунитет к червивому шёпоту, ментальному давлению и крикам личинки.",
+      "tags": [
+        "защита",
+        "ментальная защита"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": [
+        3602,
+        3603
+      ],
+      "sourceNote": "Один из трёх вариантов, предложенных Наблюдателем после выбора категории Руна-Предмет. В эпизоде Фьюри в итоге попросила Навык вместо выбора одного из этих Предметов.",
+      "conditionIds": []
+    },
+    {
+      "id": "observer_item_igg_strela",
+      "name": "Игг-Стрела",
+      "legacyCategory": "Предмет",
+      "runeCategory": "ITEM",
+      "quality": "серебро",
+      "description": "Руна-Предмет. Предназначена для гарантированного уничтожения одной летающей цели; после применения Стрелу требуется найти и извлечь.",
+      "tags": [
+        "противовоздушное оружие",
+        "одноразовое применение"
+      ],
+      "eligibility": "provisional",
+      "enabled": false,
+      "confidence": "example",
+      "sourcePages": [
+        3602,
+        3603
+      ],
+      "sourceNote": "Один из трёх вариантов, предложенных Наблюдателем после выбора категории Руна-Предмет. В эпизоде Фьюри в итоге попросила Навык вместо выбора одного из этих Предметов.",
+      "conditionIds": []
     }
   ],
   "generationPolicy": {
@@ -923,8 +987,8 @@
   "evidence": {
     "questDataFile": "quests.json",
     "existingCatalogFile": "observer-reward-catalog.json",
-    "note": "Категории Рун в базе — девять книжных категорий. Их доступность зависит от задания/этапа: например, в одном эпизоде на 10/10 показаны три категории, на 100/100 — шесть; в других эпизодах показаны все девять. Не переносить эти списки на другие задания без подтверждения. Существующие 27 примеров конкретных Рун пока предварительны и выключены. Дополнительно найден пример общедоступного задания, где награду получает наиболее результативный Восходящий, а доля помощникам зависит от его решения (стр. 1322). В линейке уничтожения Червей найден ещё один этап: 1000/1000 — серебряная награда с девятью категориями (стр. 2182), после трёх категорий на 10/10 и шести на 100/100. Совместное уничтожение Гнезда Червей также засчитывается одному Восходящему с максимальным вкладом (стр. 1361). В одном выборе Рун-Существ варианты были разведены по функциям защиты, нападения и разведки (стр. 2630); это функциональное разнообразие вариантов внутри категории, не отдельные категории Рун. Уточнено различие между наградой за задание и Титулом: за задание начисляется Слава, а Титул присваивается при достижении соответствующего уровня Славы; числовые пороги пока не установлены. В шкале Славы теперь зафиксированы два прямых порога: 50 — Титул «хейр», 500 — Титул «танаан». Порог «ювейн» и остальные ступени пока неизвестны. Найдены отдельные примеры выдачи +3 Славы и 1 Монеты за сбор соцветий Хладноцвета, а также +5 Славы и 5 Монет за уничтожение Отрекшегося; эти значения не являются универсальной формулой. Добавлена схема журнала Славы: она отделяет начисления за задания от других событий, штрафов и корректировок; после изменения баланса отдельно проверяются подтверждённые пороги Титулов.",
-    "taskExamplesNote": "Это зафиксированные примеры заданий и упомянутых наград. Источник не позволяет автоматически вывести для них доступные виды Рун Нападение/Защита/Другое; поле availableRuneKinds оставлено null до отдельного подтверждения. Для открытых заданий зафиксирован частный механизм конкурирующего вклада: награду получает наиболее результативный исполнитель, который может поделиться с помощниками добровольно (стр. 1322). В той же линейке уничтожения Червей на этапе 1000/1000 доступен полный список девяти категорий (стр. 2182). Максимальный вклад подтверждён также на совместном задании по уничтожению Гнезда Червей (стр. 1361). Титулы не следует перечислять как самостоятельные награды за задание: фиксировать начисленную Славу, а получение Титула — отдельно как достижение порога Славы. Добавлены два конкретных примера количественного начисления Славы за задания (+3 и +5). Титулы отделены от наград и проверяются по накопленному показателю; подтверждены пороги 50 («хейр») и 500 («танаан»).",
+    "note": "Категории Рун в базе — девять книжных категорий. Их доступность зависит от задания/этапа: например, в одном эпизоде на 10/10 показаны три категории, на 100/100 — шесть; в других эпизодах показаны все девять. Не переносить эти списки на другие задания без подтверждения. Существующие 27 примеров конкретных Рун пока предварительны и выключены. Дополнительно найден пример общедоступного задания, где награду получает наиболее результативный Восходящий, а доля помощникам зависит от его решения (стр. 1322). В линейке уничтожения Червей найден ещё один этап: 1000/1000 — серебряная награда с девятью категориями (стр. 2182), после трёх категорий на 10/10 и шести на 100/100. Совместное уничтожение Гнезда Червей также засчитывается одному Восходящему с максимальным вкладом (стр. 1361). В одном выборе Рун-Существ варианты были разведены по функциям защиты, нападения и разведки (стр. 2630); это функциональное разнообразие вариантов внутри категории, не отдельные категории Рун. Уточнено различие между наградой за задание и Титулом: за задание начисляется Слава, а Титул присваивается при достижении соответствующего уровня Славы; числовые пороги пока не установлены. В шкале Славы теперь зафиксированы два прямых порога: 50 — Титул «хейр», 500 — Титул «танаан». Порог «ювейн» и остальные ступени пока неизвестны. Найдены отдельные примеры выдачи +3 Славы и 1 Монеты за сбор соцветий Хладноцвета, а также +5 Славы и 5 Монет за уничтожение Отрекшегося; эти значения не являются универсальной формулой. Добавлена схема журнала Славы: она отделяет начисления за задания от других событий, штрафов и корректировок; после изменения баланса отдельно проверяются подтверждённые пороги Титулов. Повторно инвентаризированы тройки предложений Наблюдателя: обнаружена ещё одна серебряная тройка категории Предмет (Плащ Искателя, Амулет Молчания, Игг-Стрела; стр. 3602–3603). Все три варианта записаны отдельно, хотя в эпизоде Фьюри в итоге попросила Навык вместо выбора из этой тройки. Создан отдельный каталог добытых/найденных Рун, не допускаемых автоматически к наградам Наблюдателя.",
+    "taskExamplesNote": "Это зафиксированные примеры заданий и упомянутых наград. Источник не позволяет автоматически вывести для них доступные виды Рун Нападение/Защита/Другое; поле availableRuneKinds оставлено null до отдельного подтверждения. Для открытых заданий зафиксирован частный механизм конкурирующего вклада: награду получает наиболее результативный исполнитель, который может поделиться с помощниками добровольно (стр. 1322). В той же линейке уничтожения Червей на этапе 1000/1000 доступен полный список девяти категорий (стр. 2182). Максимальный вклад подтверждён также на совместном задании по уничтожению Гнезда Червей (стр. 1361). Титулы не следует перечислять как самостоятельные награды за задание: фиксировать начисленную Славу, а получение Титула — отдельно как достижение порога Славы. Добавлены два конкретных примера количественного начисления Славы за задания (+3 и +5). Титулы отделены от наград и проверяются по накопленному показателю; подтверждены пороги 50 («хейр») и 500 («танаан»). Состав предложений Наблюдателя теперь фиксируется тройками: три варианта — это пул выбора, но фактически выбирается/получается только одна Руна. Отдельно ведётся каталог трофейных и найденных Рун.",
     "categoryListSource": "Примеры списков доступны в zvezdnaya_krov_mergered.pdf, физические страницы PDF 1247, 1345 и 2538."
   },
   "taskExamples": [
@@ -1252,6 +1316,789 @@
         ],
         "evidence": "example"
       }
+    ]
+  },
+  "offeredTriplets": [
+    {
+      "id": "offered_ability_wood_1446",
+      "category": "ABILITY",
+      "quality": "дерево",
+      "sourcePages": [
+        1446,
+        1447
+      ],
+      "entries": [
+        "Ночное Зрение",
+        "Токсичная Иммунность",
+        "Укрепление Кожи"
+      ],
+      "selected": "Ночное Зрение",
+      "note": "Три варианта после выбора категории Умение; выбранное — Ночное Зрение."
+    },
+    {
+      "id": "offered_skill_bronze_315",
+      "category": "SKILL",
+      "quality": "бронза",
+      "sourcePages": [
+        314,
+        315
+      ],
+      "entries": [
+        "Глубинная Стойкость",
+        "Рыбий Взор",
+        "Подводное Дыхание"
+      ],
+      "selected": "Подводное Дыхание",
+      "note": "Три бронзовых Навыка; получатель выбрал Навык Подводного Дыхания."
+    },
+    {
+      "id": "offered_item_bronze_1388",
+      "category": "ITEM",
+      "quality": "бронза",
+      "sourcePages": [
+        1388,
+        1389
+      ],
+      "entries": [
+        "Алая Ночница",
+        "Призматическое Перо",
+        "Плащ Призрака"
+      ],
+      "selected": "Плащ Призрака",
+      "note": "Три варианта после выбора категории Предмет; выбран Плащ Призрака."
+    },
+    {
+      "id": "offered_creature_silver_1541",
+      "category": "CREATURE",
+      "quality": "серебро",
+      "sourcePages": [
+        1541,
+        1542,
+        1543
+      ],
+      "entries": [
+        "Руна Экзо-кодек",
+        "Руна Экзо-траон",
+        "Руна Экзо-шейд"
+      ],
+      "selected": "Руна Экзо-шейд",
+      "note": "Три серебряных Существа; выбрана Руна Экзо-шейд."
+    },
+    {
+      "id": "offered_creature_bronze_2166",
+      "category": "CREATURE",
+      "quality": "бронза",
+      "sourcePages": [
+        2166,
+        2167
+      ],
+      "entries": [
+        "Щитник",
+        "Тенекрут",
+        "Ночница"
+      ],
+      "selected": "Ночница",
+      "note": "Три бронзовых Существа; выбрана Ночница."
+    },
+    {
+      "id": "offered_creature_silver_2718",
+      "category": "CREATURE",
+      "quality": "серебро",
+      "sourcePages": [
+        2718,
+        2719
+      ],
+      "entries": [
+        "Экзо-Арсенал",
+        "Серебряный Огнезуб",
+        "Светожук-Целитель"
+      ],
+      "selected": "Экзо-Арсенал",
+      "note": "Три серебряных Существа; выбран Экзо-Арсенал."
+    },
+    {
+      "id": "offered_domain_silver_132",
+      "category": "DOMAIN",
+      "quality": "серебро",
+      "sourcePages": [
+        132,
+        133,
+        134
+      ],
+      "entries": [
+        "Пещеры Древнего Света",
+        "Колесо-в-Глубинах",
+        "Семя Домена"
+      ],
+      "selected": null,
+      "note": "Три варианта категории Домен; выбранный вариант в имеющейся выдержке не установлен."
+    },
+    {
+      "id": "offered_item_gold_2583",
+      "category": "ITEM",
+      "quality": "золото",
+      "sourcePages": [
+        2583,
+        2584,
+        2585
+      ],
+      "entries": [
+        "Нагрудник Светоносных (Доспех Светоносного, ¼)",
+        "Игг-Молот (½)",
+        "Копьё Игг-Света"
+      ],
+      "selected": "Копьё Игг-Света",
+      "note": "Три золотых Предмета; выбрано Копьё Игг-Света."
+    },
+    {
+      "id": "offered_spell_gold_3590",
+      "category": "SPELL",
+      "quality": "золото",
+      "sourcePages": [
+        3590,
+        3591
+      ],
+      "entries": [
+        "Титаническая Мощь",
+        "Второй Рубеж",
+        "Перерождение Альфы"
+      ],
+      "selected": null,
+      "note": "Три золотых Заклинания из одной наградной панели; выбранный вариант не подтверждён в доступном фрагменте."
+    },
+    {
+      "id": "offered_item_silver_3602",
+      "category": "ITEM",
+      "quality": "серебро",
+      "sourcePages": [
+        3602,
+        3603
+      ],
+      "entries": [
+        "Плащ Искателя",
+        "Амулет Молчания",
+        "Игг-Стрела"
+      ],
+      "selected": null,
+      "note": "Три серебряных Предмета, предложенных Фьюри; она попросила вместо них Навык, поэтому фактического выбора из тройки не было."
+    }
+  ],
+  "rewardSelectionPolicy": {
+    "model": "category_then_three_options_then_one_choice",
+    "rules": [
+      "Сначала Восходящий выбирает одну доступную категорию Руны.",
+      "Затем Наблюдатель показывает ровно три варианта внутри выбранной категории, если источник/сценарий подтверждает стандартную тройку.",
+      "Восходящий получает или выбирает только одну из трёх предложенных Рун; две остальные не выдаются.",
+      "Все три предложенных варианта сохраняются в каталоге как отдельные записи, даже если выбран только один.",
+      "Не считать три варианта тремя наградами и не начислять их все в инвентарь.",
+      "Если персонаж отказывается от выбора, просит другую категорию или награда не выбрана, фиксировать это отдельно; не назначать выбранную Руну автоматически."
+    ]
+  },
+  "acquiredRuneExamples": [
+    {
+      "id": "loot_plavnik_1",
+      "name": "Малая Волна",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Плавник",
+      "sourcePages": [
+        312,
+        313
+      ],
+      "description": "Руна из Обломка Скрижали Восходящего Плавника; категория не указана.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Трофей/находка, не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plavnik_2",
+      "name": "Очищающий Камень",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Плавник",
+      "sourcePages": [
+        312,
+        313
+      ],
+      "description": "Руна из Обломка Скрижали Восходящего Плавника; категория не указана.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Трофей/находка, не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plavnik_3",
+      "name": "Ловчий Тысяченог",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Плавник",
+      "sourcePages": [
+        312,
+        313
+      ],
+      "description": "Руна из Обломка Скрижали Восходящего Плавника; категория не указана.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Трофей/находка, не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plavnik_4",
+      "name": "Кошель Странника",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Плавник",
+      "sourcePages": [
+        312,
+        313
+      ],
+      "description": "Руна из Обломка Скрижали Восходящего Плавника; категория не указана.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Трофей/находка, не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plavnik_5",
+      "name": "Легионный Клинок",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Плавник",
+      "sourcePages": [
+        312,
+        313
+      ],
+      "description": "Руна из Обломка Скрижали Восходящего Плавника; категория не указана.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Трофей/находка, не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plavnik_6",
+      "name": "Огненный Очаг",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Плавник",
+      "sourcePages": [
+        312,
+        313
+      ],
+      "description": "Руна из Обломка Скрижали Восходящего Плавника; категория не указана.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Трофей/находка, не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plavnik_7",
+      "name": "Призыв Дождя",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Плавник",
+      "sourcePages": [
+        312,
+        313
+      ],
+      "description": "Руна из Обломка Скрижали Восходящего Плавника; категория не указана.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Трофей/находка, не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plavnik_8",
+      "name": "Шатёр Странника",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Плавник",
+      "sourcePages": [
+        312,
+        313
+      ],
+      "description": "Руна из Обломка Скрижали Восходящего Плавника; категория не указана.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Трофей/находка, не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plavnik_9",
+      "name": "Эликсир Ручья",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Плавник",
+      "sourcePages": [
+        312,
+        313
+      ],
+      "description": "Руна из Обломка Скрижали Восходящего Плавника; категория не указана.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Трофей/находка, не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plavnik_10",
+      "name": "Копьё Мёртвой Рыбы",
+      "runeCategory": "ITEM",
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Плавник",
+      "sourcePages": [
+        312,
+        313
+      ],
+      "description": "Руна-Предмет, ранее принадлежала Серебряной Форели; найдена в Обломке Скрижали Плавника.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Трофей/находка, не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plavnik_11",
+      "name": "Возвращающая Сеть",
+      "runeCategory": "ITEM",
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Плавник",
+      "sourcePages": [
+        312,
+        313
+      ],
+      "description": "Руна-Предмет, ранее принадлежала Серебряной Форели; найдена в Обломке Скрижали Плавника.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Трофей/находка, не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_orin_1",
+      "name": "Огненная Кровь",
+      "runeCategory": "SKILL",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Орин",
+      "sourcePages": [
+        113,
+        114
+      ],
+      "description": "Навык обращает кровь в жилах в кипящий огонь, исцеляет раны и губителен для врагов.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Руна обнаружена в обломках Скрижали погибшего Восходящего; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_orin_2",
+      "name": "Призрак Небесного Огня",
+      "runeCategory": "SPELL",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Орин",
+      "sourcePages": [
+        113,
+        114
+      ],
+      "description": "На три секунды превращает Восходящего в призрачную форму, усиленную Небесным Огнём и Аннигиляцией.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Руна обнаружена в обломках Скрижали погибшего Восходящего; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_orin_3",
+      "name": "Огненная Стена",
+      "runeCategory": "SPELL",
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Орин",
+      "sourcePages": [
+        113,
+        114
+      ],
+      "description": "Усилена Ветром; создаёт вал катящегося огня.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Руна обнаружена в обломках Скрижали погибшего Восходящего; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_orin_4",
+      "name": "Незримая Ловчая Пасть",
+      "runeCategory": "SPELL",
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Орин",
+      "sourcePages": [
+        113,
+        114
+      ],
+      "description": "Эволюция Призрачной Руки; зубастая ловчая конструкция, сковывающая врага.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Руна обнаружена в обломках Скрижали погибшего Восходящего; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_orin_5",
+      "name": "Увеличение Тяжести",
+      "runeCategory": "SPELL",
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Орин",
+      "sourcePages": [
+        113,
+        114
+      ],
+      "description": "Название и категория прямо указаны в перечне Рун.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Руна обнаружена в обломках Скрижали погибшего Восходящего; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_orin_6",
+      "name": "Хрустальная Сфера",
+      "runeCategory": "SPELL",
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Орин",
+      "sourcePages": [
+        113,
+        114
+      ],
+      "description": "Название и категория прямо указаны в перечне Рун.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Руна обнаружена в обломках Скрижали погибшего Восходящего; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_orin_7",
+      "name": "Ураганный Напор",
+      "runeCategory": "ABILITY",
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Орин",
+      "sourcePages": [
+        113,
+        114
+      ],
+      "description": "Руна-Умение.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Руна обнаружена в обломках Скрижали погибшего Восходящего; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_orin_8",
+      "name": "Три Золотых Голема",
+      "runeCategory": "CREATURE",
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Орин",
+      "sourcePages": [
+        113,
+        114
+      ],
+      "description": "Руна-Существо.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Руна обнаружена в обломках Скрижали погибшего Восходящего; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_orin_9",
+      "name": "Иллиумовая Цепь",
+      "runeCategory": "ITEM",
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Орин",
+      "sourcePages": [
+        113,
+        114
+      ],
+      "description": "Руна-Предмет.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Руна обнаружена в обломках Скрижали погибшего Восходящего; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_orin_10",
+      "name": "Огненный Куб",
+      "runeCategory": "PORTAL",
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Орин",
+      "sourcePages": [
+        113,
+        114
+      ],
+      "description": "Руна-Портал; ведёт в Огненный Куб.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Руна обнаружена в обломках Скрижали погибшего Восходящего; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_unknown_ascendant_fragment_1",
+      "name": "Знак Охотника",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Второй погибший Восходящий",
+      "sourcePages": [
+        315
+      ],
+      "description": "Ускоряет ток Звёздной Крови.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Найдено в Обломке Скрижали; категория и качество не указаны."
+    },
+    {
+      "id": "loot_unknown_ascendant_fragment_2",
+      "name": "Маска Охотника",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Второй погибший Восходящий",
+      "sourcePages": [
+        315
+      ],
+      "description": "Описание эффекта в найденном фрагменте не раскрыто.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Найдено в Обломке Скрижали; категория и качество не указаны."
+    },
+    {
+      "id": "loot_unknown_ascendant_fragment_3",
+      "name": "Облако Тумана",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Второй погибший Восходящий",
+      "sourcePages": [
+        315
+      ],
+      "description": "Описание эффекта в найденном фрагменте не раскрыто.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Найдено в Обломке Скрижали; категория и качество не указаны."
+    },
+    {
+      "id": "loot_unknown_ascendant_fragment_4",
+      "name": "Роса",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Второй погибший Восходящий",
+      "sourcePages": [
+        315
+      ],
+      "description": "Описание эффекта в найденном фрагменте не раскрыто.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Найдено в Обломке Скрижали; категория и качество не указаны."
+    },
+    {
+      "id": "loot_unknown_ascendant_fragment_5",
+      "name": "Искровой Нож",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Второй погибший Восходящий",
+      "sourcePages": [
+        315
+      ],
+      "description": "Описание эффекта в найденном фрагменте не раскрыто.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Найдено в Обломке Скрижали; категория и качество не указаны."
+    },
+    {
+      "id": "loot_killed_ascendants_1",
+      "name": "Руна Развития",
+      "runeCategory": "PROPERTY",
+      "quality": "unknown",
+      "acquisitionMethod": "combat_loot",
+      "sourceEntity": "Погибшие Восходящие",
+      "sourcePages": [
+        1885
+      ],
+      "description": "Получена как трофей после убийства четырёх противников; в интерфейсе название без уточнения.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Получено как добыча после боя; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_killed_ascendants_2",
+      "name": "Руна Развития",
+      "runeCategory": "PROPERTY",
+      "quality": "unknown",
+      "acquisitionMethod": "combat_loot",
+      "sourceEntity": "Погибшие Восходящие",
+      "sourcePages": [
+        1885
+      ],
+      "description": "Вторая отдельная Руна Развития из той же добычи.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Получено как добыча после боя; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_killed_ascendants_3",
+      "name": "Руна Дуговой Искры",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "combat_loot",
+      "sourceEntity": "Погибшие Восходящие",
+      "sourcePages": [
+        1885
+      ],
+      "description": "Получена с убитых противников; категория не названа.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Получено как добыча после боя; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_killed_ascendants_4",
+      "name": "Руна Мастера Пловца",
+      "runeCategory": "SKILL",
+      "quality": "unknown",
+      "acquisitionMethod": "combat_loot",
+      "sourceEntity": "Погибшие Восходящие",
+      "sourcePages": [
+        1885
+      ],
+      "description": "Получена с убитых противников; точное качество не названо.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Получено как добыча после боя; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_killed_ascendants_5",
+      "name": "Руна Диалекта Народа Реки",
+      "runeCategory": "SKILL",
+      "quality": "unknown",
+      "acquisitionMethod": "combat_loot",
+      "sourceEntity": "Погибшие Восходящие",
+      "sourcePages": [
+        1885
+      ],
+      "description": "Получена с убитых противников; точное качество не названо.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Получено как добыча после боя; не награда Наблюдателя."
+    },
+    {
+      "id": "loot_plants_and_creatures_1",
+      "name": "Зелёного Листа",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "star_plant_drop",
+      "sourceEntity": "Жизнецветы",
+      "sourcePages": [
+        385
+      ],
+      "description": "Руна, выпадающая с некоторых Жизнецветов.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Добыча из живого источника; не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plants_and_creatures_2",
+      "name": "Заживления",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "star_plant_drop",
+      "sourceEntity": "Жизнецветы",
+      "sourcePages": [
+        385
+      ],
+      "description": "Руна, выпадающая с некоторых Жизнецветов.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Добыча из живого источника; не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plants_and_creatures_3",
+      "name": "Живых Трав",
+      "runeCategory": null,
+      "quality": "unknown",
+      "acquisitionMethod": "star_plant_drop",
+      "sourceEntity": "Жизнецветы",
+      "sourcePages": [
+        385
+      ],
+      "description": "Руна, выпадающая с некоторых Жизнецветов.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Добыча из живого источника; не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plants_and_creatures_4",
+      "name": "Стихия Яда",
+      "runeCategory": "PROPERTY",
+      "quality": "бронза",
+      "acquisitionMethod": "wild_plant_hunt",
+      "sourceEntity": "Пассифлора",
+      "sourcePages": [
+        274
+      ],
+      "description": "Бронзовая Руна, добытая при охоте на Пассифлору.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Добыча из живого источника; не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plants_and_creatures_5",
+      "name": "Малая Руна Развития",
+      "runeCategory": "PROPERTY",
+      "quality": "дерево",
+      "acquisitionMethod": "creature_drop",
+      "sourceEntity": "Отродья Червей",
+      "sourcePages": [
+        1346,
+        1347
+      ],
+      "description": "Добыта после уничтожения отродий Червей в Гнезде.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Добыча из живого источника; не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plants_and_creatures_6",
+      "name": "Малая Руна Уменьшения",
+      "runeCategory": "PROPERTY",
+      "quality": "дерево",
+      "acquisitionMethod": "creature_drop",
+      "sourceEntity": "Отродья Червей",
+      "sourcePages": [
+        1346,
+        1347
+      ],
+      "description": "Добыта после уничтожения отродий Червей в Гнезде.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Добыча из живого источника; не предложение Наблюдателя."
+    },
+    {
+      "id": "loot_plants_and_creatures_7",
+      "name": "Малая Руна Превращения",
+      "runeCategory": "PROPERTY",
+      "quality": "дерево",
+      "acquisitionMethod": "creature_drop",
+      "sourceEntity": "Отродья Червей",
+      "sourcePages": [
+        1346,
+        1347
+      ],
+      "description": "Добыта после уничтожения отродий Червей в Гнезде; меняет свойство или вид Руны.",
+      "evidence": "confirmed_example",
+      "eligibleForObserverReward": false,
+      "gmNote": "Добыча из живого источника; не предложение Наблюдателя."
+    }
+  ],
+  "acquisitionPolicy": {
+    "purpose": "Каталог Рун, добытых или найденных вне наградной панели Наблюдателя.",
+    "rules": [
+      "Записи acquiredRuneExamples описывают находки, трофеи, добычу с погибших Восходящих, Звёздных существ и растений.",
+      "Такие записи не добавляются автоматически в rewardEntries и не участвуют в тройках наград Наблюдателя.",
+      "Источник, способ получения, исходный владелец, категория и качество фиксируются раздельно.",
+      "Если категория, качество или эффект не названы в источнике, оставлять unknown/null; не классифицировать только по названию.",
+      "Одинаковые названия из разных источников могут быть отдельными экземплярами; не объединять их без подтверждения, что это один и тот же объект.",
+      "Позже можно подключить отдельные механики генерации трофеев/добычи, но это не должно смешиваться с генератором наград за задания."
     ]
   }
 }
