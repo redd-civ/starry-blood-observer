@@ -4174,6 +4174,201 @@
       "observerOfferConfirmed": false,
       "eligibility": "candidate_not_yet_verified",
       "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_karkh_development",
+      "name": "Развитие",
+      "runeCategory": "PROPERTY",
+      "quality": "unknown",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Карх/дрейк",
+      "sourcePages": "3333",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_karkh_change",
+      "name": "Изменение",
+      "runeCategory": "PROPERTY",
+      "quality": "unknown",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Карх/дрейк",
+      "sourcePages": "3333",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_karkh_reduction",
+      "name": "Уменьшение",
+      "runeCategory": "PROPERTY",
+      "quality": "unknown",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Карх/дрейк",
+      "sourcePages": "3333",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_karkh_spark_whirl",
+      "name": "Искровое Завихрение",
+      "runeCategory": "ABILITY",
+      "quality": "unknown",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Карх/дрейк",
+      "sourcePages": "3333",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_karkh_wind_gust",
+      "name": "Порыв Ветра",
+      "runeCategory": "ABILITY",
+      "quality": "unknown",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Карх/дрейк",
+      "sourcePages": "3333",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_karkh_fast_run",
+      "name": "Быстрый Бег",
+      "runeCategory": "ABILITY",
+      "quality": "unknown",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Карх/дрейк",
+      "sourcePages": "3333",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_nixie_development_1",
+      "name": "Развитие (серебро; никси, экземпляр 1)",
+      "runeCategory": "PROPERTY",
+      "quality": "серебро",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Серебряная альфа никси",
+      "sourcePages": "3473",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_nixie_development_2",
+      "name": "Развитие (серебро; никси, экземпляр 2)",
+      "runeCategory": "PROPERTY",
+      "quality": "серебро",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Серебряная альфа никси",
+      "sourcePages": "3473",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_nixie_enhancement",
+      "name": "Повышение",
+      "runeCategory": "PROPERTY",
+      "quality": "серебро",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Серебряная альфа никси",
+      "sourcePages": "3473",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_nixie_air_wings",
+      "name": "Воздушные Крылья",
+      "runeCategory": null,
+      "quality": "серебро",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Серебряная альфа никси",
+      "sourcePages": "3473",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_nixie_wind_column_key",
+      "name": "Ключ Колонны Ветров",
+      "runeCategory": "ITEM",
+      "quality": "серебро",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Серебряная альфа никси",
+      "sourcePages": "3473",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_mother_venom_spit",
+      "name": "Ядовитый Плевок",
+      "runeCategory": "ABILITY",
+      "quality": "серебро",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Матерь",
+      "sourcePages": "3601",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_mother_enhancement",
+      "name": "Повышение",
+      "runeCategory": "PROPERTY",
+      "quality": "серебро",
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Матерь",
+      "sourcePages": "3601",
+      "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено."
     }
   ],
   "acquisitionPolicy": {
@@ -7937,6 +8132,240 @@
         "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
         "provenance": [
           "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_karkh_development",
+        "name": "Развитие",
+        "runeCategory": "PROPERTY",
+        "quality": "unknown",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Карх/дрейк",
+        "sourcePages": "3333",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_karkh_change",
+        "name": "Изменение",
+        "runeCategory": "PROPERTY",
+        "quality": "unknown",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Карх/дрейк",
+        "sourcePages": "3333",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_karkh_reduction",
+        "name": "Уменьшение",
+        "runeCategory": "PROPERTY",
+        "quality": "unknown",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Карх/дрейк",
+        "sourcePages": "3333",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_karkh_spark_whirl",
+        "name": "Искровое Завихрение",
+        "runeCategory": "ABILITY",
+        "quality": "unknown",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Карх/дрейк",
+        "sourcePages": "3333",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_karkh_wind_gust",
+        "name": "Порыв Ветра",
+        "runeCategory": "ABILITY",
+        "quality": "unknown",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Карх/дрейк",
+        "sourcePages": "3333",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_karkh_fast_run",
+        "name": "Быстрый Бег",
+        "runeCategory": "ABILITY",
+        "quality": "unknown",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Карх/дрейк",
+        "sourcePages": "3333",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_nixie_development_1",
+        "name": "Развитие (серебро; никси, экземпляр 1)",
+        "runeCategory": "PROPERTY",
+        "quality": "серебро",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Серебряная альфа никси",
+        "sourcePages": "3473",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_nixie_development_2",
+        "name": "Развитие (серебро; никси, экземпляр 2)",
+        "runeCategory": "PROPERTY",
+        "quality": "серебро",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Серебряная альфа никси",
+        "sourcePages": "3473",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_nixie_enhancement",
+        "name": "Повышение",
+        "runeCategory": "PROPERTY",
+        "quality": "серебро",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Серебряная альфа никси",
+        "sourcePages": "3473",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_nixie_air_wings",
+        "name": "Воздушные Крылья",
+        "runeCategory": null,
+        "quality": "серебро",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Серебряная альфа никси",
+        "sourcePages": "3473",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_nixie_wind_column_key",
+        "name": "Ключ Колонны Ветров",
+        "runeCategory": "ITEM",
+        "quality": "серебро",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Серебряная альфа никси",
+        "sourcePages": "3473",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_mother_venom_spit",
+        "name": "Ядовитый Плевок",
+        "runeCategory": "ABILITY",
+        "quality": "серебро",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Матерь",
+        "sourcePages": "3601",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_mother_enhancement",
+        "name": "Повышение",
+        "runeCategory": "PROPERTY",
+        "quality": "серебро",
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Матерь",
+        "sourcePages": "3601",
+        "description": "Подтверждённый пример добычи Рун с убитых Звёздных существ; точные категории/качества не указаны там, где оставлены null/unknown.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение — метаданные; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
         ]
       }
     ]
