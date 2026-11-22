@@ -3,12 +3,12 @@
   "databaseId": "observer_reward_database",
   "status": "initial_structured_draft",
   "purpose": "Единая редактируемая база условий заданий, доступных видов Рун и конкретных вариантов для будущего подключения к генератору наград Наблюдателя.",
-  "corePrinciple": "По условиям задания определяется список доступных видов Рун: Нападение, Защита и/или Другое. Восходящий выбирает один доступный вид; затем Наблюдатель предлагает три случайные Руны именно этого вида, из которых Восходящий выбирает одну.",
+  "corePrinciple": "После выполнения задания Наблюдатель показывает список доступных категорий Рун. Восходящий выбирает одну категорию, после чего Наблюдатель предлагает три случайные Руны именно этой категории; Восходящий выбирает одну из трёх.",
   "workflow": [
-    "Зафиксировать параметры задания и его фактическое выполнение.",
-    "Определить список доступных для этого задания видов Рун: ATTACK, DEFENSE и/или OTHER. Если правило доступности не установлено, список определяет мастер.",
-    "Восходящий выбирает один вид Руны из доступного списка.",
-    "Наблюдатель случайным образом предлагает три разные Руны выбранного вида.",
+    "Зафиксировать параметры задания и его фактическое выполнение, включая этапы/пороговые результаты, если они есть.",
+    "Определить доступный для этого результата список категорий Рун. Список может быть уже полного каталога и зависит от конкретного задания или достигнутого этапа; использовать только подтверждённые правила/записи.",
+    "Восходящий выбирает одну категорию из доступного списка.",
+    "Наблюдатель случайным образом предлагает три разные допущенные Руны выбранной категории.",
     "Восходящий выбирает одну из трёх предложенных Рун; результат и контекст выдачи записываются в журнал."
   ],
   "taskContextSchema": {
@@ -68,8 +68,8 @@
     "rewardSelection": {
       "availabilityBasis": "confirmed_rule | gm_decision | unresolved",
       "selectionNotes": "text",
-      "availableRuneKinds": "array of ATTACK | DEFENSE | OTHER",
-      "selectedRuneKind": "ATTACK | DEFENSE | OTHER | null"
+      "availableRuneCategories": "array of category IDs from runeCategories",
+      "selectedRuneCategory": "category ID from runeCategories | null"
     }
   },
   "factorRules": [
@@ -148,12 +148,37 @@
       "mechanicalModifier": null
     },
     {
-      "id": "three_stage_selection",
-      "factor": "rewardSelection",
-      "statement": "Восходящий сначала выбирает вид Руны из списка, доступного для конкретного задания; затем Наблюдатель предлагает три случайные Руны выбранного вида.",
-      "effect": "Сначала ограничивается список доступных видов, затем случайная выборка выполняется только внутри выбранного вида.",
-      "evidence": "user_defined",
-      "sourcePages": [],
+      "id": "rune_category_choice_full_list",
+      "factor": "rewardSelection.availableRuneCategories",
+      "statement": "В нескольких сообщениях Наблюдатель предлагает выбрать любую Руну из полного списка девяти категорий: Свойство, Предмет, Умение, Навык, Существо, Заклинание, Портал, Домен, Сага.",
+      "effect": "Подтверждает существование этих девяти категорий и возможность выбора категории до получения конкретной Руны в приведённых эпизодах. Не доказывает, что все девять доступны при каждом задании.",
+      "evidence": "example",
+      "sourcePages": [
+        1247,
+        2538
+      ],
+      "mechanicalModifier": null
+    },
+    {
+      "id": "rune_category_progression_10",
+      "factor": "taskContextSchema.completion",
+      "statement": "В личном задании по уничтожению Червей после результата 10/10 Наблюдатель предложил выбрать Руну качества дерево из трёх категорий: Свойство, Предмет, Умение.",
+      "effect": "Для этого конкретного этапа задания доступный список содержал три категории. Нельзя обобщать это на все задания/деревянные награды.",
+      "evidence": "example",
+      "sourcePages": [
+        1345
+      ],
+      "mechanicalModifier": null
+    },
+    {
+      "id": "rune_category_progression_100",
+      "factor": "taskContextSchema.completion",
+      "statement": "В том же эпизоде после результата 100/100 Наблюдатель предложил выбрать Руну качества бронза из шести категорий: Свойство, Предмет, Умение, Навык, Заклинание, Портал.",
+      "effect": "В этом конкретном задании список доступных категорий расширился с трёх до шести при переходе от этапа 10/10 к 100/100; это не устанавливает универсальную формулу расширения.",
+      "evidence": "example",
+      "sourcePages": [
+        1345
+      ],
       "mechanicalModifier": null
     }
   ],
@@ -189,13 +214,18 @@
       "status": "not_established"
     },
     {
-      "id": "task_lane_availability",
-      "question": "По каким признакам задания определяется список доступных направлений Рун (Нападение, Защита, Другое), и какие направления открываются для разных типов заданий?",
-      "status": "design_and_source_review_required"
-    },
-    {
       "id": "rune_sampling_distribution",
       "question": "Как именно выбираются три случайные Руны внутри выбранного вида: равновероятно ли, учитываются ли ранг задания, качество, редкость, повторы и уже имеющиеся у Восходящего?",
+      "status": "not_established"
+    },
+    {
+      "id": "category_availability_rules",
+      "question": "Какие параметры задания и его этапы определяют доступный список категорий Рун? Примеры 10/10 и 100/100 показывают изменение списка, но универсальная таблица не установлена.",
+      "status": "partially_observed_rule_requires_more_examples"
+    },
+    {
+      "id": "category_random_pool",
+      "question": "Как выбираются три конкретные Руны внутри выбранной категории: равновероятность, качество, редкость, наличие у Восходящего и прочие ограничения?",
       "status": "not_established"
     }
   ],
@@ -203,7 +233,7 @@
     "required": [
       "id",
       "name",
-      "runeKind",
+      "runeCategory",
       "description",
       "eligibility",
       "enabled"
@@ -222,7 +252,6 @@
       "unresolved"
     ],
     "optional": [
-      "legacyCategory",
       "quality",
       "tags",
       "sourcePages",
@@ -233,12 +262,19 @@
       "cooldown",
       "limitations",
       "conditionIds",
-      "gmNotes"
+      "gmNotes",
+      "combatRole"
     ],
-    "runeKindValues": [
-      "ATTACK",
-      "DEFENSE",
-      "OTHER"
+    "runeCategoryValues": [
+      "PROPERTY",
+      "ITEM",
+      "ABILITY",
+      "SKILL",
+      "CREATURE",
+      "SPELL",
+      "PORTAL",
+      "DOMAIN",
+      "SAGA"
     ]
   },
   "rewardEntries": [
@@ -259,7 +295,7 @@
       "sourcePages": "2583–2584",
       "sourceNote": "Один из трёх вариантов, показанных после выбора категории Руна-Предмет для золотой награды.",
       "conditionIds": [],
-      "runeKind": "DEFENSE"
+      "runeCategory": "ITEM"
     },
     {
       "id": "rwd_002",
@@ -278,7 +314,7 @@
       "sourcePages": "2584–2585",
       "sourceNote": "Один из трёх вариантов, показанных после выбора категории Руна-Предмет для золотой награды.",
       "conditionIds": [],
-      "runeKind": "ATTACK"
+      "runeCategory": "ITEM"
     },
     {
       "id": "rwd_003",
@@ -297,7 +333,7 @@
       "sourcePages": "2584–2585",
       "sourceNote": "Один из трёх вариантов, показанных после выбора категории Руна-Предмет для золотой награды.",
       "conditionIds": [],
-      "runeKind": "ATTACK"
+      "runeCategory": "ITEM"
     },
     {
       "id": "rwd_004",
@@ -314,7 +350,7 @@
       "sourcePages": "1388–1389",
       "sourceNote": "Один из трёх вариантов после выбора категории Руна-Предмет.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "ITEM"
     },
     {
       "id": "rwd_005",
@@ -331,7 +367,7 @@
       "sourcePages": "1388–1389",
       "sourceNote": "Один из трёх вариантов после выбора категории Руна-Предмет.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "ITEM"
     },
     {
       "id": "rwd_006",
@@ -348,7 +384,7 @@
       "sourcePages": "1388–1389",
       "sourceNote": "Один из трёх вариантов после выбора категории Руна-Предмет.",
       "conditionIds": [],
-      "runeKind": "DEFENSE"
+      "runeCategory": "ITEM"
     },
     {
       "id": "rwd_007",
@@ -367,7 +403,7 @@
       "sourcePages": "1541–1542",
       "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "CREATURE"
     },
     {
       "id": "rwd_008",
@@ -386,7 +422,7 @@
       "sourcePages": "1541–1542",
       "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "CREATURE"
     },
     {
       "id": "rwd_009",
@@ -405,7 +441,7 @@
       "sourcePages": "1542–1543",
       "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
       "conditionIds": [],
-      "runeKind": "ATTACK"
+      "runeCategory": "CREATURE"
     },
     {
       "id": "rwd_010",
@@ -424,7 +460,7 @@
       "sourcePages": "2718–2719",
       "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "CREATURE"
     },
     {
       "id": "rwd_011",
@@ -442,7 +478,7 @@
       "sourcePages": "2718–2719",
       "sourceNote": "Один из трёх вариантов серебряной награды категории Руна-Существо.",
       "conditionIds": [],
-      "runeKind": "ATTACK"
+      "runeCategory": "CREATURE"
     },
     {
       "id": "rwd_012",
@@ -461,7 +497,7 @@
       "sourcePages": "2718–2719",
       "sourceNote": "Один из трёх вариантов серебряной награды категории Руна-Существо.",
       "conditionIds": [],
-      "runeKind": "DEFENSE"
+      "runeCategory": "CREATURE"
     },
     {
       "id": "rwd_013",
@@ -479,7 +515,7 @@
       "sourcePages": "2166–2167",
       "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
       "conditionIds": [],
-      "runeKind": "DEFENSE"
+      "runeCategory": "CREATURE"
     },
     {
       "id": "rwd_014",
@@ -497,7 +533,7 @@
       "sourcePages": "2166–2167",
       "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "CREATURE"
     },
     {
       "id": "rwd_015",
@@ -515,7 +551,7 @@
       "sourcePages": "2166–2167",
       "sourceNote": "Один из трёх вариантов, предложенных после выбора категории Руна-Существо.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "CREATURE"
     },
     {
       "id": "rwd_016",
@@ -533,7 +569,7 @@
       "sourcePages": "132–133",
       "sourceNote": "Один из трёх вариантов категории Руна-Домен; внутренний тип этой Руны отличается от названия выбранной категории.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "DOMAIN"
     },
     {
       "id": "rwd_017",
@@ -551,7 +587,7 @@
       "sourcePages": "132–133",
       "sourceNote": "Один из трёх вариантов категории Руна-Домен; внутренний тип этой Руны отличается от названия выбранной категории.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "DOMAIN"
     },
     {
       "id": "rwd_018",
@@ -569,7 +605,7 @@
       "sourcePages": "133–134",
       "sourceNote": "Один из трёх вариантов категории Руна-Домен; внутренний тип этой Руны отличается от названия выбранной категории.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "DOMAIN"
     },
     {
       "id": "rwd_019",
@@ -587,7 +623,7 @@
       "sourcePages": "1446–1447",
       "sourceNote": "Один из трёх вариантов после выбора категории Умение в деревянной награде.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "ABILITY"
     },
     {
       "id": "rwd_020",
@@ -605,7 +641,7 @@
       "sourcePages": "1446–1447",
       "sourceNote": "Один из трёх вариантов деревянной награды категории Умение; точная длительность в приведённом фрагменте не указана.",
       "conditionIds": [],
-      "runeKind": "DEFENSE"
+      "runeCategory": "ABILITY"
     },
     {
       "id": "rwd_021",
@@ -622,7 +658,7 @@
       "sourcePages": "1446–1447",
       "sourceNote": "Один из трёх вариантов деревянной награды категории Умение; точная длительность в приведённом фрагменте не указана.",
       "conditionIds": [],
-      "runeKind": "DEFENSE"
+      "runeCategory": "ABILITY"
     },
     {
       "id": "rwd_022",
@@ -640,7 +676,7 @@
       "sourcePages": "315",
       "sourceNote": "Один из трёх вариантов награды после выбора категории Навык.",
       "conditionIds": [],
-      "runeKind": "DEFENSE"
+      "runeCategory": "SKILL"
     },
     {
       "id": "rwd_023",
@@ -658,7 +694,7 @@
       "sourcePages": "315",
       "sourceNote": "Один из трёх вариантов награды после выбора категории Навык.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "SKILL"
     },
     {
       "id": "rwd_024",
@@ -676,7 +712,7 @@
       "sourcePages": "315",
       "sourceNote": "Один из трёх вариантов награды после выбора категории Навык.",
       "conditionIds": [],
-      "runeKind": "OTHER"
+      "runeCategory": "SKILL"
     },
     {
       "id": "rwd_025",
@@ -694,7 +730,7 @@
       "sourcePages": "3590–3591",
       "sourceNote": "Один из трёх вариантов, показанных после выбора категории Заклинание в золотой награде.",
       "conditionIds": [],
-      "runeKind": "ATTACK"
+      "runeCategory": "SPELL"
     },
     {
       "id": "rwd_026",
@@ -712,7 +748,7 @@
       "sourcePages": "3590–3591",
       "sourceNote": "Один из трёх вариантов золотой награды категории Заклинание. Возможности требуют дополнительного уточнения активацией.",
       "conditionIds": [],
-      "runeKind": "DEFENSE"
+      "runeCategory": "SPELL"
     },
     {
       "id": "rwd_027",
@@ -730,20 +766,20 @@
       "sourcePages": "3590–3591",
       "sourceNote": "Один из трёх вариантов золотой награды категории Заклинание; относится к подвиду Превращение.",
       "conditionIds": [],
-      "runeKind": "ATTACK"
+      "runeCategory": "SPELL"
     }
   ],
   "generationPolicy": {
     "selectionStages": [
       {
         "stage": 1,
-        "action": "Восходящий выбирает один вид Руны из доступных для задания.",
-        "sourceField": "taskContextSchema.rewardSelection.availableRuneKinds"
+        "action": "Восходящий выбирает одну категорию Рун из списка, доступного для конкретного задания/этапа.",
+        "sourceField": "taskContextSchema.rewardSelection.availableRuneCategories"
       },
       {
         "stage": 2,
-        "action": "Наблюдатель случайно выбирает три разные допущенные Руны только выбранного вида.",
-        "sourceField": "rewardEntries.runeKind"
+        "action": "Наблюдатель случайно выбирает три разные допущенные Руны только выбранной категории.",
+        "sourceField": "rewardEntries.runeCategory"
       },
       {
         "stage": 3,
@@ -760,106 +796,145 @@
     ],
     "qualityPolicy": "Не назначать качество автоматически без подтверждённого правила; использовать качество конкретной записи.",
     "groupPolicy": "Не делить и не дублировать награды автоматически, пока не установлены правила распределения групповой награды.",
-    "randomDistributionPolicy": "Способ распределения вероятностей внутри выбранного вида Руны не установлен; не вводить веса или вероятности без отдельного правила.",
+    "randomDistributionPolicy": "Вероятности выбора конкретных Рун внутри категории не установлены. Не вводить веса, рейтинги или вероятности без источника/решения мастера.",
     "contextPolicy": "Сохранять контекст выполнения в журнале. Не превращать фактор в бонус/штраф без подтверждённого правила или явного решения мастера.",
-    "runeKindAvailabilityPolicy": "Определять список доступных видов Рун по подтверждённым правилам задания. Если правило ещё не внесено, список задаёт мастер; генератор не должен самостоятельно открывать все виды.",
-    "offersAfterRuneKindSelection": 3
+    "offersAfterRuneKindSelection": 3,
+    "offersAfterCategorySelection": 3,
+    "categoryAvailabilityPolicy": "Список категорий определяется по конкретному заданию и достигнутому этапу/порогу. Вносить только подтверждённые сочетания задания, этапа и доступных категорий. Если для случая правило неизвестно, список задаёт мастер."
   },
   "evidence": {
     "questDataFile": "quests.json",
     "existingCatalogFile": "observer-reward-catalog.json",
-    "note": "В базу перенесены существующие именованные примеры наград. Их отнесение к видам ATTACK/DEFENSE/OTHER предварительное по описанию функций, а не прямая классификация источника. Все записи выключены до проверки/утверждения. Выбор: вид Руны, затем три случайные Руны этого вида.",
-    "taskExamplesNote": "Это зафиксированные примеры заданий и упомянутых наград. Источник не позволяет автоматически вывести для них доступные виды Рун Нападение/Защита/Другое; поле availableRuneKinds оставлено null до отдельного подтверждения."
+    "note": "Категории Рун в базе — девять книжных категорий. Их доступность зависит от задания/этапа: например, в одном эпизоде на 10/10 показаны три категории, на 100/100 — шесть; в других эпизодах показаны все девять. Не переносить эти списки на другие задания без подтверждения. Существующие 27 примеров конкретных Рун пока предварительны и выключены.",
+    "taskExamplesNote": "Это зафиксированные примеры заданий и упомянутых наград. Источник не позволяет автоматически вывести для них доступные виды Рун Нападение/Защита/Другое; поле availableRuneKinds оставлено null до отдельного подтверждения.",
+    "categoryListSource": "Примеры списков доступны в zvezdnaya_krov_mergered.pdf, физические страницы PDF 1247, 1345 и 2538."
   },
-  "runeKinds": [
-    {
-      "id": "ATTACK",
-      "label": "Нападение",
-      "description": "Наступательные, поражающие и боевые возможности."
-    },
-    {
-      "id": "DEFENSE",
-      "label": "Защита",
-      "description": "Защита, выживание, сопротивление, лечение и прикрытие союзников."
-    },
-    {
-      "id": "OTHER",
-      "label": "Другое",
-      "description": "Разведка, перемещение, поддержка, ремесло, развитие и прочие функции."
-    }
-  ],
   "taskExamples": [
     {
-      "id": "task_example_bronze_chladotsvety",
-      "rank": "бронза",
-      "task": "Лечение повреждённых Хладноцветов и защита при необходимости",
-      "rewardMentioned": [
-        "Слава",
-        "Звёздная Монета",
-        "Руна бронзового качества"
+      "id": "task_rune_choice_10_worms",
+      "task": "Личное задание по уничтожению низших Червей",
+      "progress": "10/10 низших Червей",
+      "rewardQuality": "дерево",
+      "availableRuneCategories": [
+        "PROPERTY",
+        "ITEM",
+        "ABILITY"
       ],
-      "assignmentScope": "unknown",
-      "availableRuneKinds": null,
-      "kindAvailabilityStatus": "not_established",
       "sourcePages": [
-        1233
+        1345
       ],
-      "evidence": "example"
+      "evidence": "example",
+      "note": "В тексте указано именно это сочетание для данного этапа."
     },
     {
-      "id": "task_example_silver_worm_nest",
-      "rank": "серебро",
-      "task": "Уничтожение гнезда Червей и материнской особи",
-      "rewardMentioned": [
-        "Слава",
-        "10 Звёздных Монет",
-        "Руна серебряного качества"
+      "id": "task_rune_choice_100_worms",
+      "task": "То же задание по уничтожению низших Червей",
+      "progress": "100/100 низших Червей",
+      "rewardQuality": "бронза",
+      "availableRuneCategories": [
+        "PROPERTY",
+        "ITEM",
+        "ABILITY",
+        "SKILL",
+        "SPELL",
+        "PORTAL"
       ],
-      "assignmentScope": "unknown",
-      "availableRuneKinds": null,
-      "kindAvailabilityStatus": "not_established",
       "sourcePages": [
-        132,
-        133
+        1345
       ],
-      "evidence": "example"
+      "evidence": "example",
+      "note": "В тексте показано расширение списка до шести категорий."
     },
     {
-      "id": "task_example_silver_el_celestus",
-      "rank": "серебро",
-      "task": "Доставка и установка эль-целестуса в Колонну Сияния",
-      "rewardMentioned": [
-        "Слава",
-        "10 Звёздных Монет",
-        "10 капель Звёздной Крови",
-        "Руна серебряного качества"
+      "id": "task_rune_choice_bronze_full",
+      "task": "Бронзовое задание (эпизод выбора награды)",
+      "progress": null,
+      "rewardQuality": "бронза",
+      "availableRuneCategories": [
+        "PROPERTY",
+        "ITEM",
+        "ABILITY",
+        "SKILL",
+        "CREATURE",
+        "SPELL",
+        "PORTAL",
+        "DOMAIN",
+        "SAGA"
       ],
-      "assignmentScope": "unknown",
-      "availableRuneKinds": null,
-      "kindAvailabilityStatus": "not_established",
       "sourcePages": [
-        1463,
-        1464
+        1247
       ],
-      "evidence": "example"
+      "evidence": "example",
+      "note": "Наблюдатель предлагает все девять категорий в этом эпизоде."
     },
     {
-      "id": "task_example_gold_great_hive",
-      "rank": "золото",
-      "task": "Уничтожение Великого Улья и источников возрождения Червей",
-      "rewardMentioned": [
-        "Слава",
-        "50 000 капель Звёздной Крови",
-        "500 Звёздных Монет",
-        "несколько Рун качества золото, серебро и бронза"
+      "id": "task_rune_choice_gold_full",
+      "task": "Награда после пробуждения Ростка Игг-Древа",
+      "progress": null,
+      "rewardQuality": "золото",
+      "availableRuneCategories": [
+        "PROPERTY",
+        "ITEM",
+        "ABILITY",
+        "SKILL",
+        "CREATURE",
+        "SPELL",
+        "PORTAL",
+        "DOMAIN",
+        "SAGA"
       ],
-      "assignmentScope": "unknown",
-      "availableRuneKinds": null,
-      "kindAvailabilityStatus": "not_established",
       "sourcePages": [
-        2710
+        2538
       ],
-      "evidence": "example"
+      "evidence": "example",
+      "note": "Наблюдатель предлагает все девять категорий в этом эпизоде."
+    }
+  ],
+  "runeCategories": [
+    {
+      "id": "PROPERTY",
+      "label": "Руна-Свойство",
+      "legacyCategory": "PROPERTY"
+    },
+    {
+      "id": "ITEM",
+      "label": "Руна-Предмет",
+      "legacyCategory": "ITEM"
+    },
+    {
+      "id": "ABILITY",
+      "label": "Руна-Умение",
+      "legacyCategory": "ABILITY"
+    },
+    {
+      "id": "SKILL",
+      "label": "Руна-Навык",
+      "legacyCategory": "SKILL"
+    },
+    {
+      "id": "CREATURE",
+      "label": "Руна-Существо",
+      "legacyCategory": "CREATURE"
+    },
+    {
+      "id": "SPELL",
+      "label": "Руна-Заклинание",
+      "legacyCategory": "SPELL"
+    },
+    {
+      "id": "PORTAL",
+      "label": "Руна-Портал",
+      "legacyCategory": "PORTAL"
+    },
+    {
+      "id": "DOMAIN",
+      "label": "Руна-Домен",
+      "legacyCategory": "DOMAIN"
+    },
+    {
+      "id": "SAGA",
+      "label": "Руна-Сага",
+      "legacyCategory": "SAGA"
     }
   ]
 }
