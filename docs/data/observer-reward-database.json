@@ -4417,6 +4417,54 @@
       "observerOfferConfirmed": false,
       "eligibility": "candidate_not_yet_verified",
       "gmNote": "Гарантированная базовая добыча с Жизнецвета в описанном примере. Не смешивать с дополнительными Рунами, которые иногда падают с некоторых Жизнецветов."
+    },
+    {
+      "id": "loot_tavr_herd_empty",
+      "name": "Пустая (нулевая) Руна",
+      "runeCategory": null,
+      "quality": "дерево",
+      "quantity": 2,
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Табун тавров",
+      "sourcePages": "1752",
+      "description": "Две пустые Рун дерева в общей добыче после уничтожения табуна тавров; распределение по конкретным особям не указано.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Групповой пример добычи; не считать обе Руны добычей с одного альфа-тавра. Прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_tavr_herd_development",
+      "name": "Развитие",
+      "runeCategory": "PROPERTY",
+      "quality": "дерево",
+      "quantity": 2,
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Табун тавров",
+      "sourcePages": "1752",
+      "description": "Две деревянные Руны Развития в общей добыче после уничтожения табуна тавров; распределение по конкретным особям не указано.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Групповой пример добычи; не считать обе Руны добычей с одного альфа-тавра. Прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_tavr_alpha_beast_power",
+      "name": "Звериная Мощь",
+      "runeCategory": "ABILITY",
+      "quality": "дерево",
+      "quantity": 1,
+      "acquisitionMethod": "star_creature_drop",
+      "sourceEntity": "Альфа-тавр",
+      "sourcePages": "1748, 1752",
+      "description": "Деревянная Руна-Умение Звериная Мощь; участники прямо связывают её выпадение с альфа-тавром.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Входит в общую добычу после охоты на табун. Прямое предложение Наблюдателем не подтверждено."
     }
   ],
   "acquisitionPolicy": {
@@ -4437,10 +4485,15 @@
     "scope": "Обычные Руны, которыми может владеть Восходящий. Вечность и Истинные Руны исключены до отдельного решения.",
     "principle": "Любая обычная Руна, допустимая во владении Восходящего, потенциально может находиться у Наблюдателя и быть предложена как награда. То, что конкретная Руна впервые зафиксирована как добыча, находка или содержимое Обломка Скрижали, не исключает её из наградного пула.",
     "deathDistribution": {
-      "part1": "Часть Рун погибшего Восходящего выпадает и может быть подобрана.",
-      "part2": "Часть Рун остаётся в Обломке Скрижали.",
-      "part3": "Остальные Руны уходят Наблюдателю.",
-      "note": "Доли и алгоритм распределения не заданы. В книге обнаружены несколько описаний: часть Рун пропадает, часть выпадает, часть остаётся в Обломках; в другом месте большая часть остаётся в Обломках, а стигмат забирает их с исключениями для победителя и сокровищницы Наблюдателя (стр. 2794). Сопоставить с рабочей интерпретацией пользователя до автоматизации."
+      "part1": "Часть Рун погибшего Восходящего пропадает навсегда.",
+      "part2": "Часть Рун выпадает наружу и может быть подобрана.",
+      "part3": "Часть Рун остаётся в Обломках Скрижали; в отдельном описании сказано, что большая часть остаётся именно там.",
+      "postDeathFragmentHandling": "Если погибший носит гвоздь в запястье, стигмат забирает все Обломки Скрижали, кроме тех, что достаются победителю и пополняют сокровищницу Наблюдателя.",
+      "sourcePages": [
+        1078,
+        114
+      ],
+      "note": "Доли и алгоритм распределения не заданы. Стр. 1078 описывает три исхода для Рун после смерти. Стр. 114 говорит, что большая часть остаётся в Обломках, а при наличии гвоздя стигмат забирает Обломки с исключениями для победителя и сокровищницы Наблюдателя. Последний фрагмент находится в сцене с Истинным Восходящим; его применение ко всем обычным случаям требует осторожности. Не превращать формулировки в проценты."
     },
     "provenanceIsNotType": true,
     "provenancePaths": [
@@ -8433,6 +8486,63 @@
         "provenance": [
           "star_plant_drop"
         ]
+      },
+      {
+        "id": "loot_tavr_herd_empty",
+        "name": "Пустая (нулевая) Руна",
+        "runeCategory": null,
+        "quality": "дерево",
+        "quantity": 2,
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Табун тавров",
+        "sourcePages": "1752",
+        "description": "Две пустые Рун дерева в общей добыче после уничтожения табуна тавров; распределение по конкретным особям не указано.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Групповой пример добычи; не считать обе Руны добычей с одного альфа-тавра. Прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_tavr_herd_development",
+        "name": "Развитие",
+        "runeCategory": "PROPERTY",
+        "quality": "дерево",
+        "quantity": 2,
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Табун тавров",
+        "sourcePages": "1752",
+        "description": "Две деревянные Руны Развития в общей добыче после уничтожения табуна тавров; распределение по конкретным особям не указано.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Групповой пример добычи; не считать обе Руны добычей с одного альфа-тавра. Прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_tavr_alpha_beast_power",
+        "name": "Звериная Мощь",
+        "runeCategory": "ABILITY",
+        "quality": "дерево",
+        "quantity": 1,
+        "acquisitionMethod": "star_creature_drop",
+        "sourceEntity": "Альфа-тавр",
+        "sourcePages": "1748, 1752",
+        "description": "Деревянная Руна-Умение Звериная Мощь; участники прямо связывают её выпадение с альфа-тавром.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Входит в общую добычу после охоты на табун. Прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "star_creature_drop"
+        ]
       }
     ]
   },
@@ -8657,25 +8767,27 @@
       "note": "A single special porcupine containing Star Blood yielded three Runes. This is a concrete example, not a universal drop count. Participants divided Runes and Star Blood by mutual agreement, according to who needed what."
     },
     "ordinaryAscendantDeath": {
-      "status": "needs_reconciliation",
+      "status": "partially_confirmed_reconciliation_required",
       "userWorkingInterpretation": "Часть Рун выпадает, часть остаётся в Обломке Скрижали, остальные уходят Наблюдателю.",
       "bookEvidence": [
         {
-          "rule": "При смерти Скрижаль ломается; часть Рун пропадает навсегда, часть выпадает наружу, часть остаётся в Обломках.",
-          "sourcePages": [],
-          "pageLocator": "printed page not yet identified",
-          "confidence": "direct_book_text"
-        },
-        {
-          "rule": "В другом описании сказано, что большая часть Рун остаётся в Обломках Скрижали; если погибший носит гвоздь, стигмат забирает Обломки, кроме тех, что достаются победителю и пополняют сокровищницу Наблюдателя.",
+          "rule": "При смерти Восходящего его Скрижаль ломается: часть Рун пропадает навсегда, часть выпадает наружу, часть остаётся в Обломках Скрижали.",
           "sourcePages": [
-            2794
+            1078
           ],
           "confidence": "direct_book_text",
-          "scope": "Указан контекст Восходящего с гвоздём; не переносить автоматически на все случаи смерти."
+          "scope": "Общее объяснение механики смерти Восходящего."
+        },
+        {
+          "rule": "При смерти Восходящего в Единстве большая часть Рун остаётся в Обломках Скрижали. Если погибший носит гвоздь в запястье, стигмат забирает все Обломки, кроме тех, что достаются победителю и пополняют сокровищницу Наблюдателя.",
+          "sourcePages": [
+            114
+          ],
+          "confidence": "direct_book_text",
+          "scope": "Формулировка дана в сцене, связанной с Истинным Восходящим Орином; условие с гвоздём зафиксировано, но его точное применение ко всем обычным случаям требует сверки."
         }
       ],
-      "note": "Не сводить эти описания к процентной таблице. До сверки полного контекста не рассчитывать автоматическое распределение и не утверждать, что все оставшиеся Руны обязательно уходят Наблюдателю."
+      "note": "Книжный текст подтверждает три исхода, но не задаёт доли. Рабочую интерпретацию пользователя сохраняем отдельно; не утверждать, что каждый остаток автоматически уходит Наблюдателю, пока не согласованы формулировка о стигмате и исключения."
     },
     "documentedNoRuneExample": {
       "sourceEntity": "Дикие Рудокопы и Дикие Строители (искусственные слуги Вечности)",
@@ -8704,6 +8816,49 @@
       ],
       "additionalRuneFrequency": "unknown",
       "note": "Каждый Жизнецвет даёт базовую добычу; с некоторых дополнительно выпадают названные Руны. Частота дополнительных выпадений не указана."
+    },
+    "exceptionalCreatureYieldExample": {
+      "sourceEntity": "Локи",
+      "sourcePages": [
+        391
+      ],
+      "result": "После гибели одной озёрной твари-локи над останками появились шесть серебряных глифов: Звёздная Кровь и пять Рун.",
+      "runeCount": 5,
+      "runeQuality": "серебро",
+      "runeNames": "Не перечислены в данном фрагменте.",
+      "confidence": "direct_book_example",
+      "note": "Исключительный пример, выходящий за обычную формулировку «одна, редко две или три» со стр. 498. Причина пяти Рун не раскрыта; не превращать это в норму или вероятность."
+    },
+    "documentedGroupHuntExample": {
+      "sourceEntity": "Табун тавров, включая альфа-тавра",
+      "sourcePages": [
+        1744,
+        1748,
+        1752
+      ],
+      "result": {
+        "starBloodDrops": 8,
+        "runes": [
+          {
+            "name": "Пустая (нулевая) Руна",
+            "quantity": 2,
+            "quality": "дерево"
+          },
+          {
+            "name": "Развитие",
+            "quantity": 2,
+            "quality": "дерево"
+          },
+          {
+            "name": "Звериная Мощь",
+            "quantity": 1,
+            "quality": "дерево",
+            "runeCategory": "ABILITY"
+          }
+        ]
+      },
+      "confidence": "direct_book_example",
+      "note": "Пять Рун собраны в ходе уничтожения табуна; Звериная Мощь отдельно связана с альфа-тавром. Нельзя считать, что все пять выпали с одной особи. Добыча распределялась между участниками по договорённости."
     }
   }
 }
