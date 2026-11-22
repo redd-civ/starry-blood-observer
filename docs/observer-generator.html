@@ -37,9 +37,9 @@ button{border:1px solid #55718a;border-radius:9px;background:#1b3347;color:var(-
 <div class="grid">
 <div class="field"><label for="category">Категория награды</label><select id="category"></select></div>
 <div class="field"><label for="duplicates">Повторы в трёх предложениях</label><select id="duplicates"><option value="">Не задано мастером</option><option value="no">Не допускать</option><option value="yes">Допускать</option></select></div>
-<div class="field"><label for="qualityFilter">Фильтр качества (необязательно)</label><input id="qualityFilter" placeholder="Например: бронза — точное совпадение"></div>
+<div class="field"><label for="qualityFilter">Фильтр качества (необязательно)</label><input id="qualityFilter" placeholder="Например: бронза — точное совпадение"></div><div class="field"><label for="taskTheme">Тематика задания</label><select id="taskTheme"><option value="other">Другая / не установлена</option><option value="worm_related">Задание, связанное с Червями</option><option value="ordinary">Обычное задание</option></select></div><div class="field"><label for="iggWeight">Относительный вес Игг-эффектов (необязательно)</label><input id="iggWeight" type="number" min="0" max="100" step="0.1" placeholder="Не задан — равный вес"></div>
 </div>
-<p class="small" id="categoryDescription">Выбор категории — ручной, как предусмотрено текущей согласованной схемой. Вероятности случайного выбора категорий не применяются.</p>
+<p class="small" id="categoryDescription">Выбор категории — ручной. Для заданий о Червях Игг-эффекты должны встречаться чаще, для обычных — значительно реже. Точные коэффициенты не установлены: мастер задаёт их ниже. Пустое поле означает нейтральный вес 1:1, а не книжную вероятность.</p>
 <div class="row"><button class="primary" id="generate">Сгенерировать три варианта</button><span class="status" id="poolStatus" aria-live="polite"></span></div>
 <div id="options" class="options" style="margin-top:14px"></div>
 <div class="row" style="margin-top:14px"><button id="confirm" disabled>Подтвердить выбранную награду</button><span class="status" id="selectionStatus" aria-live="polite"></span></div>
@@ -52,7 +52,7 @@ button{border:1px solid #55718a;border-radius:9px;background:#1b3347;color:var(-
 <div class="field"><label for="entryName">Название награды *</label><input id="entryName" placeholder="Например: название Руны или Предмета"></div>
 <div class="field"><label for="entryQuality">Качество (если известно)</label><input id="entryQuality" placeholder="Дерево, бронза, серебро…"></div>
 <div class="field"><label for="entryPages">Страницы PDF</label><input id="entryPages" placeholder="Например: 2058–2060"></div>
-<div class="field"><label for="entryConfidence">Статус сведений</label><select id="entryConfidence"><option value="confirmed">Подтверждено текстом</option><option value="example">Частный пример</option><option value="inference">Аналитический вывод</option><option value="gm_defined">Задано мастером</option><option value="unresolved">Требует проверки</option></select></div>
+<div class="field"><label for="entryTags">Особые теги</label><select id="entryTags"><option value="">Без специальных тегов</option><option value="igg_effect">Есть Игг-эффект</option></select></div><div class="field"><label for="entryConfidence">Статус сведений</label><select id="entryConfidence"><option value="confirmed">Подтверждено текстом</option><option value="example">Частный пример</option><option value="inference">Аналитический вывод</option><option value="gm_defined">Задано мастером</option><option value="unresolved">Требует проверки</option></select></div>
 </div>
 <div class="field" style="margin-top:10px"><label for="entryDescription">Описание / условия / заметка мастера</label><textarea id="entryDescription" placeholder="Что представляет собой награда, ограничения, требования к использованию…"></textarea></div>
 <div class="row" style="margin-top:12px"><button class="secondary" id="addEntry">Добавить в категорию</button><button class="secondary" id="export">Экспортировать настройки и журнал</button><button class="secondary" id="resetLocal">Сбросить локальные изменения</button></div>
@@ -98,12 +98,14 @@ function draw(){
  const c=current();if(!c)return;
  const policy=$("duplicates").value;
  const quality=$("qualityFilter").value.trim().toLowerCase();
- const available=quality?c.entries.filter(e=>(e.quality||"").toLowerCase()===quality):c.entries;
+ const base=quality?c.entries.filter(e=>(e.quality||"").toLowerCase()===quality):c.entries;
+ const theme=$("taskTheme").value,rawWeight=$("iggWeight").value.trim(),iggWeight=rawWeight===""?1:Math.max(0,Number(rawWeight));
+ const available=base.map(e=>({...e,_weight:(Array.isArray(e.tags)&&e.tags.includes("igg_effect"))?iggWeight:1})).filter(e=>e._weight>0);
  if(!policy){$("poolStatus").textContent="Сначала мастер должен выбрать режим повторов: это правило не установлено источником.";return;}
  if(!available.length){$("poolStatus").textContent=quality?"Нет вариантов с качеством «"+quality+"».":"Пул категории пуст. Добавь варианты в разделе ниже.";return;}
  if(policy==="no"&&available.length<3){$("poolStatus").textContent="Для трёх неповторяющихся вариантов с выбранным фильтром нужно не менее трёх записей.";return;}
  const pool=available.slice(),result=[];
- for(let i=0;i<3;i++){const n=Math.floor(Math.random()*pool.length);result.push(pool[n]);if(policy==="no")pool.splice(n,1);}
+ for(let i=0;i<3;i++){const total=pool.reduce((sum,e)=>sum+e._weight,0);let roll=Math.random()*total,n=0;for(;n<pool.length-1;n++){roll-=pool[n]._weight;if(roll<0)break;}const picked={...pool[n]};delete picked._weight;result.push(picked);if(policy==="no")pool.splice(n,1);}
  drawn=result;selected=-1;$("selectionStatus").textContent="Выбери один из трёх вариантов.";renderOptions();
 }
 $("category").addEventListener("change",()=>{drawn=[];selected=-1;renderAll();});
@@ -111,13 +113,13 @@ $("generate").addEventListener("click",draw);
 $("addEntry").addEventListener("click",()=>{
  const name=$("entryName").value.trim();if(!name){$("entryName").focus();return;}
  const c=current();c.entries.push({name,quality:$("entryQuality").value.trim(),description:$("entryDescription").value.trim(),sourcePages:$("entryPages").value.trim(),confidence:$("entryConfidence").value});
- $("entryName").value="";$("entryQuality").value="";$("entryDescription").value="";$("entryPages").value="";
+ $("entryName").value="";$("entryQuality").value="";$("entryDescription").value="";$("entryPages").value="";$("entryTags").value="";
  drawn=[];selected=-1;renderAll();persist();
 });
 $("confirm").addEventListener("click",()=>{
  if(selected<0||!drawn[selected])return;
  const c=current(),reward=drawn[selected];
- history.push({task:$("task").value.trim(),fame:$("fame").value,coins:$("coins").value,category:c.id,categoryLabel:c.label,reward:JSON.parse(JSON.stringify(reward)),date:new Date().toLocaleString("ru-RU")});
+ history.push({task:$("task").value.trim(),taskTheme:$("taskTheme").value,iggWeight:$("iggWeight").value||null,fame:$("fame").value,coins:$("coins").value,category:c.id,categoryLabel:c.label,reward:JSON.parse(JSON.stringify(reward)),date:new Date().toLocaleString("ru-RU")});
  $("selectionStatus").textContent="Выбор записан в локальный журнал.";
  drawn=[];selected=-1;renderAll();persist();
 });
