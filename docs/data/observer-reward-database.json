@@ -8553,7 +8553,7 @@
     "purpose": "Separate the essence-condensation rule for Star-Blood creatures from random sampling of recorded loot examples.",
     "essenceCondensation": {
       "appliesTo": [
-        "star_creature_containing_star_blood",
+        "star_beasts_subject_to_essence_condensation_law",
         "wild_ascendant"
       ],
       "rule": "When a creature containing Star Blood dies, its essence, habits and nature condense into a Rune. Usually one Rune, rarely two or three.",
@@ -8564,7 +8564,8 @@
       ],
       "confidence": "direct_book_rule",
       "probabilityOfTwoOrThree": "unknown",
-      "generatorBehavior": "Default mode records the dominant trait for GM adjudication; it must not randomly select a Rune name as if that were the book rule."
+      "generatorBehavior": "Default mode records the dominant trait for GM adjudication; it must not randomly select a Rune name as if that were the book rule.",
+      "caveat": "Do not infer that every entity containing Star Blood necessarily yields a Rune. Artificial servants of Eternity provide a documented no-Rune example (page 2028)."
     },
     "documentedCreatureExample": {
       "sourceEntity": "Звёздный Ледяной Дикобраз",
@@ -8598,6 +8599,15 @@
         }
       ],
       "note": "Не сводить эти описания к процентной таблице. До сверки полного контекста не рассчитывать автоматическое распределение и не утверждать, что все оставшиеся Руны обязательно уходят Наблюдателю."
+    },
+    "documentedNoRuneExample": {
+      "sourceEntity": "Дикие Рудокопы и Дикие Строители (искусственные слуги Вечности)",
+      "sourcePages": [
+        2028
+      ],
+      "rule": "These beings contained Star Blood, but one killed Wild Miner yielded one drop of Star Blood and zero Runes. Many were empty; approximately every second yielded one or two drops of Star Blood.",
+      "scope": "Specific artificial servants of Eternity; not a universal rule for all Star-Blood creatures.",
+      "confidence": "direct_book_example"
     }
   }
 }
