@@ -17,13 +17,14 @@ button{border:1px solid #55718a;border-radius:9px;background:#1b3347;color:var(-
 <a href="../index.html">← На главную</a>
 <h1>Генератор добычи Рун</h1>
 <p class="lead">Инструмент мастера для случайного определения Рун, которые могут быть найдены в добыче со Звёздных существ, растений, погибших Восходящих и в Обломках Скрижалей. Использует каталог подтверждённых примеров происхождения из общей базы.</p>
-<div class="notice"><b>Важно:</b> это генератор состава добычи, а не наград Наблюдателя. Источники и свойства Рун берутся из найденных в книге примеров. Для существ, содержащих Звёздную Кровь, действует сущностный механизм: их суть и наиболее выраженное свойство сплавляются в Руну. Обычно одну, редко две или три. Наблюдатель выбирает свойство не случайно. Для Звёздных тварей и диких Восходящих по умолчанию используется режим ручного определения доминирующего свойства. Случайный выбор из каталога — только условное правило мастера.</div>
+<div class="notice"><b>Важно:</b> это генератор состава добычи, а не наград Наблюдателя. Источники и свойства Рун берутся из найденных в книге примеров. Для существ, содержащих Звёздную Кровь, действует сущностный механизм: их суть и наиболее выраженное свойство сплавляются в Руну. Обычно одну, редко две или три. Наблюдатель выбирает свойство не случайно. Для Звёздных тварей и диких Восходящих по умолчанию используется режим ручного определения доминирующего свойства. Случайный выбор из каталога — только условное правило мастера. Не всякое существо, содержащее Звёздную Кровь, обязательно оставляет Руну: известен пример искусственных слуг Вечности без выпадения Рун (стр. 2028).</div>
 
 <section class="panel">
 <h2>1. Источник добычи</h2>
 <div class="grid">
 <div class="field"><label for="sourceType">Тип источника</label><select id="sourceType">
 <option value="star_creature">Звёздные твари и существа</option>
+<option value="artificial_servant">Искусственные слуги Вечности (пример без Рун)</option>
 <option value="battle_loot">Боевая добыча</option>
 <option value="plant">Звёздные растения</option>
 <option value="ascendant">Погибший обычный Восходящий</option>
@@ -72,6 +73,7 @@ let data=null,lastResult=[];
 const labels={shard_fragment:"Обломок Скрижали",combat_loot:"Боевая добыча",star_plant_drop:"Звёздное растение",wild_plant_hunt:"Охота на дикое растение",creature_drop:"Добыча с существа",wild_ascendant_loot:"Добыча с дикого Восходящего",ascendant_loot:"Добыча с погибшего Восходящего",star_creature_drop:"Добыча со Звёздного существа",other_world_find:"Прочая находка"};
 const groups={
  star_creature:["star_creature_drop","creature_drop"],
+ artificial_servant:[],
  battle_loot:["combat_loot"],
  plant:["star_plant_drop","wild_plant_hunt"],
  ascendant:["ascendant_loot"],
@@ -93,7 +95,8 @@ function sourceLabel(type){
  $("selectionMode").disabled=false;
  $("count").value="1";$("count").max=essence?"3":"20";
  const notes={
- star_creature:"Для существ со Звёздной Кровью обычно формируется одна Руна, редко две или три. Наблюдатель выбирает самое выраженное свойство, а не случайную запись. Введите доминирующее свойство; вероятность редкого исхода неизвестна.",
+ star_creature:"Для Звёздных зверей и существ, к которым применим закон сущностной добычи, обычно формируется одна Руна, редко две или три. Наблюдатель выбирает самое выраженное свойство. Не распространяйте правило на любые существа только по наличию Звёздной Крови.",
+ artificial_servant:"Особый пример со стр. 2028: искусственные Дикие Рудокопы и Строители содержат Звёздную Кровь, но с убитого Рудокопа выпала одна капля Крови и ноль Рун. Многие были пусты; примерно с каждого второго падала одна-две капли Крови. Это не универсальная таблица для всех искусственных существ.",
  battle_loot:"Боевая добыча, для которой книга не задаёт единого количества или вероятностей выпадения. Случайный выбор из записей — условное правило мастера.",
  plant:"Пул включает находки со Звёздных растений. Универсальное количество выпадений не установлено.",
  ascendant:"Пул включает трофеи с погибших обычных Восходящих. Распределение между выпадением, Обломками и сокровищницей Наблюдателя не автоматизировано.",
@@ -118,6 +121,7 @@ function renderResults(){
  $("resultCount").textContent=lastResult.length+" Рун / позиций";
  if(!lastResult.length){$("results").innerHTML='<span class="status">Результат ещё не создан.</span>';return;}
  $("results").innerHTML=lastResult.map((x,i)=>{
+  if(x.isNoRune){return '<article class="item result"><h3>Руны не выпали</h3><span class="pill">Подтверждённый частный пример</span><p>Источник: '+esc(x.sourceEntity||"искусственные Дикие Рудокопы и Строители")+'. С одного убитого Дикого Рудокопа упала одна капля Звёздной Крови и ноль Рун. Многие существа были пусты; примерно с каждого второго выпадала одна-две капли Крови.</p><div class="small">Стр. 2028. Это отдельный пример искусственных слуг Вечности, не универсальное правило для всех существ со Звёздной Кровью.</div></article>';}
   if(x.isEssence){
    const examples=x.examples||[];
    return '<article class="item result"><h3>'+(i+1)+'. Сущностная Руна — формируется из природы существа</h3><span class="pill">Книжная механика</span><p><b>Доминирующее свойство:</b> '+esc(x.trait||"определить по описанию существа")+'</p><p>Наблюдатель выбирает наиболее выраженное свойство. Генератор не подменяет этот выбор случайным броском.</p><div class="small">Источник: '+esc(x.sourceEntity||"не указан")+' · вероятность 2–3 Рун неизвестна.</div>'+(examples.length?'<p class="small">Сходные примеры в базе: '+examples.map(e=>esc(e.name)).join("; ")+'</p>':'')+'</article>';
@@ -129,6 +133,11 @@ function renderResults(){
 function draw(){
  const type=$("sourceType").value,essence=["star_creature","wild_ascendant"].includes(type),mode=$("selectionMode").value;
  const pool=filtered(),n=Math.max(1,Math.min(essence?3:20,Number($("count").value)||1)),repeat=$("duplicates").value==="yes";
+ if(type==="artificial_servant"){
+  lastResult=[{isNoRune:true,sourceEntity:$("customSource").value.trim()||$("sourceEntity").value||"Дикие Рудокопы / Дикие Строители"}];
+  $("poolStatus").textContent="Показан подтверждённый пример без выпадения Рун; это не общая вероятность.";
+  renderResults();return;
+ }
  if(essence&&mode==="canon"){
   const trait=$("dominantTrait").value.trim(),entity=$("customSource").value.trim()||$("sourceEntity").value||null;
   const tokens=trait.toLocaleLowerCase("ru").split(/[^а-яёa-z0-9]+/).filter(t=>t.length>2);
@@ -156,7 +165,7 @@ async function init(){
   ["sourceEntity","quality","category"].forEach(id=>$(id).addEventListener("change",()=>{$("poolStatus").textContent="В пуле по текущим фильтрам: "+filtered().length+" записей";}));
  $("selectionMode").addEventListener("change",()=>{$("poolStatus").textContent=$("selectionMode").value==="random"?"Случайная выборка — условное правило мастера.":"Книжный режим: мастер определяет доминирующее свойство.";});
   $("generate").addEventListener("click",draw);
-  $("copy").addEventListener("click",async()=>{const text=lastResult.map((x,i)=>x.isEssence?(i+1)+". Сущностная Руна; доминирующее свойство: "+(x.trait||"определить мастеру")+"; источник: "+(x.sourceEntity||"не указан"):""+(i+1)+". "+x.name+" — "+(x.runeCategory||"категория неизвестна")+", "+(x.quality||"качество неизвестно")+"; источник: "+x.sourceEntity+"; стр. "+x.sourcePages).join("\n");try{await navigator.clipboard.writeText(text);$("poolStatus").textContent="Результат скопирован.";}catch(e){$("poolStatus").textContent="Не удалось скопировать; используйте JSON-экспорт."; }});
+  $("copy").addEventListener("click",async()=>{const text=lastResult.map((x,i)=>x.isNoRune?"Руны не выпали; источник: "+(x.sourceEntity||"не указан")+"; стр. 2028":x.isEssence?(i+1)+". Сущностная Руна; доминирующее свойство: "+(x.trait||"определить мастеру")+"; источник: "+(x.sourceEntity||"не указан"):""+(i+1)+". "+x.name+" — "+(x.runeCategory||"категория неизвестна")+", "+(x.quality||"качество неизвестно")+"; источник: "+x.sourceEntity+"; стр. "+x.sourcePages).join("\n");try{await navigator.clipboard.writeText(text);$("poolStatus").textContent="Результат скопирован.";}catch(e){$("poolStatus").textContent="Не удалось скопировать; используйте JSON-экспорт."; }});
   $("export").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({generatedAt:new Date().toISOString(),sourceType:$("sourceType").value,sourceEntity:$("sourceEntity").value||null,customSource:$("customSource").value||null,quality:$("quality").value||null,category:$("category").value||null,selectionMode:$("selectionMode").value,dominantTrait:$("dominantTrait").value||null,results:lastResult},null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="rune-drop-result.json";a.click();URL.revokeObjectURL(url);});
   renderSources();
  }catch(e){$("poolStatus").textContent="Не удалось загрузить базу Рун: "+e.message;}
