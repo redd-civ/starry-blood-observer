@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101722"><title>Генератор добычи Рун — Звёздная Кровь</title>
+<style>
+:root{color-scheme:dark;--bg:#0b111a;--panel:#121d2a;--panel2:#172535;--line:#29394a;--text:#e8eef5;--muted:#9aabbd;--gold:#d8b66c;--blue:#79b8d8;--green:#55b7a2;--red:#d47e7e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#1a3042 0,transparent 42%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1100px;margin:auto;padding:25px 20px 70px}a{color:var(--blue)}h1{font-size:clamp(2rem,5vw,2.8rem);line-height:1.12;margin:18px 0 8px}h2{font-size:1.2rem;color:var(--gold);margin:0 0 12px}.lead{color:var(--muted);max-width:850px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field label,.muted{font-size:.9rem;color:var(--muted)}
+input,select{width:100%;border:1px solid #40536a;border-radius:9px;background:#0c1520;color:var(--text);padding:10px 12px;font:inherit}
+button{border:1px solid #55718a;border-radius:9px;background:#1b3347;color:var(--text);padding:10px 15px;font:inherit;cursor:pointer}button.primary{background:#5a4926;border-color:#8a713c;color:#fff1c8}button:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.notice{border-left:3px solid var(--gold);background:#211d15;padding:12px 15px;border-radius:8px;color:#e8d6ae}.status{color:var(--muted);font-size:.9rem}.items{display:grid;gap:10px}.item{border:1px solid var(--line);background:var(--panel2);border-radius:10px;padding:13px}.item h3{margin:0 0 5px;font-size:1.05rem}.pill{display:inline-block;border:1px solid #40536a;border-radius:20px;padding:2px 8px;color:#b8c8d8;font-size:.78rem;margin:3px 4px 3px 0}.small{font-size:.84rem;color:var(--muted)}.result{border-color:#806a3c}.hidden{display:none!important}
+@media(max-width:600px){main{padding:18px 14px 50px}.panel{padding:14px}}
+</style></head>
+<body><main>
+<a href="../index.html">← На главную</a>
+<h1>Генератор добычи Рун</h1>
+<p class="lead">Инструмент мастера для случайного определения Рун, которые могут быть найдены в добыче со Звёздных существ, растений, погибших Восходящих и в Обломках Скрижалей. Использует каталог подтверждённых примеров происхождения из общей базы.</p>
+<div class="notice"><b>Важно:</b> это генератор состава добычи, а не наград Наблюдателя. Источники и свойства Рун берутся из найденных в книге примеров. Книга не задаёт вероятности выпадения, число Рун с обычной твари или доли распределения Рун после смерти Восходящего. Эти параметры мастер выбирает вручную. Для диких Восходящих действует особый механизм: сущность обычно спекается в одну Руну, редко — в две или три; вероятность редкого случая не установлена.</div>
+
+<section class="panel">
+<h2>1. Источник добычи</h2>
+<div class="grid">
+<div class="field"><label for="sourceType">Тип источника</label><select id="sourceType">
+<option value="star_creature">Звёздные твари и существа</option>
+<option value="plant">Звёздные растения</option>
+<option value="ascendant">Погибший обычный Восходящий</option>
+<option value="wild_ascendant">Дикий Восходящий</option>
+<option value="shard_fragment">Обломок Скрижали</option>
+<option value="other">Прочие находки</option>
+<option value="any">Любой источник</option>
+</select></div>
+<div class="field"><label for="sourceEntity">Конкретный источник (необязательно)</label><select id="sourceEntity"><option value="">Все источники выбранного типа</option></select></div>
+<div class="field"><label for="quality">Качество Рун (необязательно)</label><select id="quality"><option value="">Любое / неизвестное</option><option>дерево</option><option>бронза</option><option>серебро</option><option>золото</option><option>небо</option><option>unknown</option></select></div>
+<div class="field"><label for="category">Категория (необязательно)</label><select id="category"><option value="">Любая / неизвестная</option><option value="PROPERTY">Свойство</option><option value="ITEM">Предмет</option><option value="ABILITY">Умение</option><option value="SKILL">Навык</option><option value="CREATURE">Существо</option><option value="SPELL">Заклинание</option><option value="PORTAL">Портал</option><option value="DOMAIN">Домен</option><option value="SAGA">Сага</option></select></div>
+<div class="field"><label for="count">Количество выпадающих Рун</label><input id="count" type="number" min="1" max="20" value="1"></div>
+<div class="field"><label for="duplicates">Повторы в одном результате</label><select id="duplicates"><option value="no">Не повторять одну запись</option><option value="yes">Допускать повторы</option></select></div>
+</div>
+<p class="small" id="sourceNote">Число выпадений задаётся мастером: универсальная норма для этого типа источника пока не установлена.</p>
+<div class="row"><button class="primary" id="generate">Сгенерировать добычу</button><span class="status" id="poolStatus" aria-live="polite"></span></div>
+</section>
+
+<section class="panel">
+<div class="row" style="justify-content:space-between"><h2>2. Результат генерации</h2><span class="pill" id="resultCount">0 Рун</span></div>
+<div id="results" class="items"><span class="status">Выберите источник и нажмите «Сгенерировать добычу».</span></div>
+<div class="row" style="margin-top:14px"><button id="copy" disabled>Скопировать результат</button><button id="export" disabled>Скачать JSON</button></div>
+</section>
+
+<section class="panel">
+<h2>3. Примечания к правилам</h2>
+<ul>
+<li><b>Обычный Восходящий:</b> после смерти часть Рун выпадает, часть остаётся в Обломке Скрижали, остальное уходит Наблюдателю. Проценты и алгоритм распределения не установлены. Этот инструмент генерирует только условный список выпавшей части и не распределяет весь набор автоматически.</li>
+<li><b>Дикий Восходящий:</b> у него нет обычной Скрижали и стандартного набора Рун; после смерти сущность может спечься в одну Руну, редко — в две или три. Наблюдатель выбирает наиболее выраженное свойство. Генератор показывает варианты-кандидаты, окончательный выбор остаётся за мастером.</li>
+<li><b>Арена:</b> правило, по которому победитель забирает всё оставшееся от побеждённого, включая Руны и Обломок Скрижали, является отдельным особым случаем и не применяется автоматически к любой смерти.</li>
+<li>Наличие Руны в каталоге добычи не доказывает, что Наблюдатель предлагал её как награду. Каталог наград Наблюдателя ведётся отдельно.</li>
+<li>Фильтры категории и качества — инструменты мастера, а не подтверждённые вероятности выпадения.</li>
+</ul>
+</section>
+<p class="small"><a href="observer-generator.html">Генератор наград Наблюдателя</a> · <a href="encyclopedia/observer-reward-catalog.html">Каталог предложенных наград</a> · <a href="encyclopedia/runes.html">Справочник Рун</a></p>
+</main>
+<script>
+(function(){
+const DATA_URL="data/observer-reward-database.json";
+const $=id=>document.getElementById(id);
+let data=null,lastResult=[];
+const labels={shard_fragment:"Обломок Скрижали",combat_loot:"Боевая добыча",star_plant_drop:"Звёздное растение",wild_plant_hunt:"Охота на дикое растение",creature_drop:"Добыча с существа",wild_ascendant_loot:"Добыча с дикого Восходящего",ascendant_loot:"Добыча с погибшего Восходящего",star_creature_drop:"Добыча со Звёздного существа",other_world_find:"Прочая находка"};
+const groups={
+ star_creature:["star_creature_drop","creature_drop","combat_loot"],
+ plant:["star_plant_drop","wild_plant_hunt"],
+ ascendant:["ascendant_loot"],
+ wild_ascendant:["wild_ascendant_loot"],
+ shard_fragment:["shard_fragment"],
+ other:["other_world_find"]
+};
+const categoryNames={PROPERTY:"Свойство",ITEM:"Предмет",ABILITY:"Умение",SKILL:"Навык",CREATURE:"Существо",SPELL:"Заклинание",PORTAL:"Портал",DOMAIN:"Домен",SAGA:"Сага"};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function all(){return (data.acquiredRuneExamples||[]).filter(x=>x.potentialObserverRewardCandidate===true);}
+function filtered(){
+ const type=$("sourceType").value,methods=groups[type],q=$("quality").value,cat=$("category").value,entity=$("sourceEntity").value;
+ return all().filter(x=>(type==="any"||methods?.includes(x.acquisitionMethod))&&(!q||x.quality===q)&&(!cat||x.runeCategory===cat)&&(!entity||x.sourceEntity===entity));
+}
+function sourceLabel(type){
+ const notes={
+ star_creature:"Пул включает примеры добычи со Звёздных существ, существ и боевые трофеи. Количество выпадений задаётся мастером.",
+ plant:"Пул включает находки со Звёздных растений и результаты охоты на них. Количество выпадений задаётся мастером.",
+ ascendant:"Пул включает Руны, снятые с погибших обычных Восходящих. Не моделирует автоматическое распределение между добычей, Обломком и Наблюдателем.",
+ wild_ascendant:"Особый механизм диких Восходящих: по умолчанию одна сформировавшаяся Руна. Две или три — редкий случай, но шанс не установлен; количество задаётся мастером.",
+ shard_fragment:"Пул включает содержимое Обломков Скрижалей. Это не равнозначно обычному выпадению с тела.",
+ other:"Прочие найденные Руны; происхождение в книге описано ограниченно.",
+ any:"Общий пул всех зарегистрированных примеров добычи и находок."
+ };
+ $("sourceNote").textContent=notes[type];
+}
+function renderSources(){
+ const type=$("sourceType").value,methods=groups[type];
+ const rows=all().filter(x=>type==="any"||methods?.includes(x.acquisitionMethod));
+ const names=[...new Set(rows.map(x=>x.sourceEntity).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"ru"));
+ const old=$("sourceEntity").value;
+ $("sourceEntity").innerHTML='<option value="">Все источники выбранного типа</option>'+names.map(n=>'<option value="'+esc(n)+'">'+esc(n)+'</option>').join("");
+ if(names.includes(old))$("sourceEntity").value=old;
+ sourceLabel(type);
+ $("poolStatus").textContent="В пуле по текущим фильтрам: "+filtered().length+" записей";
+}
+function renderResults(){
+ $("resultCount").textContent=lastResult.length+" Рун";
+ if(!lastResult.length){$("results").innerHTML='<span class="status">Результат ещё не создан.</span>';return;}
+ $("results").innerHTML=lastResult.map((x,i)=>'<article class="item result"><h3>'+(i+1)+'. '+esc(x.name)+'</h3><span class="pill">'+esc(x.runeCategory?categoryNames[x.runeCategory]||x.runeCategory:"Категория не установлена")+'</span><span class="pill">'+esc(x.quality==="unknown"?"Качество неизвестно":x.quality||"Качество не указано")+'</span><span class="pill">'+esc(labels[x.acquisitionMethod]||x.acquisitionMethod)+'</span><p>'+esc(x.description||"Описание не внесено.")+'</p><div class="small">Источник: '+esc(x.sourceEntity||"не указан")+' · стр. '+esc(Array.isArray(x.sourcePages)?x.sourcePages.join(", "):x.sourcePages||"не указаны")+'</div></article>').join("");
+ $("copy").disabled=false;$("export").disabled=false;
+}
+function draw(){
+ const pool=filtered(),n=Math.max(1,Math.min(20,Number($("count").value)||1)),repeat=$("duplicates").value==="yes";
+ if(!pool.length){$("poolStatus").textContent="Нет записей, соответствующих фильтрам.";lastResult=[];renderResults();return;}
+ if(!repeat&&n>pool.length){$("poolStatus").textContent="В пуле меньше записей, чем запрошено. Уменьшите количество или разрешите повторы.";return;}
+ const bag=pool.slice(),out=[];
+ for(let i=0;i<n;i++){
+  const source=repeat?pool:bag;
+  const weights=source.map(x=>Math.max(1,Number(x.quantity)||1));
+  let roll=Math.random()*weights.reduce((a,b)=>a+b,0),idx=0;
+  for(;idx<weights.length-1;idx++){roll-=weights[idx];if(roll<0)break;}
+  const chosen=source[idx];out.push({...chosen});
+  if(!repeat)bag.splice(idx,1);
+ }
+ lastResult=out;
+ $("poolStatus").textContent="Сформировано "+out.length+" позиций. Это случайная выборка из примеров происхождения, не книжная таблица вероятностей.";
+ renderResults();
+}
+async function init(){
+ try{
+  const response=await fetch(DATA_URL,{cache:"no-store"});if(!response.ok)throw new Error("HTTP "+response.status);
+  data=await response.json();
+  $("sourceType").addEventListener("change",renderSources);
+  ["sourceEntity","quality","category"].forEach(id=>$(id).addEventListener("change",()=>{$("poolStatus").textContent="В пуле по текущим фильтрам: "+filtered().length+" записей";}));
+  $("generate").addEventListener("click",draw);
+  $("copy").addEventListener("click",async()=>{const text=lastResult.map((x,i)=>(i+1)+". "+x.name+" — "+(x.runeCategory||"категория неизвестна")+", "+(x.quality||"качество неизвестно")+"; источник: "+x.sourceEntity+"; стр. "+x.sourcePages).join("\n");try{await navigator.clipboard.writeText(text);$("poolStatus").textContent="Результат скопирован.";}catch(e){$("poolStatus").textContent="Не удалось скопировать; используйте JSON-экспорт."; }});
+  $("export").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({generatedAt:new Date().toISOString(),sourceType:$("sourceType").value,sourceEntity:$("sourceEntity").value||null,quality:$("quality").value||null,category:$("category").value||null,results:lastResult},null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="rune-drop-result.json";a.click();URL.revokeObjectURL(url);});
+  renderSources();
+ }catch(e){$("poolStatus").textContent="Не удалось загрузить базу Рун: "+e.message;}
+}
+init();
+})();
+</script></body></html>
