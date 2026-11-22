@@ -3844,6 +3844,336 @@
       "observerOfferConfirmed": false,
       "eligibility": "candidate_not_yet_verified",
       "gmNote": "Происхождение не исключает эту Руну из потенциального пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_coinbag",
+      "name": "Дырявая Сумка",
+      "runeCategory": "ITEM",
+      "quality": "дерево",
+      "acquisitionMethod": "other_world_find",
+      "sourceEntity": "Контракция",
+      "sourcePages": "3010",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_aikho_cub",
+      "name": "Детёныш Айхо",
+      "runeCategory": "CREATURE",
+      "quality": "дерево",
+      "acquisitionMethod": "other_world_find",
+      "sourceEntity": "Контракция",
+      "sourcePages": "3010",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_coin_enhancement",
+      "name": "Усиление",
+      "runeCategory": "PROPERTY",
+      "quality": "бронза",
+      "acquisitionMethod": "other_world_find",
+      "sourceEntity": "Контракция",
+      "sourcePages": "3010",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_trade_agent",
+      "name": "Торговый Представитель Контракции",
+      "runeCategory": "CREATURE",
+      "quality": "золото",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3013-3017",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_dragon_soul_cage",
+      "name": "Запечатанная Драконья Клетка Душ",
+      "runeCategory": "ITEM",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3014",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_snake_mask",
+      "name": "Змеиная Маска",
+      "runeCategory": "ITEM",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3015",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_void_rift",
+      "name": "Пустотный Разлом",
+      "runeCategory": "SPELL",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3015",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_sucking_whirlwind",
+      "name": "Втягивающий Вихрь",
+      "runeCategory": "SPELL",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3015",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_all_purity",
+      "name": "Всеобъемлющая Чистота",
+      "runeCategory": null,
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3015",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_heaven_fire_beam",
+      "name": "Луч Небесного Огня",
+      "runeCategory": "SPELL",
+      "quality": "золото",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3015",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_star_sleep_elixir",
+      "name": "Эликсир Звёздного Сна",
+      "runeCategory": "ITEM",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3015",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_shadow_hand",
+      "name": "Рука Теней",
+      "runeCategory": "ITEM",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3015",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_crystalloid_archdragon",
+      "name": "Кристаллоидный Арходракон",
+      "runeCategory": "CREATURE",
+      "quality": "золото",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3015-3016",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_debaucher_blood",
+      "name": "Кровь Распутника",
+      "runeCategory": "ITEM",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3016",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_silent_eye",
+      "name": "Око Молчащего",
+      "runeCategory": "ITEM",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3016",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_hundred_noble_scents",
+      "name": "Сто Благородных Ароматов",
+      "runeCategory": "SPELL",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3016",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_thousand_outfits",
+      "name": "Тысяча Нарядов",
+      "runeCategory": "ITEM",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3016",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_void_sphere",
+      "name": "Сфера Пустоты",
+      "runeCategory": "SPELL",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3016",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_servants",
+      "name": "Слуги",
+      "runeCategory": "CREATURE",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3017",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_corps_key",
+      "name": "Ключ Эрды Корпуса",
+      "runeCategory": "ITEM",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3017",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_message",
+      "name": "Послание Оноры",
+      "runeCategory": "SAGA",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3015-3017",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
+    },
+    {
+      "id": "loot_onora_hartland_portal",
+      "name": "Хартленд Корпуса",
+      "runeCategory": "PORTAL",
+      "quality": "серебро",
+      "acquisitionMethod": "shard_fragment",
+      "sourceEntity": "Обломок Скрижали Оноры",
+      "sourcePages": "3015",
+      "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+      "evidence": "confirmed_example",
+      "potentialObserverRewardCandidate": true,
+      "observerOfferConfirmed": false,
+      "eligibility": "candidate_not_yet_verified",
+      "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено."
     }
   ],
   "acquisitionPolicy": {
@@ -3917,9 +4247,7 @@
         "runeCategory": "ITEM",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_002",
@@ -3941,9 +4269,7 @@
         "runeCategory": "ITEM",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_003",
@@ -3965,9 +4291,7 @@
         "runeCategory": "ITEM",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_004",
@@ -3987,9 +4311,7 @@
         "runeCategory": "ITEM",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_005",
@@ -4009,9 +4331,7 @@
         "runeCategory": "ITEM",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_006",
@@ -4031,9 +4351,7 @@
         "runeCategory": "ITEM",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_007",
@@ -4055,9 +4373,7 @@
         "runeCategory": "CREATURE",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_008",
@@ -4079,9 +4395,7 @@
         "runeCategory": "CREATURE",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_009",
@@ -4103,9 +4417,7 @@
         "runeCategory": "CREATURE",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_010",
@@ -4127,9 +4439,7 @@
         "runeCategory": "CREATURE",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_011",
@@ -4150,9 +4460,7 @@
         "runeCategory": "CREATURE",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_012",
@@ -4174,9 +4482,7 @@
         "runeCategory": "CREATURE",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_013",
@@ -4197,9 +4503,7 @@
         "runeCategory": "CREATURE",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_014",
@@ -4220,9 +4524,7 @@
         "runeCategory": "CREATURE",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_015",
@@ -4243,9 +4545,7 @@
         "runeCategory": "CREATURE",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_016",
@@ -4266,9 +4566,7 @@
         "runeCategory": "DOMAIN",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_017",
@@ -4289,9 +4587,7 @@
         "runeCategory": "DOMAIN",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_018",
@@ -4312,9 +4608,7 @@
         "runeCategory": "DOMAIN",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_019",
@@ -4335,9 +4629,7 @@
         "runeCategory": "ABILITY",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_020",
@@ -4358,9 +4650,7 @@
         "runeCategory": "ABILITY",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_021",
@@ -4380,9 +4670,7 @@
         "runeCategory": "ABILITY",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_022",
@@ -4403,9 +4691,7 @@
         "runeCategory": "SKILL",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_023",
@@ -4426,9 +4712,7 @@
         "runeCategory": "SKILL",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_024",
@@ -4449,9 +4733,7 @@
         "runeCategory": "SKILL",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_025",
@@ -4472,9 +4754,7 @@
         "runeCategory": "SPELL",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_026",
@@ -4495,9 +4775,7 @@
         "runeCategory": "SPELL",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "rwd_027",
@@ -4518,9 +4796,7 @@
         "runeCategory": "SPELL",
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_item_plash_iskatelya",
@@ -4545,9 +4821,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_item_amulet_molchaniya",
@@ -4571,9 +4845,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_item_igg_strela",
@@ -4597,9 +4869,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_creature_child_of_sky",
@@ -4620,9 +4890,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_creature_rocky_karkh",
@@ -4643,9 +4911,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_creature_white_krylan",
@@ -4666,9 +4932,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_domain_house_of_cups",
@@ -4688,9 +4952,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_domain_lighthouse_by_sea",
@@ -4710,9 +4972,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_domain_cursed_sanctuary",
@@ -4733,9 +4993,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_item_wanderer_mask_silver",
@@ -4755,9 +5013,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_item_storm_glove",
@@ -4777,9 +5033,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_item_amulet_golden_light",
@@ -4799,9 +5053,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_skill_consumption_of_taint",
@@ -4822,9 +5074,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_skill_golden_blood",
@@ -4845,9 +5095,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_skill_harmony_of_elements",
@@ -4867,9 +5115,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_spell_igg_mark",
@@ -4889,9 +5135,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_spell_absorption_of_runes",
@@ -4911,9 +5155,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_spell_chain_of_lightning",
@@ -4933,9 +5175,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_item_hunter_knife",
@@ -4955,9 +5195,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "observer_item_golden_water",
@@ -4977,9 +5215,7 @@
         "conditionIds": [],
         "provenance": [
           "observer_reward"
-        ],
-        "potentialObserverRewardCandidate": true,
-        "observerOfferConfirmed": true
+        ]
       },
       {
         "id": "loot_plavnik_1",
@@ -7305,6 +7541,402 @@
         "gmNote": "Происхождение не исключает эту Руну из потенциального пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
         "provenance": [
           "star_creature_drop"
+        ]
+      },
+      {
+        "id": "loot_coinbag",
+        "name": "Дырявая Сумка",
+        "runeCategory": "ITEM",
+        "quality": "дерево",
+        "acquisitionMethod": "other_world_find",
+        "sourceEntity": "Контракция",
+        "sourcePages": "3010",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "other_world_find"
+        ]
+      },
+      {
+        "id": "loot_aikho_cub",
+        "name": "Детёныш Айхо",
+        "runeCategory": "CREATURE",
+        "quality": "дерево",
+        "acquisitionMethod": "other_world_find",
+        "sourceEntity": "Контракция",
+        "sourcePages": "3010",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "other_world_find"
+        ]
+      },
+      {
+        "id": "loot_coin_enhancement",
+        "name": "Усиление",
+        "runeCategory": "PROPERTY",
+        "quality": "бронза",
+        "acquisitionMethod": "other_world_find",
+        "sourceEntity": "Контракция",
+        "sourcePages": "3010",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "other_world_find"
+        ]
+      },
+      {
+        "id": "loot_onora_trade_agent",
+        "name": "Торговый Представитель Контракции",
+        "runeCategory": "CREATURE",
+        "quality": "золото",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3013-3017",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_dragon_soul_cage",
+        "name": "Запечатанная Драконья Клетка Душ",
+        "runeCategory": "ITEM",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3014",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_snake_mask",
+        "name": "Змеиная Маска",
+        "runeCategory": "ITEM",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3015",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_void_rift",
+        "name": "Пустотный Разлом",
+        "runeCategory": "SPELL",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3015",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_sucking_whirlwind",
+        "name": "Втягивающий Вихрь",
+        "runeCategory": "SPELL",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3015",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_all_purity",
+        "name": "Всеобъемлющая Чистота",
+        "runeCategory": null,
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3015",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_heaven_fire_beam",
+        "name": "Луч Небесного Огня",
+        "runeCategory": "SPELL",
+        "quality": "золото",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3015",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_star_sleep_elixir",
+        "name": "Эликсир Звёздного Сна",
+        "runeCategory": "ITEM",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3015",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_shadow_hand",
+        "name": "Рука Теней",
+        "runeCategory": "ITEM",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3015",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_crystalloid_archdragon",
+        "name": "Кристаллоидный Арходракон",
+        "runeCategory": "CREATURE",
+        "quality": "золото",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3015-3016",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_debaucher_blood",
+        "name": "Кровь Распутника",
+        "runeCategory": "ITEM",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3016",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_silent_eye",
+        "name": "Око Молчащего",
+        "runeCategory": "ITEM",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3016",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_hundred_noble_scents",
+        "name": "Сто Благородных Ароматов",
+        "runeCategory": "SPELL",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3016",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_thousand_outfits",
+        "name": "Тысяча Нарядов",
+        "runeCategory": "ITEM",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3016",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_void_sphere",
+        "name": "Сфера Пустоты",
+        "runeCategory": "SPELL",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3016",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_servants",
+        "name": "Слуги",
+        "runeCategory": "CREATURE",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3017",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_corps_key",
+        "name": "Ключ Эрды Корпуса",
+        "runeCategory": "ITEM",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3017",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_message",
+        "name": "Послание Оноры",
+        "runeCategory": "SAGA",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3015-3017",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
+        ]
+      },
+      {
+        "id": "loot_onora_hartland_portal",
+        "name": "Хартленд Корпуса",
+        "runeCategory": "PORTAL",
+        "quality": "серебро",
+        "acquisitionMethod": "shard_fragment",
+        "sourceEntity": "Обломок Скрижали Оноры",
+        "sourcePages": "3015",
+        "description": "Руна получена из добычи/Обломка Скрижали; описание и свойства зафиксированы в тексте на указанных страницах.",
+        "evidence": "confirmed_example",
+        "potentialObserverRewardCandidate": true,
+        "observerOfferConfirmed": false,
+        "eligibility": "candidate_not_yet_verified",
+        "gmNote": "Происхождение не исключает эту обычную Руну из потенциального общего пула наград Наблюдателя; прямое предложение Наблюдателем не подтверждено.",
+        "provenance": [
+          "shard_fragment"
         ]
       }
     ]
